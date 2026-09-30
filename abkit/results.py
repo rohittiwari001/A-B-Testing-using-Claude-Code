@@ -299,6 +299,13 @@ def fmt_p(p: float | None) -> str:
     return "<0.001" if p < 0.001 else f"{p:.3f}"
 
 
+def fmt_p_stat(p: float | None) -> str:
+    """'p < 0.001' or 'p = 0.034' for running text."""
+    if p is None:
+        return "p = n/a"
+    return "p < 0.001" if p < 0.001 else f"p = {p:.3f}"
+
+
 def fmt_prob(p: float | None) -> str:
     return "n/a" if p is None else f"{p * 100:.1f}%"
 
@@ -335,9 +342,9 @@ def describe(r: dict[str, Any]) -> str:
             level = round((1 - (r.get("alpha") or 0.05)) * 100)
             parts.append(f"({level}% CI {fmt_ci(r['rel_ci_low'], r['rel_ci_high'])})")
     if r.get("p_value_adjusted") is not None:
-        parts.append(f"adj. p = {fmt_p(r['p_value_adjusted'])}")
+        parts.append(f"adjusted {fmt_p_stat(r['p_value_adjusted'])}")
     elif r.get("p_value") is not None:
-        parts.append(f"p = {fmt_p(r['p_value'])}")
+        parts.append(fmt_p_stat(r["p_value"]))
     if r.get("probability") is not None:
         parts.append(f"P(beat control) = {fmt_prob(r['probability'])}")
     return " ".join(parts)

@@ -93,7 +93,7 @@ def build_summary(
     verb = "raises" if (rel or 0) > 0 else "lowers"
     if p.get("p_value") is not None:
         sig_txt = "statistically significant" if p.get("significant") else "not statistically significant"
-        stat_txt = f"p = {R.fmt_p(p.get('p_value_adjusted') or p['p_value'])}"
+        stat_txt = R.fmt_p_stat(p.get("p_value_adjusted") or p["p_value"])
     else:
         sig_txt = f"P(better than {ct}) = {R.fmt_prob(p.get('probability'))}"
         stat_txt = sig_txt

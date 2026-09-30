@@ -1,0 +1,50 @@
+# Consulting chart style for abkit. Colours are the palette tokens in abkit/viz/style.py.
+figure.figsize: 10, 5.625
+figure.dpi: 100
+figure.facecolor: white
+savefig.dpi: 300
+savefig.facecolor: white
+svg.fonttype: none
+
+font.family: sans-serif
+font.sans-serif: Arial, Helvetica, Liberation Sans, DejaVu Sans
+font.size: 10
+text.color: 1A1A1A
+
+axes.facecolor: white
+axes.edgecolor: 8C8C8C
+axes.linewidth: 0.8
+axes.spines.top: False
+axes.spines.right: False
+axes.grid: True
+axes.grid.axis: y
+axes.axisbelow: True
+axes.labelsize: 10
+axes.labelcolor: 8C8C8C
+axes.titlesize: 12
+axes.titleweight: bold
+axes.titlecolor: 1A1A1A
+axes.titlelocation: left
+axes.prop_cycle: cycler('color', ['0B2545', '2251FF', '9DB4FF', '8C8C8C'])
+
+grid.color: E3E3E3
+grid.linewidth: 0.8
+grid.linestyle: -
+
+xtick.color: 8C8C8C
+ytick.color: 8C8C8C
+xtick.labelcolor: 1A1A1A
+ytick.labelcolor: 1A1A1A
+xtick.labelsize: 10
+ytick.labelsize: 10
+xtick.major.size: 0
+ytick.major.size: 0
+xtick.major.pad: 6
+ytick.major.pad: 6
+
+lines.linewidth: 2
+lines.markersize: 7
+patch.linewidth: 0
+legend.frameon: False
+legend.fontsize: 10
+legend.edgecolor: E3E3E3

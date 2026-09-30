@@ -98,6 +98,7 @@ def finalize(fig, title: str, subtitle: str | None = None, source: str | None = 
     fig.text(x, 0.955, "\n".join(lines), fontsize=SIZES["title"], fontweight="bold", color=PALETTE["ink"], va="top", ha="left",
              linespacing=1.15)
     y_sub = 0.955 - 0.058 * len(lines) - 0.012
+    fig._abkit_title_crop = round(1 - y_sub - 0.004, 4)     # share of height above the subtitle (deck slides crop it)
     if subtitle:
         fig.text(x, y_sub, subtitle, fontsize=SIZES["subtitle"], color=PALETTE["grey_mid"], va="top", ha="left")
     top = y_sub - (0.075 if subtitle else 0.02)
@@ -127,6 +128,7 @@ def save_chart(
     plt.close(fig)
     entry = {"id": chart_id, "title": title, "subtitle": subtitle, "key_message": key_message, "takeaways": (takeaways or [])[:3],
              "section": section, "source": source, "notes": notes, "png": png.name, "svg": svg.name,
+             "title_crop": getattr(fig, "_abkit_title_crop", 0.0),
              "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
     manifest = load_manifest(charts.parent if not out_dir else charts, charts_dir=charts)
     manifest["charts"] = [c for c in manifest["charts"] if c["id"] != chart_id] + [entry]

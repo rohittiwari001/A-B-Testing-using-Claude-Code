@@ -1,0 +1,904 @@
+{
+  "schema_version": 1,
+  "run_id": "2026-10-01_checkout-sample",
+  "updated_at": "2026-09-30T20:30:46+00:00",
+  "validation": {
+    "verdict": "pass",
+    "checks": [
+      {
+        "check": "schema",
+        "verdict": "pass",
+        "detail": "7 columns, 80,000 rows",
+        "data": {
+          "missing": [],
+          "extra": [],
+          "rows": 80000
+        }
+      },
+      {
+        "check": "dtypes",
+        "verdict": "pass",
+        "detail": "All metric columns numeric",
+        "data": {
+          "user_id": "object",
+          "variant": "object",
+          "exposure_date": "object",
+          "platform": "object",
+          "country": "object",
+          "converted": "int64",
+          "revenue": "float64"
+        }
+      },
+      {
+        "check": "missing values",
+        "verdict": "pass",
+        "detail": "No missing values",
+        "data": {}
+      },
+      {
+        "check": "duplicates",
+        "verdict": "pass",
+        "detail": "80,000 units, one row each",
+        "data": {
+          "duplicate_rows": 0,
+          "units_with_multiple_rows": 0,
+          "units": 80000,
+          "max_rows_per_unit": 1
+        }
+      },
+      {
+        "check": "contamination",
+        "verdict": "pass",
+        "detail": "No unit appears in more than one variant",
+        "data": {
+          "units_in_multiple_variants": 0,
+          "share": 0.0
+        }
+      },
+      {
+        "check": "variants",
+        "verdict": "pass",
+        "detail": "Counts {'control': 40183, 'treatment': 39817}",
+        "data": {
+          "control": 40183,
+          "treatment": 39817
+        }
+      },
+      {
+        "check": "SRM",
+        "verdict": "pass",
+        "detail": "p = 0.196 (threshold 0.001)",
+        "data": {
+          "method": "validation.srm_check",
+          "estimate": 0.002287499999999998,
+          "ci_low": null,
+          "ci_high": null,
+          "p_value": 0.1956635522685623,
+          "probability": null,
+          "n": {
+            "control": 40183,
+            "treatment": 39817
+          },
+          "metric": null,
+          "role": null,
+          "control": null,
+          "treatment": null,
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.001,
+          "sidedness": null,
+          "significant": false,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [],
+          "notes": [],
+          "extra": {
+            "chi2": 1.67445,
+            "observed": {
+              "control": 40183,
+              "treatment": 39817
+            },
+            "expected_share": {
+              "control": 0.5,
+              "treatment": 0.5
+            },
+            "observed_share": {
+              "control": 0.5022875,
+              "treatment": 0.4977125
+            },
+            "expected_count": {
+              "control": 40000.0,
+              "treatment": 40000.0
+            },
+            "threshold": 0.001
+          },
+          "abs_lift": 0.002287499999999998
+        }
+      },
+      {
+        "check": "dates",
+        "verdict": "pass",
+        "detail": "2026-09-01 to 2026-09-14 (14 days)",
+        "data": {
+          "start": "2026-09-01",
+          "end": "2026-09-14",
+          "days": 14,
+          "days_with_gaps": [],
+          "daily_counts": {
+            "2026-09-01": {
+              "control": 3173,
+              "treatment": 3041
+            },
+            "2026-09-02": {
+              "control": 3193,
+              "treatment": 3168
+            },
+            "2026-09-03": {
+              "control": 3112,
+              "treatment": 3138
+            },
+            "2026-09-04": {
+              "control": 3108,
+              "treatment": 2978
+            },
+            "2026-09-05": {
+              "control": 2279,
+              "treatment": 2178
+            },
+            "2026-09-06": {
+              "control": 2337,
+              "treatment": 2272
+            },
+            "2026-09-07": {
+              "control": 3152,
+              "treatment": 3100
+            },
+            "2026-09-08": {
+              "control": 3027,
+              "treatment": 3033
+            },
+            "2026-09-09": {
+              "control": 3155,
+              "treatment": 3005
+            },
+            "2026-09-10": {
+              "control": 3035,
+              "treatment": 3077
+            },
+            "2026-09-11": {
+              "control": 3094,
+              "treatment": 3133
+            },
+            "2026-09-12": {
+              "control": 2268,
+              "treatment": 2230
+            },
+            "2026-09-13": {
+              "control": 2165,
+              "treatment": 2322
+            },
+            "2026-09-14": {
+              "control": 3085,
+              "treatment": 3142
+            }
+          }
+        }
+      },
+      {
+        "check": "outliers",
+        "verdict": "pass",
+        "detail": "No extreme outliers in continuous metrics",
+        "data": {
+          "revenue": {
+            "p50": 0.0,
+            "p99": 170.79039999999978,
+            "max": 887.74,
+            "n_above_3iqr": 1132,
+            "max_over_p99": 5.197833133478235,
+            "skew": 2.5248622656811026
+          }
+        }
+      },
+      {
+        "check": "impossible values",
+        "verdict": "pass",
+        "detail": "Metric values within valid ranges",
+        "data": {}
+      },
+      {
+        "check": "pre-period data",
+        "verdict": "pass",
+        "detail": "None described (CUPED not possible)",
+        "data": {
+          "available": false
+        }
+      },
+      {
+        "check": "covariate balance",
+        "verdict": "pass",
+        "detail": "Segment mix similar across variants",
+        "data": {
+          "platform": {
+            "p_value": 0.17495716405650538,
+            "shares": {
+              "control": {
+                "Android": 0.3517,
+                "Web": 0.2541,
+                "iOS": 0.3942
+              },
+              "treatment": {
+                "Android": 0.3559,
+                "Web": 0.2486,
+                "iOS": 0.3956
+              }
+            }
+          },
+          "country": {
+            "p_value": 0.8635862032540715,
+            "shares": {
+              "control": {
+                "DE": 0.149,
+                "IN": 0.1997,
+                "UK": 0.2018,
+                "US": 0.4494
+              },
+              "treatment": {
+                "DE": 0.1506,
+                "IN": 0.2005,
+                "UK": 0.2022,
+                "US": 0.4467
+              }
+            }
+          }
+        }
+      }
+    ],
+    "blocking": [],
+    "script": "code/10_validate_sample.py",
+    "recorded_at": "2026-09-30T20:30:44+00:00"
+  },
+  "steps": {
+    "primary_test": {
+      "step_id": "primary_test",
+      "method": "frequentist.two_proportion_ztest",
+      "script": "code/20_analysis_sample.py",
+      "recorded_at": "2026-09-30T20:30:44+00:00",
+      "results": [
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.010933742600066187,
+          "ci_low": 0.004332659721744982,
+          "ci_high": 0.017534825478387393,
+          "p_value": 0.0011691847007427828,
+          "probability": null,
+          "n": {
+            "control": 40183,
+            "treatment": 39817
+          },
+          "metric": "converted",
+          "role": "primary",
+          "control": "control",
+          "treatment": "treatment",
+          "control_value": 0.34248313963616456,
+          "treatment_value": 0.35341688223623074,
+          "rel_lift": 0.03192490763685951,
+          "rel_ci_low": 0.012344306109468843,
+          "rel_ci_high": 0.05150550916425018,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": null,
+              "detail": "verify in validation"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 13762"
+            }
+          ],
+          "notes": [],
+          "extra": {
+            "z": 3.2462929259654882,
+            "se": 0.003367961314794407,
+            "variant_stats": {
+              "control": {
+                "mean": 0.34248313963616456,
+                "ci_low": 0.3378433321930486,
+                "ci_high": 0.34712294707928054,
+                "se": 0.0023672921950169375,
+                "n": 40183
+              },
+              "treatment": {
+                "mean": 0.35341688223623074,
+                "ci_low": 0.34872151408695096,
+                "ci_high": 0.35811225038551053,
+                "se": 0.002395640014977952,
+                "n": 39817
+              }
+            }
+          },
+          "abs_lift": 0.010933742600066187
+        }
+      ],
+      "data": {}
+    },
+    "guardrails": {
+      "step_id": "guardrails",
+      "method": "frequentist.noninferiority_test",
+      "script": "code/20_analysis_sample.py",
+      "recorded_at": "2026-09-30T20:30:44+00:00",
+      "results": [
+        {
+          "method": "frequentist.noninferiority_test",
+          "estimate": 0.5020523136312072,
+          "ci_low": 0.031197691180521514,
+          "ci_high": 0.9729069360818928,
+          "p_value": 0.00542087921357355,
+          "probability": null,
+          "n": {
+            "control": 40183,
+            "treatment": 39817
+          },
+          "metric": "revenue",
+          "role": "guardrail",
+          "control": "control",
+          "treatment": "treatment",
+          "control_value": 22.726713037851827,
+          "treatment_value": 23.228765351483034,
+          "rel_lift": 0.022090845816332028,
+          "rel_ci_low": 0.0011419329635440761,
+          "rel_ci_high": 0.04303975866911998,
+          "alpha": 0.05,
+          "sidedness": "one-sided",
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [
+            {
+              "check": "normal approximation for the difference",
+              "passed": null,
+              "detail": ""
+            }
+          ],
+          "notes": [
+            "Non-inferiority margin 1.0% relative (no_decrease); CI at 90%."
+          ],
+          "extra": {
+            "status": "pass",
+            "margin_rel": 0.01,
+            "margin_abs": 0.22726713037851828,
+            "direction": "no_decrease",
+            "z": 2.547758215565292
+          },
+          "abs_lift": 0.5020523136312072
+        }
+      ],
+      "data": {}
+    },
+    "segments": {
+      "step_id": "segments",
+      "method": "frequentist.two_proportion_ztest",
+      "script": "code/20_analysis_sample.py",
+      "recorded_at": "2026-09-30T20:30:45+00:00",
+      "results": [
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.007146927970501593,
+          "ci_low": -0.0038813225597439677,
+          "ci_high": 0.018175178500747152,
+          "p_value": 0.20404086788764864,
+          "probability": null,
+          "n": {
+            "control": 14134,
+            "treatment": 14169
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "control",
+          "treatment": "treatment",
+          "control_value": 0.33529078817036934,
+          "treatment_value": 0.34243771614087093,
+          "rel_lift": 0.02131561087467171,
+          "rel_ci_low": -0.011927021298747849,
+          "rel_ci_high": 0.054558243048091266,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": false,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.30606130183147295,
+          "segment": "Android",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": null,
+              "detail": "verify in validation"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 4739"
+            }
+          ],
+          "notes": [
+            "benjamini-hochberg correction across 3 tests (alpha 0.05)."
+          ],
+          "extra": {
+            "z": 1.2701228656179835,
+            "se": 0.005626761826867736,
+            "variant_stats": {
+              "control": {
+                "mean": 0.33529078817036934,
+                "ci_low": 0.32750787460885866,
+                "ci_high": 0.34307370173188,
+                "se": 0.003970947233164121,
+                "n": 14134
+              },
+              "treatment": {
+                "mean": 0.34243771614087093,
+                "ci_low": 0.33462435794788403,
+                "ci_high": 0.3502510743338578,
+                "se": 0.003986480493834399,
+                "n": 14169
+              }
+            },
+            "segment_col": "platform",
+            "share": 0.3537875
+          },
+          "abs_lift": 0.007146927970501593
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.0038543521285895332,
+          "ci_low": -0.009128731363347265,
+          "ci_high": 0.01683743562052633,
+          "p_value": 0.5606431482219477,
+          "probability": null,
+          "n": {
+            "control": 10210,
+            "treatment": 9897
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "control",
+          "treatment": "treatment",
+          "control_value": 0.32634671890303624,
+          "treatment_value": 0.33020107103162577,
+          "rel_lift": 0.011810604811794523,
+          "rel_ci_low": -0.028203751720530815,
+          "rel_ci_high": 0.05182496134411986,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": false,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.5606431482219477,
+          "segment": "Web",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": null,
+              "detail": "verify in validation"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 3268"
+            }
+          ],
+          "notes": [
+            "benjamini-hochberg correction across 3 tests (alpha 0.05)."
+          ],
+          "extra": {
+            "z": 0.5818864794215078,
+            "se": 0.006624143909962481,
+            "variant_stats": {
+              "control": {
+                "mean": 0.32634671890303624,
+                "ci_low": 0.3172519208529736,
+                "ci_high": 0.3354415169530989,
+                "se": 0.0046402883531540505,
+                "n": 10210
+              },
+              "treatment": {
+                "mean": 0.33020107103162577,
+                "ci_low": 0.32093580765775565,
+                "ci_high": 0.3394663344054959,
+                "se": 0.004727262055299653,
+                "n": 9897
+              }
+            },
+            "segment_col": "platform",
+            "share": 0.2513375
+          },
+          "abs_lift": 0.0038543521285895332
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.018577783175313833,
+          "ci_low": 0.00793981349033534,
+          "ci_high": 0.029215752860292328,
+          "p_value": 0.0006209856961876546,
+          "probability": null,
+          "n": {
+            "control": 15839,
+            "treatment": 15751
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "control",
+          "treatment": "treatment",
+          "control_value": 0.35930298629964014,
+          "treatment_value": 0.37788076947495397,
+          "rel_lift": 0.05170506197747238,
+          "rel_ci_low": 0.021332919268713255,
+          "rel_ci_high": 0.0820772046862315,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.001862957088562964,
+          "segment": "iOS",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": null,
+              "detail": "verify in validation"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 5691"
+            }
+          ],
+          "notes": [
+            "benjamini-hochberg correction across 3 tests (alpha 0.05)."
+          ],
+          "extra": {
+            "z": 3.4222789451785505,
+            "se": 0.005427635287632549,
+            "variant_stats": {
+              "control": {
+                "mean": 0.35930298629964014,
+                "ci_low": 0.3518309155584289,
+                "ci_high": 0.3667750570408514,
+                "se": 0.0038123510432589674,
+                "n": 15839
+              },
+              "treatment": {
+                "mean": 0.37788076947495397,
+                "ci_low": 0.37030881082102196,
+                "ci_high": 0.385452728128886,
+                "se": 0.0038633152005131976,
+                "n": 15751
+              }
+            },
+            "segment_col": "platform",
+            "share": 0.394875
+          },
+          "abs_lift": 0.018577783175313833
+        },
+        {
+          "method": "segments.interaction_test",
+          "estimate": 3.5730838922145867,
+          "ci_low": null,
+          "ci_high": null,
+          "p_value": 0.16753852634963462,
+          "probability": null,
+          "n": {
+            "rows": 80000,
+            "levels": 3
+          },
+          "metric": "converted",
+          "role": null,
+          "control": null,
+          "treatment": null,
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.05,
+          "sidedness": null,
+          "significant": false,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": "platform",
+          "assumptions": [],
+          "notes": [
+            "Tests heterogeneity of the absolute effect; no evidence the effect differs by segment."
+          ],
+          "extra": {
+            "df": 2,
+            "interaction_terms": {
+              "_t:C(_s)[T.Web]": -0.003292575841910565,
+              "_t:C(_s)[T.iOS]": 0.011430855204811517
+            }
+          },
+          "abs_lift": 3.5730838922145867
+        }
+      ],
+      "data": {
+        "overall": {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.010933742600066187,
+          "ci_low": 0.004332659721744982,
+          "ci_high": 0.017534825478387393,
+          "p_value": 0.0011691847007427828,
+          "probability": null,
+          "n": {
+            "control": 40183,
+            "treatment": 39817
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "control",
+          "treatment": "treatment",
+          "control_value": 0.34248313963616456,
+          "treatment_value": 0.35341688223623074,
+          "rel_lift": 0.03192490763685951,
+          "rel_ci_low": 0.012344306109468843,
+          "rel_ci_high": 0.05150550916425018,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": "All",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": null,
+              "detail": "verify in validation"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 13762"
+            }
+          ],
+          "notes": [],
+          "extra": {
+            "z": 3.2462929259654882,
+            "se": 0.003367961314794407,
+            "variant_stats": {
+              "control": {
+                "mean": 0.34248313963616456,
+                "ci_low": 0.3378433321930486,
+                "ci_high": 0.34712294707928054,
+                "se": 0.0023672921950169375,
+                "n": 40183
+              },
+              "treatment": {
+                "mean": 0.35341688223623074,
+                "ci_low": 0.34872151408695096,
+                "ci_high": 0.35811225038551053,
+                "se": 0.002395640014977952,
+                "n": 39817
+              }
+            }
+          },
+          "abs_lift": 0.010933742600066187
+        }
+      }
+    },
+    "time_trends": {
+      "step_id": "time_trends",
+      "method": "time_effects.cumulative_effects",
+      "script": "code/20_analysis_sample.py",
+      "recorded_at": "2026-09-30T20:30:46+00:00",
+      "results": [],
+      "data": {
+        "cumulative": [
+          {
+            "date": "2026-09-01",
+            "control_mean": 0.34572959344468956,
+            "treatment_mean": 0.36007892140743175,
+            "n_control": 3173,
+            "n_treatment": 3041,
+            "rel_lift": 0.04150448279469554,
+            "rel_ci_low": -0.028641242580453974,
+            "rel_ci_high": 0.11165020816984506,
+            "p_value": 0.23666408593827204
+          },
+          {
+            "date": "2026-09-02",
+            "control_mean": 0.3416588124410933,
+            "treatment_mean": 0.3559349331615397,
+            "n_control": 6366,
+            "n_treatment": 6209,
+            "rel_lift": 0.0417847285086721,
+            "rel_ci_low": -0.007984664660399453,
+            "rel_ci_high": 0.09155412167774366,
+            "p_value": 0.09305343567148022
+          },
+          {
+            "date": "2026-09-03",
+            "control_mean": 0.3432158683266512,
+            "treatment_mean": 0.3564780143361506,
+            "n_control": 9478,
+            "n_treatment": 9347,
+            "rel_lift": 0.03864082996558116,
+            "rel_ci_low": -0.0018196674220894923,
+            "rel_ci_high": 0.07910132735325182,
+            "p_value": 0.05643165329811508
+          },
+          {
+            "date": "2026-09-04",
+            "control_mean": 0.3429207055458446,
+            "treatment_mean": 0.3608113590263692,
+            "n_control": 12586,
+            "n_treatment": 12325,
+            "rel_lift": 0.05217140053426372,
+            "rel_ci_low": 0.016693011100957382,
+            "rel_ci_high": 0.08764978996757006,
+            "p_value": 0.0031118346432950574
+          },
+          {
+            "date": "2026-09-05",
+            "control_mean": 0.34201143625967034,
+            "treatment_mean": 0.3568227263324829,
+            "n_control": 14865,
+            "n_treatment": 14503,
+            "rel_lift": 0.04330641757127429,
+            "rel_ci_low": 0.010735665292931733,
+            "rel_ci_high": 0.07587716984961684,
+            "p_value": 0.007773177537578942
+          },
+          {
+            "date": "2026-09-06",
+            "control_mean": 0.3424601790489478,
+            "treatment_mean": 0.35469448584202684,
+            "n_control": 17202,
+            "n_treatment": 16775,
+            "rel_lift": 0.03572475733399183,
+            "rel_ci_low": 0.00561028636622584,
+            "rel_ci_high": 0.06583922830175781,
+            "p_value": 0.017972419447161048
+          },
+          {
+            "date": "2026-09-07",
+            "control_mean": 0.34312665815073207,
+            "treatment_mean": 0.3528050314465409,
+            "n_control": 20354,
+            "n_treatment": 19875,
+            "rel_lift": 0.028206416102934284,
+            "rel_ci_low": 0.0006960927273926137,
+            "rel_ci_high": 0.055716739478475955,
+            "p_value": 0.041587339899747604
+          },
+          {
+            "date": "2026-09-08",
+            "control_mean": 0.34327017663915144,
+            "treatment_mean": 0.3520167627029859,
+            "n_control": 23381,
+            "n_treatment": 22908,
+            "rel_lift": 0.025480180508162587,
+            "rel_ci_low": -0.00011596038388064084,
+            "rel_ci_high": 0.051076321400205814,
+            "p_value": 0.04818500238810112
+          },
+          {
+            "date": "2026-09-09",
+            "control_mean": 0.34394784443774495,
+            "treatment_mean": 0.3528730752903948,
+            "n_control": 26536,
+            "n_treatment": 25913,
+            "rel_lift": 0.025949372839477958,
+            "rel_ci_low": 0.001932775214095829,
+            "rel_ci_high": 0.049965970464860086,
+            "p_value": 0.03195961484714105
+          },
+          {
+            "date": "2026-09-10",
+            "control_mean": 0.3429711541713165,
+            "treatment_mean": 0.352397378406347,
+            "n_control": 29571,
+            "n_treatment": 28990,
+            "rel_lift": 0.02748401467699524,
+            "rel_ci_low": 0.004684631136268255,
+            "rel_ci_high": 0.05028339821772222,
+            "p_value": 0.016626036654587513
+          },
+          {
+            "date": "2026-09-11",
+            "control_mean": 0.3427521812337364,
+            "treatment_mean": 0.3532048687856053,
+            "n_control": 32665,
+            "n_treatment": 32123,
+            "rel_lift": 0.0304963414506787,
+            "rel_ci_low": 0.00877030692905453,
+            "rel_ci_high": 0.052222375972302865,
+            "p_value": 0.00522583724889987
+          },
+          {
+            "date": "2026-09-12",
+            "control_mean": 0.34234105287264194,
+            "treatment_mean": 0.3537100107705295,
+            "n_control": 34933,
+            "n_treatment": 34353,
+            "rel_lift": 0.033209449472941355,
+            "rel_ci_low": 0.012146848835961122,
+            "rel_ci_high": 0.05427205010992159,
+            "p_value": 0.0016827538144793986
+          },
+          {
+            "date": "2026-09-13",
+            "control_mean": 0.34201304652541914,
+            "treatment_mean": 0.35468302658486706,
+            "n_control": 37098,
+            "n_treatment": 36675,
+            "rel_lift": 0.03704531212526785,
+            "rel_ci_low": 0.01657092655821246,
+            "rel_ci_high": 0.057519697692323235,
+            "p_value": 0.00030447109355670704
+          },
+          {
+            "date": "2026-09-14",
+            "control_mean": 0.34248313963616456,
+            "treatment_mean": 0.35341688223623074,
+            "n_control": 40183,
+            "n_treatment": 39817,
+            "rel_lift": 0.03192490763685951,
+            "rel_ci_low": 0.012344306109468843,
+            "rel_ci_high": 0.05150550916425018,
+            "p_value": 0.0011691847007427828
+          }
+        ]
+      }
+    }
+  },
+  "summary": {
+    "plain_english": "For every 1,000 users, about 11 more achieved checkout conversion with treatment than with control. A difference this large is unlikely to be down to chance.",
+    "verdict": "ship",
+    "verdict_label": "Ship",
+    "verdict_color": "positive",
+    "reason": "The primary metric improved significantly and no guardrail was breached.",
+    "headline": "Treatment raises checkout conversion by 3.2% vs control (statistically significant)",
+    "key_numbers": [
+      {
+        "label": "Relative lift in checkout conversion",
+        "value": "+3.2% (95% CI [+1.2%, +5.2%])"
+      },
+      {
+        "label": "Evidence",
+        "value": "p = 0.001"
+      },
+      {
+        "label": "checkout conversion: control vs treatment",
+        "value": "34.25% vs 35.34%"
+      },
+      {
+        "label": "Units analysed",
+        "value": "control: 40,183 / treatment: 39,817"
+      },
+      {
+        "label": "Guardrail revenue",
+        "value": "pass (+2.2%)"
+      }
+    ],
+    "caveats": [],
+    "next_steps": [
+      "Roll out the single-button checkout to 100% of users",
+      "Keep monitoring revenue per user for four weeks after rollout",
+      "Investigate why the Web lift is smaller before the next checkout test"
+    ],
+    "primary": {
+      "step": "primary_test",
+      "index": 0
+    },
+    "mde_rel": 0.02,
+    "script": "code/20_analysis_sample.py",
+    "recorded_at": "2026-09-30T20:30:46+00:00"
+  },
+  "candidates_for_promotion": []
+}

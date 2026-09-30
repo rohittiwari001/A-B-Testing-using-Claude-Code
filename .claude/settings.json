@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(python runs/*)",
+      "Bash(python -m abkit.state *)",
+      "Bash(python -m pytest*)",
+      "Bash(python demo_data/generate.py)",
+      "Bash(python docs/make_gallery.py)",
+      "Bash(python docs/make_samples.py)",
+      "Bash(cat runs/.active)",
+      "PowerShell(python runs/*)",
+      "PowerShell(python -m abkit.state *)",
+      "PowerShell(python -m pytest*)"
+    ],
+    "deny": [
+      "Edit(runs/*/data/**)",
+      "Write(runs/*/data/**)",
+      "Edit(demo_data/*.csv)",
+      "Write(demo_data/*.csv)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/session_start.py\"", "timeout": 10 }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          { "type": "command", "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/plan_gate.py\"", "timeout": 10 }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/style_guard.py\"", "timeout": 10 },
+          { "type": "command", "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/numbers_guard.py\"", "timeout": 10 }
+        ]
+      },
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          { "type": "command", "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/run_logger.py\"", "timeout": 10 }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          { "type": "command", "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/run_logger.py\"", "timeout": 10 }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/completeness_check.py\"", "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}

@@ -28,6 +28,6 @@ packages = ["abkit", "abkit.viz", "abkit.deck", "abkit.report"]
 "abkit.viz" = ["*.mplstyle"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-q"
+testpaths = ["tests", "abkit"]
+addopts = "-q --doctest-modules"
 filterwarnings = ["ignore::DeprecationWarning"]

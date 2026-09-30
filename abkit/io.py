@@ -3,7 +3,7 @@
 Example
 -------
 >>> from abkit import io
->>> df = io.load_run_csv()                     # doctest: +SKIP  (active run's data/ copy)
+>>> df = io.load_run_csv()                     # doctest: +SKIP
 >>> io.infer_metric_type(df["converted"])      # doctest: +SKIP
 'binary'
 """

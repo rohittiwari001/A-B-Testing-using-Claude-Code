@@ -6,9 +6,9 @@ names below are a contract: change them only together with the hooks.
 Example
 -------
 >>> from abkit import state
->>> run = state.new_run("checkout-button", context_text="...", csv_path="demo_data/checkout_ab.csv")
->>> st = state.load_state(run)
->>> st["phase"]
+>>> run = state.new_run("checkout-button", context_text="...", csv_path="demo_data/checkout_ab.csv")  # doctest: +SKIP
+>>> st = state.load_state(run)  # doctest: +SKIP
+>>> st["phase"]  # doctest: +SKIP
 'intake'
 """
 

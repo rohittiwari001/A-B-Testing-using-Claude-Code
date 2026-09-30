@@ -1,0 +1,24 @@
+# Standard statistical settings. Every run shows these at intake and records
+# any overrides in state.json -> settings (see the stat-defaults skill).
+alpha: 0.05
+sidedness: two-sided
+power: 0.80
+confidence_level: 0.95
+correction:
+  primary: none          # single pre-registered primary metric
+  secondary: holm
+  segments: benjamini-hochberg
+srm:
+  test: chi-square
+  threshold: 0.001
+duration:
+  min_days: 7
+  prefer_full_weeks: true
+bayesian:
+  prior: weakly_informative
+  decision_threshold_prob_beat: 0.95
+bootstrap:
+  n_resamples: 10000
+  seed: 42
+guardrails:
+  default_noninferiority_margin_relative: 0.01

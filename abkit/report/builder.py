@@ -201,8 +201,28 @@ def _md_sections(text: str) -> dict[str, str]:
 
 
 def _md_to_items(body: str) -> list[str]:
-    items = [re.sub(r"^\s*([-*]|\d+\.)\s+", "", ln).strip() for ln in body.splitlines()]
-    return [re.sub(r"\*\*(.+?)\*\*", r"\1", i) for i in items if i]
+    """Markdown bullets, numbered lines and table rows -> plain items. Table header and separator rows are
+    dropped; wrapped continuation lines are joined to the previous item."""
+    items: list[str] = []
+    in_table = False
+    for ln in body.splitlines():
+        raw = ln.strip()
+        if not raw:
+            in_table = False
+            continue
+        if raw.startswith("|"):
+            cells = [c.strip() for c in raw.strip("|").split("|")]
+            if all(re.fullmatch(r":?-{2,}:?", c) for c in cells if c):
+                continue
+            if not in_table:                      # first row of a table is its header
+                in_table = True
+                continue
+            items.append(" | ".join(c for c in cells if c))
+        elif re.match(r"^([-*]|\d+\.)\s+", raw) or not items:
+            items.append(re.sub(r"^([-*]|\d+\.)\s+", "", raw))
+        else:
+            items[-1] += " " + raw                # wrapped continuation line
+    return [re.sub(r"\*\*(.+?)\*\*", r"\1", i) for i in items]
 
 
 def _figures(rep: Report, ctx: dict[str, Any], sections: Sequence[str]) -> int:
@@ -297,8 +317,12 @@ def build_standard_report(run_dir: str | Path, out: str | Path | None = None, se
             seg = [r for r in R.all_results(res, role="segment") if r.get("rel_lift") is not None]
             if seg or any(c.get("section") == "segments" for c in ctx["manifest"]["charts"]):
                 rep.heading("Segments")
-                rep.para("Segments were pre-specified; p-values are corrected across segments. A difference between segments "
-                         "is only claimed when the interaction test supports it.")
+                seg_text = next((b for h, b in intake.items() if h.startswith("segments")), "")
+                prespecified = bool(seg_text) and not seg_text.lower().startswith(("none", "no "))
+                rep.para(("Segments were pre-specified in intake.md; " if prespecified else
+                          "No segments were pre-specified, so these breakdowns are exploratory; ")
+                         + "p-values are corrected across segments. A difference between segments is only claimed when "
+                           "the interaction test supports it.")
                 _figures(rep, ctx, ["segments"])
                 if seg:
                     h, t = results_table(seg, include_segment=True)
@@ -334,7 +358,7 @@ def build_standard_report(run_dir: str | Path, out: str | Path | None = None, se
                 latest = [r for r in rounds if r.strip()][-1]            # earlier rounds may quote superseded numbers
                 title = latest.splitlines()[0].lstrip("# ").strip()
                 rep.para(f"{title}. Earlier rounds are in review.md.")
-                rep.bullets(_md_to_items(re.sub(r"^#.*$", "", latest, flags=re.M))[:25])
+                rep.bullets(_md_to_items(re.sub(r"^#.*$", "", latest, flags=re.M))[:60])
             else:
                 rep.bullets(["No review.md found."])
             allr = [r for r in R.all_results(res) if r.get("rel_lift") is not None]

@@ -1,0 +1,112 @@
+{
+  "charts": [
+    {
+      "id": "srm_bar",
+      "title": "Traffic split matches the intended 96/4 (Ads 96.0%, PSA 4.0%): no sample ratio mismatch",
+      "subtitle": "Share of users by group vs the intended 96/4 split (dashed line)",
+      "key_message": "No sample ratio mismatch vs 96/4 (p = 1.000)",
+      "takeaways": [
+        "PSA has 23,524 users vs 23,524 expected under 96/4",
+        "Chi-square p = 1.000 (threshold 0.001): the split is as intended",
+        "The first-stated 95/5 split failed (p < 0.001); the user confirmed 96/4"
+      ],
+      "section": "validation",
+      "source": "Source: marketing_AB.csv (test dates not recorded); n = 588,101 users; chi-square goodness-of-fit test",
+      "notes": "speaker note: the groups are the size they were meant to be, so the comparison can be trusted on this check.",
+      "png": "srm_bar.png",
+      "svg": "srm_bar.svg",
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:51:47+00:00"
+    },
+    {
+      "id": "lift_ci",
+      "title": "Ads lift conversion by +43.1% vs PSA, statistically significant and above the 5% practical threshold",
+      "subtitle": "Relative lift in conversion vs PSA; z-test 95% CI, Bayesian 95% credible interval",
+      "key_message": "Conversion +43.1% (p < 0.001)",
+      "takeaways": [
+        "Relative lift +43.1%, 95% CI [+29.3%, +56.8%]; p < 0.001",
+        "Even the low end (+29.3%) is above the 5% practical threshold",
+        "Bayesian view agrees: +42.9%, 95% credible interval [+29.9%, +57.5%]"
+      ],
+      "section": "results",
+      "source": "Source: marketing_AB.csv (test dates not recorded); n = 588,101 users; two-proportion z-test and beta-binomial model",
+      "notes": "speaker note: the headline - ads clearly raise conversion, by far more than the bar we set.",
+      "png": "lift_ci.png",
+      "svg": "lift_ci.svg",
+      "title_crop": 0.169,
+      "created_at": "2026-09-30T21:51:47+00:00"
+    },
+    {
+      "id": "metric_by_variant",
+      "title": "Ads users convert at 2.55% vs 1.79% with PSA: 7.7 extra conversions per 1,000 users, significant",
+      "subtitle": "Conversion rate by group, 95% CI",
+      "key_message": "7.7 extra conversions per 1,000 users",
+      "takeaways": [
+        "PSA: 1.79% of 23,524 users converted",
+        "Ads: 2.55% of 564,577 users converted",
+        "Difference +0.77 pp: 7.7 extra per 1,000 users (95% CI 6.0 to 9.4)"
+      ],
+      "section": "results",
+      "source": "Source: marketing_AB.csv (test dates not recorded); n = 588,101 users; two-proportion z-test",
+      "notes": "speaker note: in plain terms, roughly eight more conversions for every thousand people who see the ads.",
+      "png": "metric_by_variant.png",
+      "svg": "metric_by_variant.svg",
+      "title_crop": 0.169,
+      "created_at": "2026-09-30T21:51:48+00:00"
+    },
+    {
+      "id": "posterior_distributions",
+      "title": "Plausible conversion rates for Ads and PSA do not overlap: Ads beat PSA with > 99.9% probability",
+      "subtitle": "Posterior distribution of the conversion rate by group; label = posterior mean",
+      "key_message": "P(Ads beat PSA) > 99.9%",
+      "takeaways": [
+        "PSA: 1.79%, 95% credible interval 1.62% to 1.96%",
+        "Ads: 2.55%, 95% credible interval 2.51% to 2.60%",
+        "The ranges are fully separated; the flat prior carries negligible weight at this sample size"
+      ],
+      "section": "results",
+      "source": "Source: marketing_AB.csv (test dates not recorded); beta-binomial model, Beta(1, 1) prior; n = 588,101 users",
+      "notes": "speaker note: the Ads curve sits entirely to the right of the PSA curve - no plausible world where PSA wins.",
+      "png": "posterior_distributions.png",
+      "svg": "posterior_distributions.svg",
+      "title_crop": 0.169,
+      "created_at": "2026-09-30T21:51:49+00:00"
+    },
+    {
+      "id": "prob_to_beat_control",
+      "title": "Ads beat PSA on conversion with > 99.9% probability, above the 95% decision threshold",
+      "subtitle": "Posterior probability that Ads convert better than PSA",
+      "key_message": "P(Ads beat PSA) > 99.9%",
+      "takeaways": [
+        "P(Ads beat PSA) > 99.9% vs a 95% decision threshold",
+        "P(lift above the 5% practical threshold) > 99.9%",
+        "Staying with PSA would cost an expected 0.77 pp of conversion"
+      ],
+      "section": "results",
+      "source": "Source: marketing_AB.csv (test dates not recorded); beta-binomial model, Beta(1, 1) prior; n = 588,101 users",
+      "notes": "speaker note: the Bayesian decision rule says ship - the chance ads are worse than PSA is negligible.",
+      "png": "prob_to_beat_control.png",
+      "svg": "prob_to_beat_control.svg",
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:51:49+00:00"
+    },
+    {
+      "id": "segment_forest",
+      "title": "Exploratory, not causal: lift significant only at 21-50, 51-100 and 101-200 ads seen; 4 of 7 buckets inconclusive",
+      "subtitle": "Relative conversion lift, Ads vs PSA, by ads seen, 95% CI. Ads seen is measured during the test, not assigned",
+      "key_message": "Exploratory: lift significant in 3 of 7 ads-seen buckets (not causal)",
+      "takeaways": [
+        "Significant: 21-50, 51-100 and 101-200 ads (+33.9%, +101.4%, +66.2%)",
+        "Inconclusive: 1-5, 6-10, 11-20 and 201+ ads - wide intervals, not no effect",
+        "Ads seen reflects behaviour; PSA share varies by bucket (p < 0.001): not dose-response"
+      ],
+      "section": "segments",
+      "source": "Source: marketing_AB.csv (no dates); z-test per bucket, Benjamini-Hochberg across 7 buckets; n = 588,101 users",
+      "notes": "speaker note: descriptive only - heavier-exposure users are different people, so this does not show that more ads cause more lift.",
+      "png": "segment_forest.png",
+      "svg": "segment_forest.svg",
+      "title_crop": 0.169,
+      "created_at": "2026-09-30T21:53:11+00:00"
+    }
+  ]
+}

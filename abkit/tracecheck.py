@@ -38,7 +38,7 @@ def formatted_values(obj, out: set[str], text: list[str]) -> None:
         x = float(obj)
         for d in (0, 1, 2):
             out |= {R.fmt_pct(x, d), R.fmt_pct(x, d, signed=False), R.fmt_pct(abs(x), d, signed=False), R.fmt_pct(-x, d)}
-        out |= {R.fmt_prob(x), f"{x:.0%}", f"{x:.1%}", f"p = {R.fmt_p(x)}", f"p < 0.001" if x < 0.001 else f"p = {x:.3f}"}
+        out |= {R.fmt_prob(x), f"{x:.0%}", f"{x:.1%}", f"p = {R.fmt_p(x)}", f"p < 0.001" if x < 0.001 else f"p = {x:.3f}", f"p = {x:.4f}"}
         out.add(f"{round((1 - x) * 100)}%")      # confidence level from alpha
     elif isinstance(obj, str):
         text.append(obj)

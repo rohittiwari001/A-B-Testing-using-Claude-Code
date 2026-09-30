@@ -134,9 +134,10 @@ def metric_by_variant(variant_stats: Mapping[str, Mapping[str, float]], title: s
         ax.annotate(fmt_value(m, metric_type), (xi, m + h), xytext=(0, 5), textcoords="offset points", ha="center",
                     va="bottom", fontsize=ANN, fontweight="bold", color=P["ink"])
     ax.set_xticks(x, names)
-    ax.set_ylim(0, max(m + h for m, h in zip(means, hi)) * 1.18)
+    top = max(m + h for m, h in zip(means, hi)) * 1.18
+    ax.set_ylim(0, top)
     if metric_type == "binary":
-        _pct_axis(ax.yaxis)
+        _pct_axis(ax.yaxis, 1 if top < 0.1 else 0)       # low rates need a decimal or ticks repeat ("2%, 2%, 2%")
     else:
         _num_axis(ax.yaxis)
     ax.set_ylabel(ylabel)
@@ -201,8 +202,11 @@ def daily_lift(records: Sequence[Mapping[str, Any]], title: str, subtitle: str =
 
 
 def segment_forest(rows: Sequence[Mapping[str, Any]], title: str, subtitle: str = "", source: str = "", direction: str = "increase"):
-    """Forest plot of relative lift by segment; an 'All' row (if present) sits on top in bold."""
-    rows = sorted(rows, key=lambda r: (r.get("segment") != "All", str(r.get("segment"))))
+    """Forest plot of relative lift by segment in the order given; an 'All' row (if present) moves to the top in bold.
+
+    Pass rows already in a meaningful order (e.g. ordered buckets "1-5", "6-10", ...); order is never alphabetical.
+    """
+    rows = sorted(rows, key=lambda r: r.get("segment") != "All")        # stable: keeps the caller's order otherwise
     labels = [f"{r.get('segment')}  (n={fmt_num(sum((r.get('n') or {}).values()))})" for r in rows]
     fig, ax = new_figure(left=0.24)
     _dot_whisker(ax, rows, labels, direction, bold_first=rows[0].get("segment") == "All")

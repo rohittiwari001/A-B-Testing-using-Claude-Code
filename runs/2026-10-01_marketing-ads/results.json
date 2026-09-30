@@ -1,0 +1,4889 @@
+{
+  "schema_version": 1,
+  "run_id": "2026-10-01_marketing-ads",
+  "updated_at": "2026-09-30T21:53:10+00:00",
+  "validation": {
+    "verdict": "warn",
+    "checks": [
+      {
+        "check": "schema",
+        "verdict": "pass",
+        "detail": "6 columns, 588,101 rows",
+        "data": {
+          "missing": [],
+          "extra": [],
+          "rows": 588101
+        }
+      },
+      {
+        "check": "dtypes",
+        "verdict": "pass",
+        "detail": "All metric columns numeric",
+        "data": {
+          "user id": "int64",
+          "test group": "object",
+          "converted": "bool",
+          "total ads": "int64",
+          "most ads day": "object",
+          "most ads hour": "int64"
+        }
+      },
+      {
+        "check": "missing values",
+        "verdict": "pass",
+        "detail": "No missing values",
+        "data": {}
+      },
+      {
+        "check": "duplicates",
+        "verdict": "pass",
+        "detail": "588,101 units, one row each",
+        "data": {
+          "duplicate_rows": 0,
+          "units_with_multiple_rows": 0,
+          "units": 588101,
+          "max_rows_per_unit": 1
+        }
+      },
+      {
+        "check": "contamination",
+        "verdict": "pass",
+        "detail": "No unit appears in more than one variant",
+        "data": {
+          "units_in_multiple_variants": 0,
+          "share": 0.0
+        }
+      },
+      {
+        "check": "variants",
+        "verdict": "pass",
+        "detail": "Counts {'ad': 564577, 'psa': 23524}",
+        "data": {
+          "ad": 564577,
+          "psa": 23524
+        }
+      },
+      {
+        "check": "SRM",
+        "verdict": "pass",
+        "detail": "p = 1.000 (threshold 0.001)",
+        "data": {
+          "method": "validation.srm_check",
+          "estimate": 6.801552798751942e-08,
+          "ci_low": null,
+          "ci_high": null,
+          "p_value": 0.9997876225135022,
+          "probability": null,
+          "n": {
+            "ad": 564577,
+            "psa": 23524
+          },
+          "metric": null,
+          "role": null,
+          "control": null,
+          "treatment": null,
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.001,
+          "sidedness": null,
+          "significant": false,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [],
+          "notes": [],
+          "extra": {
+            "chi2": 7.084950828432072e-08,
+            "observed": {
+              "ad": 564577,
+              "psa": 23524
+            },
+            "expected_share": {
+              "ad": 0.96,
+              "psa": 0.04
+            },
+            "observed_share": {
+              "ad": 0.960000068015528,
+              "psa": 0.039999931984472055
+            },
+            "expected_count": {
+              "ad": 564576.96,
+              "psa": 23524.04
+            },
+            "threshold": 0.001
+          },
+          "abs_lift": 6.801552798751942e-08
+        }
+      },
+      {
+        "check": "outliers",
+        "verdict": "warn",
+        "detail": "Extreme values (reported, not removed): total ads: max is 10x the 99th percentile. Consider winsorised or bootstrap sensitivity analysis.",
+        "data": {
+          "total ads": {
+            "p50": 13.0,
+            "p99": 202.0,
+            "max": 2065.0,
+            "n_above_3iqr": 24825,
+            "max_over_p99": 10.222772277227723,
+            "skew": 7.433094042741292
+          }
+        }
+      },
+      {
+        "check": "impossible values",
+        "verdict": "pass",
+        "detail": "Metric values within valid ranges",
+        "data": {}
+      },
+      {
+        "check": "pre-period data",
+        "verdict": "pass",
+        "detail": "None described (CUPED not possible)",
+        "data": {
+          "available": false
+        }
+      },
+      {
+        "check": "covariate balance",
+        "verdict": "warn",
+        "detail": "Segment mix differs between variants: most ads day (p = 4.8e-48), most ads hour (p = 1.1e-28) (can indicate an assignment or logging problem, or Simpson's paradox risk)",
+        "data": {
+          "most ads day": {
+            "p_value": 4.849067664297987e-48,
+            "shares": {
+              "ad": {
+                "Friday": 0.1573,
+                "Monday": 0.148,
+                "Saturday": 0.1396,
+                "Sunday": 0.1458,
+                "Thursday": 0.1401,
+                "Tuesday": 0.1321,
+                "Wednesday": 0.1371
+              },
+              "psa": {
+                "Friday": 0.1617,
+                "Monday": 0.1489,
+                "Saturday": 0.1215,
+                "Sunday": 0.13,
+                "Thursday": 0.166,
+                "Tuesday": 0.1236,
+                "Wednesday": 0.1484
+              }
+            }
+          },
+          "most ads hour": {
+            "p_value": 1.094573971081402e-28,
+            "shares": {
+              "ad": {
+                "0": 0.0094,
+                "1": 0.0082,
+                "2": 0.0091,
+                "3": 0.0046,
+                "4": 0.0012,
+                "5": 0.0013,
+                "6": 0.0035,
+                "7": 0.0109,
+                "8": 0.0301,
+                "9": 0.0528,
+                "10": 0.0663,
+                "11": 0.0782,
+                "12": 0.0801,
+                "13": 0.0806,
+                "14": 0.0775,
+                "15": 0.0759,
+                "16": 0.0637,
+                "17": 0.0595,
+                "18": 0.055,
+                "19": 0.0517,
+                "20": 0.0493,
+                "21": 0.0512,
+                "22": 0.0452,
+                "23": 0.0346
+              },
+              "psa": {
+                "0": 0.0096,
+                "1": 0.0079,
+                "2": 0.0077,
+                "3": 0.0038,
+                "4": 0.0012,
+                "5": 0.001,
+                "6": 0.0035,
+                "7": 0.0101,
+                "8": 0.028,
+                "9": 0.0511,
+                "10": 0.0631,
+                "11": 0.0876,
+                "12": 0.0876,
+                "13": 0.0922,
+                "14": 0.0795,
+                "15": 0.0777,
+                "16": 0.0682,
+                "17": 0.0588,
+                "18": 0.054,
+                "19": 0.0503,
+                "20": 0.0458,
+                "21": 0.046,
+                "22": 0.039,
+                "23": 0.0263
+              }
+            }
+          }
+        }
+      }
+    ],
+    "blocking": [],
+    "script": "code/10_validate_profile.py",
+    "recorded_at": "2026-09-30T21:45:17+00:00"
+  },
+  "steps": {
+    "srm": {
+      "step_id": "srm",
+      "method": "validation.srm_check",
+      "script": "code/11_validate_srm.py",
+      "recorded_at": "2026-09-30T21:45:27+00:00",
+      "results": [
+        {
+          "method": "validation.srm_check",
+          "estimate": 6.801552798751942e-08,
+          "ci_low": null,
+          "ci_high": null,
+          "p_value": 0.9997876225135022,
+          "probability": null,
+          "n": {
+            "ad": 564577,
+            "psa": 23524
+          },
+          "metric": "variant counts",
+          "role": null,
+          "control": null,
+          "treatment": null,
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.001,
+          "sidedness": null,
+          "significant": false,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [],
+          "notes": [
+            "Checked against the intended split 96/4 from state.json: p = 1.000 (threshold 0.001).",
+            "Intended split corrected by the user from 95/5 to 96/4 (intake.md). For the record, the check against 95/5 gives p = 3.2e-271."
+          ],
+          "extra": {
+            "chi2": 7.084950828432072e-08,
+            "observed": {
+              "ad": 564577,
+              "psa": 23524
+            },
+            "expected_share": {
+              "ad": 0.96,
+              "psa": 0.04
+            },
+            "observed_share": {
+              "ad": 0.960000068015528,
+              "psa": 0.039999931984472055
+            },
+            "expected_count": {
+              "ad": 564576.96,
+              "psa": 23524.04
+            },
+            "threshold": 0.001,
+            "shortfall": {
+              "intended_split": "96/4",
+              "expected_control": 23524.04,
+              "observed_control": 23524,
+              "missing_control_vs_expected": 0.040000000000873115,
+              "missing_share_vs_expected": 1.700388198662862e-06,
+              "implied_control_if_treatment_arm_complete": 23524.041666666668,
+              "missing_control_if_treatment_arm_complete": 0.041666666667879326
+            },
+            "intended_split": "96/4",
+            "originally_stated_split": {
+              "split": "95/5",
+              "p_value": 3.1619253119084557e-271,
+              "expected_control": 29405.050000000003
+            }
+          },
+          "abs_lift": 6.801552798751942e-08
+        }
+      ],
+      "data": {
+        "shortfall": {
+          "intended_split": "96/4",
+          "expected_control": 23524.04,
+          "observed_control": 23524,
+          "missing_control_vs_expected": 0.040000000000873115,
+          "missing_share_vs_expected": 1.700388198662862e-06,
+          "implied_control_if_treatment_arm_complete": 23524.041666666668,
+          "missing_control_if_treatment_arm_complete": 0.041666666667879326
+        },
+        "by": {
+          "most ads day": [
+            {
+              "most ads day": "Friday",
+              "n_ad": 88805,
+              "n_psa": 3803,
+              "share_ad": 0.9589344333102972,
+              "share_psa": 0.041065566689702834,
+              "p_value": 0.09796989563748872,
+              "srm": false,
+              "n": 92608,
+              "expected_psa": 3704.32,
+              "missing_psa": -98.67999999999984
+            },
+            {
+              "most ads day": "Monday",
+              "n_ad": 83571,
+              "n_psa": 3502,
+              "share_ad": 0.95978087351992,
+              "share_psa": 0.040219126480079935,
+              "p_value": 0.7414246123425656,
+              "srm": false,
+              "n": 87073,
+              "expected_psa": 3482.92,
+              "missing_psa": -19.079999999999927
+            },
+            {
+              "most ads day": "Saturday",
+              "n_ad": 78802,
+              "n_psa": 2858,
+              "share_ad": 0.9650012245897625,
+              "share_psa": 0.03499877541023757,
+              "p_value": 3.0277979322590235e-13,
+              "srm": true,
+              "n": 81660,
+              "expected_psa": 3266.4,
+              "missing_psa": 408.4000000000001
+            },
+            {
+              "most ads day": "Sunday",
+              "n_ad": 82332,
+              "n_psa": 3059,
+              "share_ad": 0.9641765525640875,
+              "share_psa": 0.035823447435912446,
+              "p_value": 4.720042152842525e-10,
+              "srm": true,
+              "n": 85391,
+              "expected_psa": 3415.64,
+              "missing_psa": 356.6399999999999
+            },
+            {
+              "most ads day": "Thursday",
+              "n_ad": 79077,
+              "n_psa": 3905,
+              "share_ad": 0.95294160179316,
+              "share_psa": 0.04705839820684004,
+              "p_value": 3.186546585392751e-25,
+              "srm": true,
+              "n": 82982,
+              "expected_psa": 3319.28,
+              "missing_psa": -585.7199999999998
+            },
+            {
+              "most ads day": "Tuesday",
+              "n_ad": 74572,
+              "n_psa": 2907,
+              "share_ad": 0.9624801559132152,
+              "share_psa": 0.037519844086784805,
+              "p_value": 0.0004267862975893074,
+              "srm": true,
+              "n": 77479,
+              "expected_psa": 3099.16,
+              "missing_psa": 192.15999999999985
+            },
+            {
+              "most ads day": "Wednesday",
+              "n_ad": 77418,
+              "n_psa": 3490,
+              "share_ad": 0.9568645869382508,
+              "share_psa": 0.043135413061749145,
+              "p_value": 5.334356844810384e-06,
+              "srm": true,
+              "n": 80908,
+              "expected_psa": 3236.32,
+              "missing_psa": -253.67999999999984
+            }
+          ],
+          "most ads hour": [
+            {
+              "most ads hour": "0",
+              "n_ad": 5309,
+              "n_psa": 227,
+              "share_ad": 0.9589956647398844,
+              "share_psa": 0.041004335260115606,
+              "p_value": 0.7029517733614071,
+              "srm": false,
+              "n": 5536,
+              "expected_psa": 221.44,
+              "missing_psa": -5.560000000000002
+            },
+            {
+              "most ads hour": "1",
+              "n_ad": 4615,
+              "n_psa": 187,
+              "share_ad": 0.961057892544773,
+              "share_psa": 0.03894210745522699,
+              "p_value": 0.708330358290171,
+              "srm": false,
+              "n": 4802,
+              "expected_psa": 192.08,
+              "missing_psa": 5.0800000000000125
+            },
+            {
+              "most ads hour": "2",
+              "n_ad": 5152,
+              "n_psa": 181,
+              "share_ad": 0.9660603787736733,
+              "share_psa": 0.03393962122632665,
+              "p_value": 0.023914552122558948,
+              "srm": false,
+              "n": 5333,
+              "expected_psa": 213.32,
+              "missing_psa": 32.31999999999999
+            },
+            {
+              "most ads hour": "3",
+              "n_ad": 2590,
+              "n_psa": 89,
+              "share_ad": 0.9667786487495335,
+              "share_psa": 0.033221351250466595,
+              "p_value": 0.0733804873760149,
+              "srm": false,
+              "n": 2679,
+              "expected_psa": 107.16,
+              "missing_psa": 18.159999999999997
+            },
+            {
+              "most ads hour": "4",
+              "n_ad": 694,
+              "n_psa": 28,
+              "share_ad": 0.961218836565097,
+              "share_psa": 0.038781163434903045,
+              "p_value": 0.8672695636042842,
+              "srm": false,
+              "n": 722,
+              "expected_psa": 28.88,
+              "missing_psa": 0.879999999999999
+            },
+            {
+              "most ads hour": "5",
+              "n_ad": 742,
+              "n_psa": 23,
+              "share_ad": 0.9699346405228758,
+              "share_psa": 0.030065359477124184,
+              "p_value": 0.16084849571432927,
+              "srm": false,
+              "n": 765,
+              "expected_psa": 30.6,
+              "missing_psa": 7.600000000000001
+            },
+            {
+              "most ads hour": "6",
+              "n_ad": 1985,
+              "n_psa": 83,
+              "share_ad": 0.9598646034816247,
+              "share_psa": 0.04013539651837524,
+              "p_value": 0.9749339583236072,
+              "srm": false,
+              "n": 2068,
+              "expected_psa": 82.72,
+              "missing_psa": -0.28000000000000114
+            },
+            {
+              "most ads hour": "7",
+              "n_ad": 6168,
+              "n_psa": 237,
+              "share_ad": 0.9629976580796253,
+              "share_psa": 0.03700234192037471,
+              "p_value": 0.22085162120139315,
+              "srm": false,
+              "n": 6405,
+              "expected_psa": 256.2,
+              "missing_psa": 19.19999999999999
+            },
+            {
+              "most ads hour": "8",
+              "n_ad": 16968,
+              "n_psa": 659,
+              "share_ad": 0.9626141714415386,
+              "share_psa": 0.037385828558461454,
+              "p_value": 0.07653419342341836,
+              "srm": false,
+              "n": 17627,
+              "expected_psa": 705.08,
+              "missing_psa": 46.08000000000004
+            },
+            {
+              "most ads hour": "9",
+              "n_ad": 29802,
+              "n_psa": 1202,
+              "share_ad": 0.9612308089278803,
+              "share_psa": 0.03876919107211973,
+              "p_value": 0.2687499286929553,
+              "srm": false,
+              "n": 31004,
+              "expected_psa": 1240.16,
+              "missing_psa": 38.16000000000008
+            },
+            {
+              "most ads hour": "10",
+              "n_ad": 37454,
+              "n_psa": 1485,
+              "share_ad": 0.9618634274121061,
+              "share_psa": 0.03813657258789389,
+              "p_value": 0.060592169794625055,
+              "srm": false,
+              "n": 38939,
+              "expected_psa": 1557.56,
+              "missing_psa": 72.55999999999995
+            },
+            {
+              "most ads hour": "11",
+              "n_ad": 44149,
+              "n_psa": 2061,
+              "share_ad": 0.955399264228522,
+              "share_psa": 0.04460073577147804,
+              "p_value": 4.4890071571588594e-07,
+              "srm": true,
+              "n": 46210,
+              "expected_psa": 1848.4,
+              "missing_psa": -212.5999999999999
+            },
+            {
+              "most ads hour": "12",
+              "n_ad": 45238,
+              "n_psa": 2060,
+              "share_ad": 0.9564463613683454,
+              "share_psa": 0.043553638631654616,
+              "p_value": 8.015754863443915e-05,
+              "srm": true,
+              "n": 47298,
+              "expected_psa": 1891.92,
+              "missing_psa": -168.07999999999993
+            },
+            {
+              "most ads hour": "13",
+              "n_ad": 45485,
+              "n_psa": 2170,
+              "share_ad": 0.9544643793935579,
+              "share_psa": 0.04553562060644214,
+              "p_value": 6.971659701750537e-10,
+              "srm": true,
+              "n": 47655,
+              "expected_psa": 1906.2,
+              "missing_psa": -263.79999999999995
+            },
+            {
+              "most ads hour": "14",
+              "n_ad": 43779,
+              "n_psa": 1869,
+              "share_ad": 0.9590562565720294,
+              "share_psa": 0.04094374342797056,
+              "p_value": 0.3034976777932282,
+              "srm": false,
+              "n": 45648,
+              "expected_psa": 1825.92,
+              "missing_psa": -43.07999999999993
+            },
+            {
+              "most ads hour": "15",
+              "n_ad": 42855,
+              "n_psa": 1828,
+              "share_ad": 0.95908958664369,
+              "share_psa": 0.04091041335631001,
+              "p_value": 0.326063441517213,
+              "srm": false,
+              "n": 44683,
+              "expected_psa": 1787.32,
+              "missing_psa": -40.680000000000064
+            },
+            {
+              "most ads hour": "16",
+              "n_ad": 35963,
+              "n_psa": 1604,
+              "share_ad": 0.957302952058988,
+              "share_psa": 0.04269704794101206,
+              "p_value": 0.007638732693533446,
+              "srm": false,
+              "n": 37567,
+              "expected_psa": 1502.68,
+              "missing_psa": -101.31999999999994
+            },
+            {
+              "most ads hour": "17",
+              "n_ad": 33605,
+              "n_psa": 1383,
+              "share_ad": 0.9604721618840746,
+              "share_psa": 0.03952783811592546,
+              "p_value": 0.6522077917781877,
+              "srm": false,
+              "n": 34988,
+              "expected_psa": 1399.52,
+              "missing_psa": 16.519999999999982
+            },
+            {
+              "most ads hour": "18",
+              "n_ad": 31052,
+              "n_psa": 1271,
+              "share_ad": 0.9606781548742381,
+              "share_psa": 0.03932184512576184,
+              "p_value": 0.533820633295566,
+              "srm": false,
+              "n": 32323,
+              "expected_psa": 1292.92,
+              "missing_psa": 21.920000000000073
+            },
+            {
+              "most ads hour": "19",
+              "n_ad": 29169,
+              "n_psa": 1183,
+              "share_ad": 0.9610239852398524,
+              "share_psa": 0.0389760147601476,
+              "p_value": 0.3626232102078547,
+              "srm": false,
+              "n": 30352,
+              "expected_psa": 1214.08,
+              "missing_psa": 31.079999999999927
+            },
+            {
+              "most ads hour": "20",
+              "n_ad": 27846,
+              "n_psa": 1077,
+              "share_ad": 0.9627631988382948,
+              "share_psa": 0.03723680116170522,
+              "p_value": 0.016480140450109603,
+              "srm": false,
+              "n": 28923,
+              "expected_psa": 1156.92,
+              "missing_psa": 79.92000000000007
+            },
+            {
+              "most ads hour": "21",
+              "n_ad": 28895,
+              "n_psa": 1081,
+              "share_ad": 0.9639378169202029,
+              "share_psa": 0.03606218307979717,
+              "p_value": 0.0005029528888014078,
+              "srm": true,
+              "n": 29976,
+              "expected_psa": 1199.04,
+              "missing_psa": 118.03999999999996
+            },
+            {
+              "most ads hour": "22",
+              "n_ad": 25515,
+              "n_psa": 917,
+              "share_ad": 0.9653072033898306,
+              "share_psa": 0.03469279661016949,
+              "p_value": 1.0668210666464598e-05,
+              "srm": true,
+              "n": 26432,
+              "expected_psa": 1057.28,
+              "missing_psa": 140.27999999999997
+            },
+            {
+              "most ads hour": "23",
+              "n_ad": 19547,
+              "n_psa": 619,
+              "share_ad": 0.9693047704056332,
+              "share_psa": 0.030695229594366755,
+              "p_value": 1.552027751502226e-11,
+              "srm": true,
+              "n": 20166,
+              "expected_psa": 806.64,
+              "missing_psa": 187.64
+            }
+          ],
+          "total ads bucket": [
+            {
+              "total ads bucket": "1",
+              "n_ad": 54298,
+              "n_psa": 2308,
+              "share_ad": 0.9592269370738085,
+              "share_psa": 0.04077306292619157,
+              "p_value": 0.3479362440984167,
+              "srm": false,
+              "n": 56606,
+              "expected_psa": 2264.2400000000002,
+              "missing_psa": -43.75999999999976
+            },
+            {
+              "total ads bucket": "2",
+              "n_ad": 37911,
+              "n_psa": 1916,
+              "share_ad": 0.9518919326085319,
+              "share_psa": 0.0481080673914681,
+              "p_value": 1.489459612421933e-16,
+              "srm": true,
+              "n": 39827,
+              "expected_psa": 1593.08,
+              "missing_psa": -322.9200000000001
+            },
+            {
+              "total ads bucket": "3-5",
+              "n_ad": 77753,
+              "n_psa": 3637,
+              "share_ad": 0.95531392062907,
+              "share_psa": 0.04468607937093009,
+              "p_value": 8.960667209974698e-12,
+              "srm": true,
+              "n": 81390,
+              "expected_psa": 3255.6,
+              "missing_psa": -381.4000000000001
+            },
+            {
+              "total ads bucket": "6-10",
+              "n_ad": 79537,
+              "n_psa": 3415,
+              "share_ad": 0.9588316134632077,
+              "share_psa": 0.04116838653679236,
+              "p_value": 0.0859328986066626,
+              "srm": false,
+              "n": 82952,
+              "expected_psa": 3318.08,
+              "missing_psa": -96.92000000000007
+            },
+            {
+              "total ads bucket": "11-20",
+              "n_ad": 123334,
+              "n_psa": 4150,
+              "share_ad": 0.9674468952966647,
+              "share_psa": 0.03255310470333532,
+              "p_value": 6.142138713563007e-42,
+              "srm": true,
+              "n": 127484,
+              "expected_psa": 5099.36,
+              "missing_psa": 949.3599999999997
+            },
+            {
+              "total ads bucket": "21-50",
+              "n_ad": 125541,
+              "n_psa": 5235,
+              "share_ad": 0.9599697192145348,
+              "share_psa": 0.04003028078546522,
+              "p_value": 0.955436465558918,
+              "srm": false,
+              "n": 130776,
+              "expected_psa": 5231.04,
+              "missing_psa": -3.9600000000000364
+            },
+            {
+              "total ads bucket": "51-100",
+              "n_ad": 44149,
+              "n_psa": 1853,
+              "share_ad": 0.9597191426459719,
+              "share_psa": 0.04028085735402809,
+              "p_value": 0.7585364062948687,
+              "srm": false,
+              "n": 46002,
+              "expected_psa": 1840.08,
+              "missing_psa": -12.920000000000073
+            },
+            {
+              "total ads bucket": "101-200",
+              "n_ad": 16360,
+              "n_psa": 752,
+              "share_ad": 0.9560542309490416,
+              "share_psa": 0.04394576905095839,
+              "p_value": 0.008438448551505273,
+              "srm": false,
+              "n": 17112,
+              "expected_psa": 684.48,
+              "missing_psa": -67.51999999999998
+            },
+            {
+              "total ads bucket": "201+",
+              "n_ad": 5694,
+              "n_psa": 258,
+              "share_ad": 0.9566532258064516,
+              "share_psa": 0.04334677419354839,
+              "p_value": 0.18762877113732634,
+              "srm": false,
+              "n": 5952,
+              "expected_psa": 238.08,
+              "missing_psa": -19.919999999999987
+            }
+          ]
+        },
+        "heterogeneity": {
+          "most ads day": {
+            "chi2": 235.61445227291117,
+            "dof": 6,
+            "p_value": 4.849067664297987e-48,
+            "control_share_min": 0.03499877541023757,
+            "control_share_max": 0.04705839820684004,
+            "levels_with_srm": 5,
+            "levels": 7,
+            "levels_with_control_share_ge_intended": 4
+          },
+          "most ads hour": {
+            "chi2": 192.29173193613582,
+            "dof": 23,
+            "p_value": 1.094573971081402e-28,
+            "control_share_min": 0.030065359477124184,
+            "control_share_max": 0.04553562060644214,
+            "levels_with_srm": 6,
+            "levels": 24,
+            "levels_with_control_share_ge_intended": 8
+          },
+          "total ads bucket": {
+            "chi2": 311.4384300068242,
+            "dof": 8,
+            "p_value": 1.5110295572730978e-62,
+            "control_share_min": 0.03255310470333532,
+            "control_share_max": 0.0481080673914681,
+            "levels_with_srm": 3,
+            "levels": 9,
+            "levels_with_control_share_ge_intended": 8
+          }
+        },
+        "user_id_structure": {
+          "ad": {
+            "min": 1000000,
+            "max": 1654483,
+            "n": 564577,
+            "range_size": 654484,
+            "fill_rate": 0.8626291857402167
+          },
+          "psa": {
+            "min": 900000,
+            "max": 923523,
+            "n": 23524,
+            "range_size": 23524,
+            "fill_rate": 1.0
+          },
+          "ranges_overlap": false
+        },
+        "originally_stated_split": {
+          "split": "95/5",
+          "p_value": 3.1619253119084557e-271,
+          "expected_control": 29405.050000000003
+        },
+        "total_ads_buckets": {
+          "edges": [
+            0,
+            1,
+            2,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            null
+          ],
+          "labels": [
+            "1",
+            "2",
+            "3-5",
+            "6-10",
+            "11-20",
+            "21-50",
+            "51-100",
+            "101-200",
+            "201+"
+          ]
+        },
+        "srm_bar": {
+          "observed": {
+            "ad": 564577,
+            "psa": 23524
+          },
+          "expected_share": {
+            "ad": 0.96,
+            "psa": 0.04
+          }
+        }
+      }
+    },
+    "primary_test": {
+      "step_id": "primary_test",
+      "method": "frequentist.two_proportion_ztest",
+      "script": "code/20_analysis_primary_test.py",
+      "recorded_at": "2026-09-30T21:36:13+00:00",
+      "results": [
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.007692453192201517,
+          "ci_low": 0.0059509324316110055,
+          "ci_high": 0.00943397395279203,
+          "p_value": 1.7052807161559727e-13,
+          "probability": null,
+          "n": {
+            "psa": 23524,
+            "ad": 564577
+          },
+          "metric": "converted",
+          "role": "primary",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.01785410644448223,
+          "treatment_value": 0.025546559636683747,
+          "rel_lift": 0.4308506402222583,
+          "rel_ci_low": 0.29329111690574633,
+          "rel_ci_high": 0.5684101635387702,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": 1.7052807161559727e-13,
+          "segment": null,
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "588,101 rows, 588,101 unique users; unit = randomisation unit"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 420"
+            },
+            {
+              "check": "no sample ratio mismatch vs intended split (96/4, corrected by the user)",
+              "passed": true,
+              "detail": "SRM p = 1.000 (step srm, threshold 0.001)"
+            }
+          ],
+          "notes": [
+            "none correction across 1 tests (alpha 0.05).",
+            "Covariate balance WARN in validation (PSA share varies by most-ads day / hour / exposure bucket); these are measured during the test, so they do not change this user-level comparison but are noted as a caveat."
+          ],
+          "extra": {
+            "z": 7.3700781265454145,
+            "se": 0.0008885473275669376,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.01785410644448223,
+                "ci_low": 0.016161914715211324,
+                "ci_high": 0.019546298173753137,
+                "se": 0.0008633789919706178,
+                "n": 23524
+              },
+              "ad": {
+                "mean": 0.025546559636683747,
+                "ci_low": 0.0251349995427061,
+                "ci_high": 0.025958119730661394,
+                "se": 0.00020998349828057106,
+                "n": 564577
+              }
+            },
+            "practical_threshold_rel": 0.05,
+            "ci_low_vs_threshold": "above"
+          },
+          "abs_lift": 0.007692453192201517
+        }
+      ],
+      "data": {
+        "metric_by_variant": [
+          {
+            "variant": "psa",
+            "mean": 0.01785410644448223,
+            "ci_low": 0.016161914715211324,
+            "ci_high": 0.019546298173753137,
+            "n": 23524
+          },
+          {
+            "variant": "ad",
+            "mean": 0.025546559636683747,
+            "ci_low": 0.0251349995427061,
+            "ci_high": 0.025958119730661394,
+            "n": 564577
+          }
+        ],
+        "counts": {
+          "ad": {
+            "conversions": 14423,
+            "users": 564577
+          },
+          "psa": {
+            "conversions": 420,
+            "users": 23524
+          }
+        },
+        "lift_ci": [
+          {
+            "metric": "conversion",
+            "role": "primary",
+            "rel_lift": 0.4308506402222583,
+            "rel_ci_low": 0.29329111690574633,
+            "rel_ci_high": 0.5684101635387702,
+            "significant": true
+          }
+        ],
+        "practical_threshold_rel": 0.05
+      }
+    },
+    "bayesian": {
+      "step_id": "bayesian",
+      "method": "bayesian.beta_binomial",
+      "script": "code/20_analysis_bayesian.py",
+      "recorded_at": "2026-09-30T21:45:43+00:00",
+      "results": [
+        {
+          "method": "bayesian.beta_binomial",
+          "estimate": 0.007653033208711131,
+          "ci_low": 0.005866257009209273,
+          "ci_high": 0.009358720602655008,
+          "p_value": null,
+          "probability": 1.0,
+          "n": {
+            "psa": 23524,
+            "ad": 564577
+          },
+          "metric": "converted",
+          "role": "secondary",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.01789568182642423,
+          "treatment_value": 0.025548715035135366,
+          "rel_lift": 0.4286660007236581,
+          "rel_ci_low": 0.29946339987561527,
+          "rel_ci_high": 0.5750429397843149,
+          "alpha": 0.05,
+          "sidedness": null,
+          "significant": null,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [
+            {
+              "check": "prior chosen before seeing results (settings.bayes_prior)",
+              "passed": true,
+              "detail": "weakly_informative -> Beta(1, 1)"
+            },
+            {
+              "check": "no sample ratio mismatch vs intended split",
+              "passed": true,
+              "detail": "SRM p = 1.000 (step srm, threshold 0.001)"
+            }
+          ],
+          "notes": [
+            "Credible interval: there is a 95% posterior probability the true lift lies inside it.",
+            "Prior sensitivity: without a historical baseline the weakly informative prior is Beta(1, 1), identical to the flat prior, so a flat-prior rerun gives the same answer. With this many users the prior has negligible weight."
+          ],
+          "extra": {
+            "prob_beat_control": 1.0,
+            "expected_loss_treatment": 0.0,
+            "expected_loss_control": 0.007653033208711131,
+            "expected_loss_treatment_rel": 0.0,
+            "credible_level": 0.95,
+            "posteriors": {
+              "psa": {
+                "dist": "beta",
+                "a": 421.0,
+                "b": 23105.0
+              },
+              "ad": {
+                "dist": "beta",
+                "a": 14424.0,
+                "b": 550155.0
+              }
+            },
+            "prior": {
+              "dist": "beta",
+              "a": 1.0,
+              "b": 1.0
+            },
+            "direction": "increase",
+            "variant_stats": {
+              "psa": {
+                "mean": 0.01789568182642423,
+                "ci_low": 0.0162403046118303,
+                "ci_high": 0.01963159979112581
+              },
+              "ad": {
+                "mean": 0.025548715035135366,
+                "ci_low": 0.025135969578160947,
+                "ci_high": 0.02596307513859621
+              }
+            },
+            "decision": "ship",
+            "decision_threshold": 0.95,
+            "prob_rel_lift_above_threshold": 1.0,
+            "practical_threshold_rel": 0.05
+          },
+          "abs_lift": 0.007653033208711131
+        }
+      ],
+      "data": {
+        "posteriors": {
+          "psa": {
+            "dist": "beta",
+            "a": 421.0,
+            "b": 23105.0
+          },
+          "ad": {
+            "dist": "beta",
+            "a": 14424.0,
+            "b": 550155.0
+          }
+        },
+        "prior": {
+          "dist": "beta",
+          "a": 1.0,
+          "b": 1.0
+        },
+        "posterior_density": {
+          "x": [
+            0.014854954443357141,
+            0.014893353891850477,
+            0.014931753340343815,
+            0.01497015278883715,
+            0.015008552237330488,
+            0.015046951685823824,
+            0.015085351134317162,
+            0.015123750582810498,
+            0.015162150031303835,
+            0.015200549479797171,
+            0.015238948928290509,
+            0.015277348376783845,
+            0.015315747825277183,
+            0.015354147273770519,
+            0.015392546722263855,
+            0.015430946170757192,
+            0.015469345619250528,
+            0.015507745067743866,
+            0.015546144516237202,
+            0.01558454396473054,
+            0.015622943413223876,
+            0.015661342861717213,
+            0.01569974231021055,
+            0.015738141758703885,
+            0.015776541207197223,
+            0.01581494065569056,
+            0.015853340104183898,
+            0.015891739552677232,
+            0.01593013900117057,
+            0.015968538449663908,
+            0.016006937898157242,
+            0.01604533734665058,
+            0.016083736795143917,
+            0.016122136243637255,
+            0.01616053569213059,
+            0.016198935140623927,
+            0.016237334589117264,
+            0.016275734037610602,
+            0.016314133486103936,
+            0.016352532934597274,
+            0.016390932383090612,
+            0.016429331831583946,
+            0.016467731280077284,
+            0.01650613072857062,
+            0.01654453017706396,
+            0.016582929625557293,
+            0.01662132907405063,
+            0.01665972852254397,
+            0.016698127971037306,
+            0.01673652741953064,
+            0.016774926868023978,
+            0.016813326316517316,
+            0.01685172576501065,
+            0.016890125213503988,
+            0.016928524661997325,
+            0.016966924110490663,
+            0.017005323558983997,
+            0.017043723007477335,
+            0.017082122455970673,
+            0.01712052190446401,
+            0.017158921352957344,
+            0.017197320801450682,
+            0.01723572024994402,
+            0.017274119698437354,
+            0.017312519146930692,
+            0.01735091859542403,
+            0.017389318043917367,
+            0.017427717492410705,
+            0.01746611694090404,
+            0.017504516389397377,
+            0.017542915837890714,
+            0.01758131528638405,
+            0.017619714734877386,
+            0.017658114183370724,
+            0.017696513631864058,
+            0.017734913080357396,
+            0.017773312528850733,
+            0.01781171197734407,
+            0.01785011142583741,
+            0.017888510874330743,
+            0.01792691032282408,
+            0.01796530977131742,
+            0.018003709219810753,
+            0.01804210866830409,
+            0.018080508116797428,
+            0.018118907565290766,
+            0.0181573070137841,
+            0.018195706462277438,
+            0.018234105910770775,
+            0.018272505359264113,
+            0.018310904807757447,
+            0.018349304256250785,
+            0.018387703704744122,
+            0.018426103153237457,
+            0.018464502601730794,
+            0.018502902050224132,
+            0.01854130149871747,
+            0.018579700947210804,
+            0.01861810039570414,
+            0.01865649984419748,
+            0.018694899292690817,
+            0.01873329874118415,
+            0.01877169818967749,
+            0.018810097638170827,
+            0.01884849708666416,
+            0.0188868965351575,
+            0.018925295983650836,
+            0.018963695432144174,
+            0.01900209488063751,
+            0.019040494329130846,
+            0.019078893777624183,
+            0.01911729322611752,
+            0.019155692674610855,
+            0.019194092123104193,
+            0.01923249157159753,
+            0.019270891020090865,
+            0.019309290468584202,
+            0.01934768991707754,
+            0.019386089365570878,
+            0.019424488814064216,
+            0.01946288826255755,
+            0.019501287711050887,
+            0.019539687159544225,
+            0.01957808660803756,
+            0.019616486056530897,
+            0.019654885505024235,
+            0.01969328495351757,
+            0.019731684402010907,
+            0.019770083850504244,
+            0.019808483298997582,
+            0.01984688274749092,
+            0.019885282195984254,
+            0.01992368164447759,
+            0.01996208109297093,
+            0.020000480541464263,
+            0.0200388799899576,
+            0.02007727943845094,
+            0.020115678886944273,
+            0.02015407833543761,
+            0.02019247778393095,
+            0.020230877232424286,
+            0.020269276680917624,
+            0.020307676129410958,
+            0.020346075577904296,
+            0.020384475026397633,
+            0.020422874474890967,
+            0.020461273923384305,
+            0.020499673371877643,
+            0.020538072820370977,
+            0.020576472268864315,
+            0.020614871717357652,
+            0.02065327116585099,
+            0.020691670614344328,
+            0.020730070062837662,
+            0.020768469511331,
+            0.020806868959824337,
+            0.02084526840831767,
+            0.02088366785681101,
+            0.020922067305304347,
+            0.020960466753797685,
+            0.020998866202291022,
+            0.021037265650784356,
+            0.021075665099277694,
+            0.021114064547771032,
+            0.021152463996264366,
+            0.021190863444757704,
+            0.02122926289325104,
+            0.021267662341744376,
+            0.021306061790237713,
+            0.02134446123873105,
+            0.02138286068722439,
+            0.021421260135717726,
+            0.02145965958421106,
+            0.021498059032704398,
+            0.021536458481197736,
+            0.02157485792969107,
+            0.021613257378184408,
+            0.021651656826677745,
+            0.02169005627517108,
+            0.021728455723664417,
+            0.021766855172157755,
+            0.021805254620651093,
+            0.02184365406914443,
+            0.021882053517637765,
+            0.021920452966131102,
+            0.02195885241462444,
+            0.021997251863117774,
+            0.022035651311611112,
+            0.02207405076010445,
+            0.022112450208597784,
+            0.02215084965709112,
+            0.02218924910558446,
+            0.022227648554077797,
+            0.022266048002571134,
+            0.02230444745106447,
+            0.022342846899557806,
+            0.022381246348051144,
+            0.022419645796544478,
+            0.022458045245037816,
+            0.022496444693531154,
+            0.022534844142024488,
+            0.022573243590517825,
+            0.022611643039011163,
+            0.0226500424875045,
+            0.02268844193599784,
+            0.022726841384491173,
+            0.02276524083298451,
+            0.022803640281477848,
+            0.022842039729971182,
+            0.02288043917846452,
+            0.022918838626957858,
+            0.022957238075451192,
+            0.022995637523944533,
+            0.023034036972437867,
+            0.023072436420931205,
+            0.023110835869424542,
+            0.023149235317917877,
+            0.023187634766411214,
+            0.023226034214904552,
+            0.023264433663397886,
+            0.023302833111891224,
+            0.02334123256038456,
+            0.023379632008877896,
+            0.023418031457371237,
+            0.02345643090586457,
+            0.02349483035435791,
+            0.023533229802851247,
+            0.02357162925134458,
+            0.02361002869983792,
+            0.023648428148331256,
+            0.02368682759682459,
+            0.023725227045317928,
+            0.023763626493811266,
+            0.0238020259423046,
+            0.02384042539079794,
+            0.023878824839291275,
+            0.023917224287784613,
+            0.02395562373627795,
+            0.023994023184771285,
+            0.024032422633264622,
+            0.02407082208175796,
+            0.024109221530251294,
+            0.024147620978744636,
+            0.02418602042723797,
+            0.024224419875731304,
+            0.024262819324224645,
+            0.02430121877271798,
+            0.024339618221211317,
+            0.024378017669704655,
+            0.02441641711819799,
+            0.024454816566691327,
+            0.024493216015184664,
+            0.024531615463678,
+            0.02457001491217134,
+            0.024608414360664674,
+            0.02464681380915801,
+            0.02468521325765135,
+            0.024723612706144683,
+            0.02476201215463802,
+            0.02480041160313136,
+            0.024838811051624693,
+            0.02487721050011803,
+            0.02491560994861137,
+            0.024954009397104703,
+            0.024992408845598044,
+            0.025030808294091378,
+            0.025069207742584716,
+            0.025107607191078053,
+            0.025146006639571387,
+            0.025184406088064725,
+            0.025222805536558063,
+            0.025261204985051397,
+            0.025299604433544735,
+            0.025338003882038072,
+            0.025376403330531407,
+            0.025414802779024748,
+            0.025453202227518082,
+            0.02549160167601142,
+            0.025530001124504757,
+            0.02556840057299809,
+            0.02560680002149143,
+            0.025645199469984767,
+            0.0256835989184781,
+            0.02572199836697144,
+            0.025760397815464776,
+            0.02579879726395811,
+            0.025837196712451452,
+            0.025875596160944786,
+            0.025913995609438124,
+            0.02595239505793146,
+            0.025990794506424796,
+            0.026029193954918133,
+            0.02606759340341147,
+            0.026105992851904805,
+            0.026144392300398146,
+            0.02618279174889148,
+            0.026221191197384815,
+            0.026259590645878156,
+            0.02629799009437149,
+            0.026336389542864828
+          ],
+          "psa": [
+            0.5179236105850374,
+            0.6223692549959572,
+            0.7457662996749046,
+            0.891119215155451,
+            1.061826286730677,
+            1.2617167796003619,
+            1.4950892272738845,
+            1.7667504545078143,
+            2.082054867406078,
+            2.4469434611721277,
+            2.867981911664524,
+            3.3523970319262277,
+            3.908110791053017,
+            4.54377101216588,
+            5.268777791145381,
+            6.09330461061665,
+            7.028313067052512,
+            8.085560085498203,
+            9.277596469052835,
+            10.61775562160325,
+            12.120131294967804,
+            13.799543248092656,
+            15.671489768247614,
+            17.75208609425693,
+            20.057987900915084,
+            22.60629915268527,
+            25.414463813729814,
+            28.500141109963117,
+            31.881064275560778,
+            35.57488297944012,
+            39.59898991384128,
+            43.97033233322877,
+            48.705209653288925,
+            53.81905855134405,
+            59.32622734498571,
+            65.23974175883062,
+            71.5710645128951,
+            78.32985147269697,
+            85.52370738307081,
+            93.1579444577694,
+            101.23534730685462,
+            109.75594784730606,
+            118.71681395217945,
+            128.11185564425944,
+            137.9316526267971,
+            148.1633068623731,
+            158.79032375942302,
+            169.79252530228086,
+            181.14599816648519,
+            192.82307949730506,
+            204.79238260029302,
+            217.01886430330805,
+            229.4639352057944,
+            242.08561344235673,
+            254.8387219632619,
+            267.67512868257745,
+            280.54402818194836,
+            293.39226299037136,
+            306.1646818046926,
+            318.80453138495545,
+            331.2538782615438,
+            343.4540558441933,
+            355.346132035513,
+            366.87139203460856,
+            377.9718306778544,
+            388.5906484134814,
+            398.6727448497894,
+            408.16520375527864,
+            417.0177634287707,
+            425.18326649723207,
+            432.618083434263,
+            439.282504424371,
+            445.14109461657733,
+            450.1630083110445,
+            454.32225819380517,
+            457.59793636812856,
+            459.97438461171043,
+            461.4413120105484,
+            461.99385886043154,
+            461.6326064825285,
+            460.36353334858774,
+            458.1979186441198,
+            455.15219510402113,
+            451.24775361691405,
+            446.5107027079167,
+            440.9715865576559,
+            434.6650656997105,
+            427.62956494078816,
+            419.9068933738334,
+            411.54184159496765,
+            402.58176138881277,
+            393.0761332167391,
+            383.07612683010336,
+            372.6341602332379,
+            361.8034620549549,
+            350.63764214598666,
+            339.1902749185414,
+            327.5144995888715,
+            315.66264107959034,
+            303.68585490037196,
+            291.6337988565463,
+            279.55433394905265,
+            267.4932563324392,
+            255.49406170025182,
+            243.5977429766937,
+            231.8426217182372,
+            220.26421317517674,
+            208.89512453786082,
+            197.76498549894518,
+            186.90040990923885,
+            176.32498698917277,
+            166.05930028667504,
+            156.12097234597857,
+            146.52473286905598,
+            137.28250801417272,
+            128.40352838250956,
+            119.89445319120733,
+            111.75950811854325,
+            104.00063433075103,
+            96.61764625659055,
+            89.60839576224954,
+            82.96894049130847,
+            76.69371426856668,
+            70.77569761794787,
+            65.20658661074826,
+            59.97695843598677,
+            55.07643226690101,
+            50.493824182786845,
+            46.21729509047594,
+            42.23449077183903,
+            38.532673360404274,
+            35.098843719061044,
+            31.919854350511546,
+            28.982512620610976,
+            26.273674211303582,
+            23.780326843471656,
+            21.489664420244175,
+            19.38915183784045,
+            17.466580793980718,
+            15.710116993526562,
+            14.108339207475352,
+            12.650270685913256,
+            11.325403458079508,
+            10.123716074689685,
+            9.03568535978365,
+            8.052292742608927,
+            7.16502573544435,
+            6.365875111872452,
+            5.647328322701332,
+            5.002359664608478,
+            4.424417690469412,
+            3.9074103211895586,
+            3.445688087403483,
+            3.034025896480345,
+            2.6676036864769137,
+            2.3419862946375973,
+            2.0531028342788855,
+            1.7972258408394624,
+            1.5709504159286694,
+            1.371173567653444,
+            1.19507391659094,
+            1.0400919096980243,
+            0.9039106593221641,
+            0.7844375013858679,
+            0.6797863458020242,
+            0.5882608732298754,
+            0.5083386153732723,
+            0.43865594109133743,
+            0.3779939575613921,
+            0.3252653244946427,
+            0.27950196985820597,
+            0.2398436875724174,
+            0.20552759110605393,
+            0.17587839165793906,
+            0.15029946555824472,
+            0.12826467252193702,
+            0.10931088431662873,
+            0.09303118214978938,
+            0.0790686805240436,
+            0.06711093535122452,
+            0.05688489465798307,
+            0.04815235117138651,
+            0.040705857361361134,
+            0.034365065066129435,
+            0.028973453573749846,
+            0.024395411921055044,
+            0.02051364315159722,
+            0.017226860305677882,
+            0.014447745961639624,
+            0.012101149179265344,
+            0.010122495688791274,
+            0.008456389103262567,
+            0.0070553827922330975,
+            0.005878903829800532,
+            0.004892312111356439,
+            0.004066079315662835,
+            0.0033750738690812693,
+            0.002797939445852663,
+            0.0023165558129371617,
+            0.0019155720020969044,
+            0.001582002868723655,
+            0.0013048810802697155,
+            0.0010749574715917148,
+            0.0008844435149937403,
+            0.0007267903844875826,
+            0.0005964997521406499,
+            0.0004889620447392465,
+            0.00040031841668477505,
+            0.0003273431652658859,
+            0.0002673437322057357,
+            0.0002180758054685591,
+            0.000177671362232113,
+            0.00014457778194693167,
+            0.00011750641146784837,
+            9.538918602198824e-05,
+            7.734210365381888e-05,
+            6.263451985151237e-05,
+            5.0663376134300334e-05,
+            4.093160402506199e-05,
+            3.303005635841361e-05,
+            2.6622413362478094e-05,
+            2.143259326458806e-05,
+            1.723426797233683e-05,
+            1.3842145150512109e-05,
+            1.1104730063867827e-05,
+            8.89832504432535e-06,
+            7.122062390212347e-06,
+            5.693798810769089e-06,
+            4.546726976627665e-06,
+            3.626583011312853e-06,
+            2.8893484567855113e-06,
+            2.2993618856183426e-06,
+            1.8277693621585643e-06,
+            1.451254762565808e-06,
+            1.151000882726452e-06,
+            9.118405808584832e-07,
+            7.215641641541361e-07,
+            5.703550466942929e-07,
+            4.503305588137436e-07,
+            3.551688291754325e-07,
+            2.7980602013500173e-07,
+            2.201909848404718e-07,
+            1.7308672427779885e-07,
+            1.3590993296883985e-07,
+            1.0660149968946978e-07,
+            8.352213027398651e-08,
+            6.536833020966519e-08,
+            5.110486459228117e-08,
+            3.9910534960045224e-08,
+            3.113470397061554e-08,
+            2.4262482669303012e-08,
+            1.8886890208275592e-08,
+            1.4686618076203093e-08,
+            1.1408293243717643e-08,
+            8.85234791987596e-09,
+            6.861776763980727e-09,
+            5.313202752271204e-09,
+            4.10978650422938e-09,
+            3.175605693288567e-09,
+            2.4512052717247933e-09,
+            1.890078961551487e-09,
+            1.455890525407962e-09,
+            1.1202819553573111e-09,
+            8.611467131192548e-10,
+            6.612709944287537e-10,
+            5.072658681631086e-10,
+            3.8872902665076895e-10,
+            2.975875615651854e-10,
+            2.2758328399623787e-10,
+            1.7387014933854677e-10,
+            1.326997397938263e-10,
+            1.0117583127291647e-10,
+            7.70630937878731e-11,
+            5.86381588269477e-11,
+            4.4573804949997675e-11,
+            3.3849000901514406e-11,
+            2.567911331677841e-11,
+            1.9461820850484734e-11,
+            1.473524778215843e-11,
+            1.114559312092536e-11,
+            8.422129840236222e-12,
+            6.357917937266395e-12,
+            4.794942105765894e-12,
+            3.612671744879844e-12,
+            2.7192650262355767e-12,
+            2.0448133954715496e-12,
+            1.5361588960572945e-12,
+            1.1529224932000302e-12,
+            8.644637592905813e-13,
+            6.475560502384056e-13,
+            4.846107213821075e-13,
+            3.6232218529336083e-13,
+            2.7063518925655387e-13,
+            2.019585291872424e-13,
+            1.5056703285954126e-13,
+            1.1214721701701713e-13,
+            8.345246658177295e-14,
+            6.204161139932036e-14,
+            4.6080938738762324e-14,
+            3.419440571282335e-14
+          ],
+          "ad": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            9.15200305e-316,
+            5.468916197264e-312,
+            3.0623627768049133e-308,
+            1.6089004719677432e-304,
+            7.932911776843374e-301,
+            3.6718080856641016e-297,
+            1.5958186078697424e-293,
+            6.514106845295869e-290,
+            2.4980719409924454e-286,
+            9.00210219654775e-283,
+            3.0491684244119725e-279,
+            9.710156608752283e-276,
+            2.9079477610061126e-272,
+            8.19162472564599e-269,
+            2.1711181383299315e-265,
+            5.415431266598422e-262,
+            1.2715235362554911e-258,
+            2.8110104338103835e-255,
+            5.852635930018935e-252,
+            1.1478766591833967e-248,
+            2.1212733970090584e-245,
+            3.694521420254596e-242,
+            6.065710195352507e-239,
+            9.390057240863443e-236,
+            1.3709402275992371e-232,
+            1.8881325506133937e-229,
+            2.4536324183899485e-226,
+            3.0091814544765107e-223,
+            3.483752628327737e-220,
+            3.808061202761822e-217,
+            3.9311104794533965e-214,
+            3.833343752768245e-211,
+            3.5317289736123245e-208,
+            3.074959422114193e-205,
+            2.5306297041039633e-202,
+            1.9690158936897288e-199,
+            1.448754889752117e-196,
+            1.0082281008675778e-193,
+            6.637941863767273e-191,
+            4.135336834597903e-188,
+            2.4382747075665205e-185,
+            1.3609420886646666e-182,
+            7.192375735087092e-180,
+            3.599736562468098e-177,
+            1.706569983654835e-174,
+            7.665163172998268e-172,
+            3.2625036056959846e-169,
+            1.3161359738135251e-166,
+            5.033360646392343e-164,
+            1.825196956501714e-161,
+            6.276856382596365e-159,
+            2.047581974751729e-156,
+            6.337127515781583e-154,
+            1.8611464387611577e-151,
+            5.1878812254157315e-149,
+            1.3727922983576798e-146,
+            3.4491211742234e-144,
+            8.22969779114605e-142,
+            1.8651496446063525e-139,
+            4.015872489628375e-137,
+            8.216071433879758e-135,
+            1.5975252136978105e-132,
+            2.952644569780673e-130,
+            5.188416341599792e-128,
+            8.669588427932542e-126,
+            1.3777852529752802e-123,
+            2.0828735635510467e-121,
+            2.995857192380789e-119,
+            4.100475272804218e-117,
+            5.341703946185422e-115,
+            6.624226430389113e-113,
+            7.821265860187306e-111,
+            8.793906014657492e-109,
+            9.417278889733675e-107,
+            9.606903342200293e-105,
+            9.337506373420804e-103,
+            8.648536417919788e-101,
+            7.634715424405217e-99,
+            6.424739537736455e-97,
+            5.154708889401426e-95,
+            3.943772187996541e-93,
+            2.8777381463994326e-91,
+            2.0030640334559805e-89,
+            1.3301923248767333e-87,
+            8.429108469217345e-86,
+            5.0976218981369405e-84,
+            2.942680839903374e-82,
+            1.6217304941373789e-80,
+            8.533834671751447e-79,
+            4.2885399094682824e-77,
+            2.058465895285881e-75,
+            9.438779006159694e-74,
+            4.1351803056875556e-72,
+            1.7312021477572916e-70,
+            6.926975648197647e-69,
+            2.649412487905922e-67,
+            9.687967538926336e-66,
+            3.387347370923594e-64,
+            1.132653832677019e-62,
+            3.6225230376610276e-61,
+            1.1083255736623748e-59,
+            3.244376141324885e-58,
+            9.087988233053405e-57,
+            2.4363616474860326e-55,
+            6.251980114236495e-54,
+            1.5358871915464991e-52,
+            3.6126898406141335e-51,
+            8.137576213635511e-50,
+            1.7555595687946455e-48,
+            3.62789689693477e-47,
+            7.182499422193795e-46,
+            1.362509927641209e-44,
+            2.4769027787790095e-43,
+            4.3156372938095976e-42,
+            7.207900394947656e-41,
+            1.1541475589141418e-39,
+            1.7719977700390077e-38,
+            2.6090026634405624e-37,
+            3.684302937451317e-36,
+            4.990743377506505e-35,
+            6.485800430355338e-34,
+            8.087408844244886e-33,
+            9.677461126151988e-32,
+            1.1114198306567124e-30,
+            1.225230147331369e-29,
+            1.296695193846171e-28,
+            1.3176388795032647e-27,
+            1.2857320399520164e-26,
+            1.2049169267427556e-25,
+            1.0846085985768218e-24,
+            9.378960873224758e-24,
+            7.792168115857666e-23,
+            6.220706350246491e-22,
+            4.772594079990082e-21,
+            3.519314229691398e-20,
+            2.4946258061945117e-19,
+            1.7000096699644876e-18,
+            1.1139110661422199e-17,
+            7.018706052174062e-17,
+            4.25329002770326e-16,
+            2.4791801438535995e-15,
+            1.3901440011075308e-14,
+            7.499517584250971e-14,
+            3.892975364037575e-13,
+            1.944721759272591e-12,
+            9.350034821105647e-12,
+            4.327141656739929e-11,
+            1.927849242241206e-10,
+            8.269529277096948e-10,
+            3.415668518094197e-09,
+            1.3586545574556145e-08,
+            5.205131917876094e-08,
+            1.9208546275344713e-07,
+            6.828853404001876e-07,
+            2.3390625853389024e-06,
+            7.720166087821345e-06,
+            2.4555678848654415e-05,
+            7.52778593615604e-05,
+            0.0002224446024456478,
+            0.0006336724515099738,
+            0.0017403834362606076,
+            0.004609043448266608,
+            0.011770929737377558,
+            0.028992987479494595,
+            0.06888193038276577,
+            0.1578684965671444,
+            0.34906870675310525,
+            0.7447300503425434,
+            1.533226700386455,
+            3.046352824977935,
+            5.842072499209124,
+            10.814662256382732,
+            19.326998262543466,
+            33.34780237250688,
+            55.56062469524293,
+            89.39425812381745,
+            138.91208729112682,
+            208.49874922242444,
+            302.3046064052449,
+            423.4563536053581,
+            573.1121285690152,
+            749.517675252579,
+            947.2826140311367,
+            1157.1150335112538,
+            1366.2068604988976,
+            1559.3471825718668,
+            1720.6751607158963,
+            1835.8100935668563,
+            1893.9665318000712,
+            1889.6232562518937,
+            1823.3877421693278,
+            1701.8686118737455,
+            1536.5911924227676,
+            1342.2020455981067,
+            1134.3483500912146,
+            927.6529702793609,
+            734.1360591148123,
+            562.2904165907785,
+            416.8491503060087,
+            299.1383509562356,
+            207.81689258261298,
+            139.78019304379706,
+            91.03465378106489,
+            57.41221167155118,
+            35.06534856772692,
+            20.74283653251282,
+            11.885400122155797,
+            6.5971225024929145,
+            3.547558775066994,
+            1.8483236347885088
+          ]
+        },
+        "rel_lift_hist": {
+          "counts": [
+            1,
+            0,
+            0,
+            3,
+            1,
+            4,
+            8,
+            15,
+            24,
+            52,
+            80,
+            137,
+            227,
+            317,
+            436,
+            612,
+            865,
+            1147,
+            1469,
+            1938,
+            2480,
+            3166,
+            3730,
+            4610,
+            5280,
+            6090,
+            7062,
+            7641,
+            8370,
+            8843,
+            9293,
+            9615,
+            9911,
+            9855,
+            9723,
+            9249,
+            9266,
+            8487,
+            7978,
+            7373,
+            6797,
+            5821,
+            5322,
+            4674,
+            3957,
+            3370,
+            2806,
+            2478,
+            1998,
+            1608,
+            1327,
+            1022,
+            779,
+            639,
+            476,
+            394,
+            299,
+            230,
+            164,
+            148,
+            91,
+            75,
+            48,
+            35,
+            18,
+            21,
+            15,
+            10,
+            6,
+            5,
+            3,
+            2,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          "edges": [
+            0.13718648513222642,
+            0.1458435024395058,
+            0.1545005197467852,
+            0.16315753705406458,
+            0.17181455436134396,
+            0.18047157166862332,
+            0.1891285889759027,
+            0.1977856062831821,
+            0.20644262359046148,
+            0.21509964089774086,
+            0.22375665820502025,
+            0.23241367551229963,
+            0.241070692819579,
+            0.2497277101268584,
+            0.25838472743413776,
+            0.2670417447414172,
+            0.27569876204869653,
+            0.2843557793559759,
+            0.2930127966632553,
+            0.3016698139705347,
+            0.3103268312778141,
+            0.31898384858509343,
+            0.32764086589237285,
+            0.3362978831996522,
+            0.34495490050693156,
+            0.353611917814211,
+            0.3622689351214904,
+            0.37092595242876975,
+            0.3795829697360491,
+            0.3882399870433285,
+            0.3968970043506079,
+            0.4055540216578873,
+            0.41421103896516664,
+            0.422868056272446,
+            0.4315250735797254,
+            0.4401820908870048,
+            0.4488391081942842,
+            0.45749612550156354,
+            0.46615314280884296,
+            0.4748101601161223,
+            0.48346717742340173,
+            0.4921241947306811,
+            0.5007812120379604,
+            0.5094382293452399,
+            0.5180952466525193,
+            0.5267522639597986,
+            0.535409281267078,
+            0.5440662985743574,
+            0.5527233158816367,
+            0.5613803331889161,
+            0.5700373504961955,
+            0.5786943678034748,
+            0.5873513851107544,
+            0.5960084024180337,
+            0.6046654197253131,
+            0.6133224370325925,
+            0.6219794543398718,
+            0.6306364716471512,
+            0.6392934889544306,
+            0.6479505062617099,
+            0.6566075235689893,
+            0.6652645408762687,
+            0.6739215581835482,
+            0.6825785754908275,
+            0.6912355927981069,
+            0.6998926101053863,
+            0.7085496274126656,
+            0.717206644719945,
+            0.7258636620272244,
+            0.7345206793345038,
+            0.7431776966417831,
+            0.7518347139490625,
+            0.760491731256342,
+            0.7691487485636213,
+            0.7778057658709007,
+            0.7864627831781801,
+            0.7951198004854595,
+            0.8037768177927388,
+            0.8124338351000182,
+            0.8210908524072976,
+            0.829747869714577
+          ]
+        },
+        "prob_to_beat_control": {
+          "variant": "ad",
+          "probability": 1.0,
+          "threshold": 0.95
+        },
+        "counts": {
+          "psa": {
+            "conversions": 420,
+            "users": 23524
+          },
+          "ad": {
+            "conversions": 14423,
+            "users": 564577
+          }
+        }
+      }
+    },
+    "impact": {
+      "step_id": "impact",
+      "method": "custom.incremental_impact",
+      "script": "code/20_analysis_impact.py",
+      "recorded_at": "2026-09-30T21:37:23+00:00",
+      "results": [
+        {
+          "method": "custom.incremental_impact",
+          "estimate": 7.692453192201517,
+          "ci_low": 5.9509324316110055,
+          "ci_high": 9.433973952792028,
+          "p_value": 1.7052807161559727e-13,
+          "probability": null,
+          "n": {
+            "psa": 23524,
+            "ad": 564577
+          },
+          "metric": "incremental conversions per 1,000 users",
+          "role": "secondary",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 17.85410644448223,
+          "treatment_value": 25.546559636683746,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 420"
+            },
+            {
+              "check": "independent units at the randomisation level",
+              "passed": true,
+              "detail": "one row per user"
+            },
+            {
+              "check": "CI coverage by simulation at the observed rates and n",
+              "passed": true,
+              "detail": "4,000 simulated tests"
+            }
+          ],
+          "notes": [
+            "Derived from the primary conversion comparison (same data, same null hypothesis); not an additional test, so no multiple-testing correction applies.",
+            "Causal only to the extent assignment was random (see the user-id block caveat)."
+          ],
+          "extra": {
+            "formula": "1000 * (p_ad - p_psa)",
+            "se": 0.8885473275669376,
+            "per": 1000
+          },
+          "abs_lift": 7.692453192201517
+        },
+        {
+          "method": "custom.incremental_impact",
+          "estimate": 4342.982145893556,
+          "ci_low": 3359.7595794416466,
+          "ci_high": 5326.204712345465,
+          "p_value": 1.7052807161559727e-13,
+          "probability": null,
+          "n": {
+            "psa": 23524,
+            "ad": 564577
+          },
+          "metric": "total incremental conversions in the ad group",
+          "role": "secondary",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 10080.017854106443,
+          "treatment_value": 14423.0,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 420"
+            },
+            {
+              "check": "independent units at the randomisation level",
+              "passed": true,
+              "detail": "one row per user"
+            },
+            {
+              "check": "CI coverage by simulation at the observed rates and n",
+              "passed": true,
+              "detail": "4,000 simulated tests"
+            }
+          ],
+          "notes": [
+            "Derived from the primary conversion comparison (same data, same null hypothesis); not an additional test, so no multiple-testing correction applies.",
+            "Causal only to the extent assignment was random (see the user-id block caveat).",
+            "control_value = conversions expected in the ad group without the treatment (n_ad * p_psa); treatment_value = observed conversions. n_ad treated as fixed."
+          ],
+          "extra": {
+            "formula": "n_ad * (p_ad - p_psa)",
+            "se": 501.65338455575886,
+            "observed_conversions": 14423,
+            "counterfactual_conversions": 10080.017854106443
+          },
+          "abs_lift": 4342.982145893556
+        },
+        {
+          "method": "custom.incremental_impact",
+          "estimate": 0.3011150347288051,
+          "ci_low": 0.23392543437970847,
+          "ci_high": 0.3683046350779017,
+          "p_value": 1.7052807161559727e-13,
+          "probability": null,
+          "n": {
+            "psa": 23524,
+            "ad": 564577
+          },
+          "metric": "share of ad-group conversions attributable to the ads",
+          "role": "secondary",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 420"
+            },
+            {
+              "check": "independent units at the randomisation level",
+              "passed": true,
+              "detail": "one row per user"
+            },
+            {
+              "check": "CI coverage by simulation at the observed rates and n",
+              "passed": true,
+              "detail": "4,000 simulated tests"
+            }
+          ],
+          "notes": [
+            "Derived from the primary conversion comparison (same data, same null hypothesis); not an additional test, so no multiple-testing correction applies.",
+            "Causal only to the extent assignment was random (see the user-id block caveat).",
+            "Delta-method CI; a log-ratio (Katz) interval is stored as a sensitivity check."
+          ],
+          "extra": {
+            "formula": "(p_ad - p_psa) / p_ad",
+            "se": 0.034281038263498514,
+            "ci_log_ratio_sensitivity": {
+              "ci_low": 0.2305896510228148,
+              "ci_high": 0.36517594891799054
+            }
+          },
+          "abs_lift": 0.3011150347288051
+        }
+      ],
+      "data": {
+        "money_formula": "incremental revenue = incremental conversions x value per conversion = 4,343 (95% CI 3,360 to 5,326) x value per conversion; per 1,000 users reached: 7.7 (95% CI 6.0 to 9.4) x value per conversion",
+        "money_formula_generic": "incremental revenue = incremental conversions x value per conversion",
+        "counts": {
+          "psa": {
+            "conversions": 420,
+            "users": 23524
+          },
+          "ad": {
+            "conversions": 14423,
+            "users": 564577
+          }
+        },
+        "coverage_check": {
+          "reps": 4000,
+          "nominal": 0.95,
+          "coverage_per_1000": 0.9545,
+          "coverage_total": 0.9545,
+          "coverage_attributable_share": 0.95525,
+          "mc_se": 0.0034460121880225555
+        },
+        "impact_table": [
+          {
+            "quantity": "incremental conversions per 1,000 users",
+            "estimate": 7.692453192201517,
+            "ci_low": 5.9509324316110055,
+            "ci_high": 9.433973952792028
+          },
+          {
+            "quantity": "total incremental conversions in the ad group",
+            "estimate": 4342.982145893556,
+            "ci_low": 3359.7595794416466,
+            "ci_high": 5326.204712345465
+          },
+          {
+            "quantity": "share of ad-group conversions attributable to the ads",
+            "estimate": 0.3011150347288051,
+            "ci_low": 0.23392543437970847,
+            "ci_high": 0.3683046350779017
+          }
+        ]
+      }
+    },
+    "exposure_explore": {
+      "step_id": "exposure_explore",
+      "method": "segments.segment_effects",
+      "script": "code/20_analysis_exposure_explore.py",
+      "recorded_at": "2026-09-30T21:45:47+00:00",
+      "results": [
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.007692453192201517,
+          "ci_low": 0.0059509324316110055,
+          "ci_high": 0.00943397395279203,
+          "p_value": 1.7052807161559727e-13,
+          "probability": null,
+          "n": {
+            "psa": 23524,
+            "ad": 564577
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.01785410644448223,
+          "treatment_value": 0.025546559636683747,
+          "rel_lift": 0.4308506402222583,
+          "rel_ci_low": 0.29329111690574633,
+          "rel_ci_high": 0.5684101635387702,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": "All",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 420"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test"
+          ],
+          "extra": {
+            "z": 7.3700781265454145,
+            "se": 0.0008885473275669376,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.01785410644448223,
+                "ci_low": 0.016161914715211324,
+                "ci_high": 0.019546298173753137,
+                "se": 0.0008633789919706178,
+                "n": 23524
+              },
+              "ad": {
+                "mean": 0.025546559636683747,
+                "ci_low": 0.0251349995427061,
+                "ci_high": 0.025958119730661394,
+                "se": 0.00020998349828057106,
+                "n": 564577
+              }
+            },
+            "segment_col": null
+          },
+          "abs_lift": 0.007692453192201517
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": -0.00028629984429228957,
+          "ci_low": -0.0014781162438385698,
+          "ci_high": 0.0009055165552539907,
+          "p_value": 0.620956767148844,
+          "probability": null,
+          "n": {
+            "psa": 7861,
+            "ad": 169962
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.0027986261289912225,
+          "treatment_value": 0.002512326284698933,
+          "rel_lift": -0.10230013981734942,
+          "rel_ci_low": -0.486424305436542,
+          "rel_ci_high": 0.2818240258018432,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": false,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.8693394740083815,
+          "segment": "1-5",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 22"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Not significant after correction: inconclusive (relative lift CI [\u221248.6%, +28.2%]), not evidence of no effect.",
+            "Covariate balance WARN: the PSA share in this level is 4.4% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": -0.4944948151779166,
+            "se": 0.0006080807652320022,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.0027986261289912225,
+                "ci_low": 0.0016308137642165586,
+                "ci_high": 0.003966438493765887,
+                "se": 0.0005958335836710362,
+                "n": 7861
+              },
+              "ad": {
+                "mean": 0.002512326284698933,
+                "ci_low": 0.0022743334047489933,
+                "ci_high": 0.0027503191646488724,
+                "se": 0.00012142717000271273,
+                "n": 169962
+              }
+            },
+            "segment_col": "total ads bucket",
+            "share": 0.3023681306442261,
+            "psa_share": 0.04420687987493181,
+            "p_value_adjusted_across_both_families": 0.7244495616736514
+          },
+          "abs_lift": -0.00028629984429228957
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.07038963741351505,
+          "ci_low": 0.04759059793313366,
+          "ci_high": 0.09318867689389643,
+          "p_value": 6.290486575869424e-07,
+          "probability": null,
+          "n": {
+            "psa": 752,
+            "ad": 16360
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.10638297872340426,
+          "treatment_value": 0.1767726161369193,
+          "rel_lift": 0.6616625916870413,
+          "rel_ci_low": 0.31309580122532016,
+          "rel_ci_high": 1.0102293821487625,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 2.2016703015542985e-06,
+          "segment": "101-200",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 80"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Covariate balance WARN: the PSA share in this level is 4.4% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 4.982078618907174,
+            "se": 0.011632376747847053,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.10638297872340426,
+                "ci_low": 0.08434605542024605,
+                "ci_high": 0.12841990202656248,
+                "se": 0.011243534818487815,
+                "n": 752
+              },
+              "ad": {
+                "mean": 0.1767726161369193,
+                "ci_low": 0.17092708685731497,
+                "ci_high": 0.18261814541652363,
+                "se": 0.0029824677013012115,
+                "n": 16360
+              }
+            },
+            "segment_col": "total ads bucket",
+            "share": 0.02909704285488377,
+            "psa_share": 0.04394576905095839,
+            "p_value_adjusted_across_both_families": 3.096053994527271e-06
+          },
+          "abs_lift": 0.07038963741351505
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.000207183510502678,
+          "ci_low": -0.002582254367535153,
+          "ci_high": 0.002996621388540509,
+          "p_value": 0.8855799025922955,
+          "probability": null,
+          "n": {
+            "psa": 4150,
+            "ad": 123334
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.00819277108433735,
+          "treatment_value": 0.008399954594840027,
+          "rel_lift": 0.025288575546650316,
+          "rel_ci_low": -0.3235134153548003,
+          "rel_ci_high": 0.37409056644810096,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": false,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.9744494285648735,
+          "segment": "11-20",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 34"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Not significant after correction: inconclusive (relative lift CI [\u221232.4%, +37.4%]), not evidence of no effect.",
+            "Covariate balance WARN: the PSA share in this level is 3.3% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 0.1438994087319902,
+            "se": 0.0014232087426302529,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.00819277108433735,
+                "ci_low": 0.005450230345289452,
+                "ci_high": 0.010935311823385247,
+                "se": 0.0013992811912263232,
+                "n": 4150
+              },
+              "ad": {
+                "mean": 0.008399954594840027,
+                "ci_low": 0.00789060798388163,
+                "ci_high": 0.008909301205798425,
+                "se": 0.00025987549514994103,
+                "n": 123334
+              }
+            },
+            "segment_col": "total ads bucket",
+            "share": 0.21677228911360463,
+            "psa_share": 0.03255310470333532,
+            "p_value_adjusted_across_both_families": 0.9537014335609335
+          },
+          "abs_lift": 0.000207183510502678
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.0007392522524730383,
+          "ci_low": -0.044418894240313825,
+          "ci_high": 0.0458973987452599,
+          "p_value": 0.9744494285648735,
+          "probability": null,
+          "n": {
+            "psa": 258,
+            "ad": 5694
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.15503875968992248,
+          "treatment_value": 0.15577801194239552,
+          "rel_lift": 0.004768177028451115,
+          "rel_ci_low": -0.2878304070337595,
+          "rel_ci_high": 0.29736676109066174,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": false,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.9744494285648735,
+          "segment": "201+",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 40"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Not significant after correction: inconclusive (relative lift CI [\u221228.8%, +29.7%]), not evidence of no effect.",
+            "Covariate balance WARN: the PSA share in this level is 4.3% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 0.03202836742398456,
+            "se": 0.023040294030394724,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.15503875968992248,
+                "ci_low": 0.1108739081859588,
+                "ci_high": 0.19920361119388616,
+                "se": 0.02253350156040131,
+                "n": 258
+              },
+              "ad": {
+                "mean": 0.15577801194239552,
+                "ci_low": 0.14635866555865762,
+                "ci_high": 0.16519735832613341,
+                "se": 0.004805877280417652,
+                "n": 5694
+              }
+            },
+            "segment_col": "total ads bucket",
+            "share": 0.010120710558220442,
+            "psa_share": 0.04334677419354839,
+            "p_value_adjusted_across_both_families": 0.9744494285648735
+          },
+          "abs_lift": 0.0007392522524730383
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.007377317959276264,
+          "ci_low": 0.0033155744336776415,
+          "ci_high": 0.011439061484874887,
+          "p_value": 0.0017842612318200968,
+          "probability": null,
+          "n": {
+            "psa": 5235,
+            "ad": 125541
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.02177650429799427,
+          "treatment_value": 0.029153822257270534,
+          "rel_lift": 0.33877420628781785,
+          "rel_ci_low": 0.09198112576951795,
+          "rel_ci_high": 0.5855672868061177,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.004163276207580226,
+          "segment": "21-50",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 114"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Covariate balance WARN: the PSA share in this level is 4.0% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 3.1239741635057503,
+            "se": 0.002072356205337005,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.02177650429799427,
+                "ci_low": 0.017822811918914393,
+                "ci_high": 0.025730196677074147,
+                "se": 0.0020172270563470034,
+                "n": 5235
+              },
+              "ad": {
+                "mean": 0.029153822257270534,
+                "ci_low": 0.02822318965556993,
+                "ci_high": 0.030084454858971137,
+                "se": 0.00047482127684044873,
+                "n": 125541
+              }
+            },
+            "segment_col": "total ads bucket",
+            "share": 0.22236996706348058,
+            "psa_share": 0.04003028078546522,
+            "p_value_adjusted_across_both_families": 0.004163276207580226
+          },
+          "abs_lift": 0.007377317959276264
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.058566476616611685,
+          "ci_low": 0.047532876396869074,
+          "ci_high": 0.0696000768363543,
+          "p_value": 7.685121801800642e-15,
+          "probability": null,
+          "n": {
+            "psa": 1853,
+            "ad": 44149
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.05774419859686994,
+          "treatment_value": 0.11631067521348162,
+          "rel_lift": 1.0142400109400138,
+          "rel_ci_low": 0.6401686666747328,
+          "rel_ci_high": 1.3883113552052948,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 5.37958526126045e-14,
+          "segment": "51-100",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 107"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Covariate balance WARN: the PSA share in this level is 4.0% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 7.772665955151516,
+            "se": 0.005629491310439499,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.05774419859686994,
+                "ci_low": 0.047123600599588554,
+                "ci_high": 0.06836479659415132,
+                "se": 0.005418772018799991,
+                "n": 1853
+              },
+              "ad": {
+                "mean": 0.11631067521348162,
+                "ci_low": 0.11332015151532324,
+                "ci_high": 0.11930119891164001,
+                "se": 0.0015258054340524891,
+                "n": 44149
+              }
+            },
+            "segment_col": "total ads bucket",
+            "share": 0.07822125791318157,
+            "psa_share": 0.04028085735402809,
+            "p_value_adjusted_across_both_families": 1.07591705225209e-13
+          },
+          "abs_lift": 0.058566476616611685
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": -0.001881905436940303,
+          "ci_low": -0.004667273828148946,
+          "ci_high": 0.0009034629542683395,
+          "p_value": 0.12419319499798843,
+          "probability": null,
+          "n": {
+            "psa": 3415,
+            "ad": 79537
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.006734992679355783,
+          "treatment_value": 0.00485308724241548,
+          "rel_lift": -0.2794220463978755,
+          "rel_ci_low": -0.5815485661220279,
+          "rel_ci_high": 0.02270447332627684,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": false,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.21733809124647976,
+          "segment": "6-10",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 23"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Not significant after correction: inconclusive (relative lift CI [\u221258.2%, +2.3%]), not evidence of no effect.",
+            "Covariate balance WARN: the PSA share in this level is 4.1% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": -1.5374089543024458,
+            "se": 0.0014211324356872236,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.006734992679355783,
+                "ci_low": 0.003991815439406235,
+                "ci_high": 0.009478169919305331,
+                "se": 0.00139960594255169,
+                "n": 3415
+              },
+              "ad": {
+                "mean": 0.00485308724241548,
+                "ci_low": 0.004370121710553214,
+                "ci_high": 0.005336052774277746,
+                "se": 0.0002464155135869008,
+                "n": 79537
+              }
+            },
+            "segment_col": "total ads bucket",
+            "share": 0.1410506018524029,
+            "psa_share": 0.04116838653679236,
+            "p_value_adjusted_across_both_families": 0.19318941444131532
+          },
+          "abs_lift": -0.001881905436940303
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.006162032549430728,
+          "ci_low": 0.0020208667547845028,
+          "ci_high": 0.010303198344076954,
+          "p_value": 0.011568879769484048,
+          "probability": null,
+          "n": {
+            "psa": 3803,
+            "ad": 88805
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.01630291874835656,
+          "treatment_value": 0.022464951297787288,
+          "rel_lift": 0.3779711255723397,
+          "rel_ci_low": 0.032566819223540544,
+          "rel_ci_high": 0.7233754319211388,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.01619643167727767,
+          "segment": "Friday",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 62"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Covariate balance WARN: the PSA share in this level is 4.1% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 2.5250288313267313,
+            "se": 0.002112878515784582,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.01630291874835656,
+                "ci_low": 0.012278081702194884,
+                "ci_high": 0.02032775579451824,
+                "se": 0.002053526022880562,
+                "n": 3803
+              },
+              "ad": {
+                "mean": 0.022464951297787288,
+                "ci_low": 0.021490302186264354,
+                "ci_high": 0.023439600409310223,
+                "se": 0.0004972790924786596,
+                "n": 88805
+              }
+            },
+            "segment_col": "most ads day",
+            "share": 0.15746955029833312,
+            "psa_share": 0.041065566689702834,
+            "p_value_adjusted_across_both_families": 0.020245539596597084
+          },
+          "abs_lift": 0.006162032549430728
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.01068265813039988,
+          "ci_low": 0.005616676263825808,
+          "ci_high": 0.01574863999697395,
+          "p_value": 0.0005078177944585106,
+          "probability": null,
+          "n": {
+            "psa": 3502,
+            "ad": 83571
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.022558537978298116,
+          "treatment_value": 0.033241196108697996,
+          "rel_lift": 0.4735527692741819,
+          "rel_ci_low": 0.14781435111468444,
+          "rel_ci_high": 0.7992911874336793,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.0011849081870698582,
+          "segment": "Monday",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 79"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Covariate balance WARN: the PSA share in this level is 4.0% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 3.476598426616245,
+            "se": 0.0025847321208623685,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.022558537978298116,
+                "ci_low": 0.017640511375500354,
+                "ci_high": 0.027476564581095878,
+                "se": 0.0025092433542608585,
+                "n": 3502
+              },
+              "ad": {
+                "mean": 0.033241196108697996,
+                "ci_low": 0.032025800450226724,
+                "ci_high": 0.03445659176716927,
+                "se": 0.0006201112204398438,
+                "n": 83571
+              }
+            },
+            "segment_col": "most ads day",
+            "share": 0.1480579016189396,
+            "psa_share": 0.040219126480079935,
+            "p_value_adjusted_across_both_families": 0.0014218898244838297
+          },
+          "abs_lift": 0.01068265813039988
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.007310764563580343,
+          "ci_low": 0.0028875191794317853,
+          "ci_high": 0.0117340099477289,
+          "p_value": 0.007483817945982677,
+          "probability": null,
+          "n": {
+            "psa": 2858,
+            "ad": 78802
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.013995801259622114,
+          "treatment_value": 0.021306565823202457,
+          "rel_lift": 0.5223541280678154,
+          "rel_ci_low": 0.04838692712533976,
+          "rel_ci_high": 0.9963213290102911,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.013096681405469686,
+          "segment": "Saturday",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 40"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Covariate balance WARN: the PSA share in this level is 3.5% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 2.6745116343814472,
+            "se": 0.0022567993182724547,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.013995801259622114,
+                "ci_low": 0.009688995904486785,
+                "ci_high": 0.018302606614757445,
+                "se": 0.0021973900485452082,
+                "n": 2858
+              },
+              "ad": {
+                "mean": 0.021306565823202457,
+                "ci_low": 0.020298336007451515,
+                "ci_high": 0.0223147956389534,
+                "se": 0.0005144124196687953,
+                "n": 78802
+              }
+            },
+            "segment_col": "most ads day",
+            "share": 0.13885370029977845,
+            "psa_share": 0.03499877541023757,
+            "p_value_adjusted_across_both_families": 0.014967635891965354
+          },
+          "abs_lift": 0.007310764563580343
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.004024866225054536,
+          "ci_low": -0.00111816027390712,
+          "ci_high": 0.009167892724016191,
+          "p_value": 0.15718612711179608,
+          "probability": null,
+          "n": {
+            "psa": 3059,
+            "ad": 82332
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.020594965675057208,
+          "treatment_value": 0.024619831900111744,
+          "rel_lift": 0.1954296155943147,
+          "rel_ci_low": -0.10119170295710284,
+          "rel_ci_high": 0.49205093414573225,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": false,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.1833838149637621,
+          "segment": "Sunday",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 63"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Not significant after correction: inconclusive (relative lift CI [\u221210.1%, +49.2%]), not evidence of no effect.",
+            "Covariate balance WARN: the PSA share in this level is 3.6% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 1.414598915003933,
+            "se": 0.0026240413290903267,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.020594965675057208,
+                "ci_low": 0.015562045355298015,
+                "ci_high": 0.0256278859948164,
+                "se": 0.0025678636747706726,
+                "n": 3059
+              },
+              "ad": {
+                "mean": 0.024619831900111744,
+                "ci_low": 0.023561326055075067,
+                "ci_high": 0.02567833774514842,
+                "se": 0.0005400639263711154,
+                "n": 82332
+              }
+            },
+            "segment_col": "most ads day",
+            "share": 0.1451978486688511,
+            "psa_share": 0.035823447435912446,
+            "p_value_adjusted_across_both_families": 0.2200605779565145
+          },
+          "abs_lift": 0.004024866225054536
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.0014066647336733323,
+          "ci_low": -0.0031240126439268465,
+          "ci_high": 0.005937342111273511,
+          "p_value": 0.5547505660901227,
+          "probability": null,
+          "n": {
+            "psa": 3905,
+            "ad": 79077
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.020230473751600513,
+          "treatment_value": 0.021637138485273846,
+          "rel_lift": 0.06953197196195404,
+          "rel_ci_low": -0.16923707820539471,
+          "rel_ci_high": 0.30830102212930277,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": false,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.5547505660901227,
+          "segment": "Thursday",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 79"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Not significant after correction: inconclusive (relative lift CI [\u221216.9%, +30.8%]), not evidence of no effect.",
+            "Covariate balance WARN: the PSA share in this level is 4.7% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 0.5906565503551111,
+            "se": 0.002311612567035713,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.020230473751600513,
+                "ci_low": 0.01581474322682294,
+                "ci_high": 0.024646204276378085,
+                "se": 0.0022529651358944806,
+                "n": 3905
+              },
+              "ad": {
+                "mean": 0.021637138485273846,
+                "ci_low": 0.020623056914370583,
+                "ci_high": 0.022651220056177108,
+                "se": 0.0005173980638941378,
+                "n": 79077
+              }
+            },
+            "segment_col": "most ads day",
+            "share": 0.14110161349836167,
+            "psa_share": 0.04705839820684004,
+            "p_value_adjusted_across_both_families": 0.7060461750237926
+          },
+          "abs_lift": 0.0014066647336733323
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.015992495350280182,
+          "ci_low": 0.011482873585194644,
+          "ci_high": 0.02050211711536572,
+          "p_value": 6.634401416844151e-07,
+          "probability": null,
+          "n": {
+            "psa": 2907,
+            "ad": 74572
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.014447884416924664,
+          "treatment_value": 0.03044037976720485,
+          "rel_lift": 1.1069091424586786,
+          "rel_ci_low": 0.46860741920622917,
+          "rel_ci_high": 1.7452108657111278,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 4.644080991790906e-06,
+          "segment": "Tuesday",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 42"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Covariate balance WARN: the PSA share in this level is 3.8% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 4.971771085345341,
+            "se": 0.0023008697101869523,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.014447884416924664,
+                "ci_low": 0.010110104619953424,
+                "ci_high": 0.018785664213895905,
+                "se": 0.0022131936255906197,
+                "n": 2907
+              },
+              "ad": {
+                "mean": 0.03044037976720485,
+                "ci_low": 0.02920735304522298,
+                "ci_high": 0.03167340648918672,
+                "se": 0.000629106826302844,
+                "n": 74572
+              }
+            },
+            "segment_col": "most ads day",
+            "share": 0.1317443772413242,
+            "psa_share": 0.037519844086784805,
+            "p_value_adjusted_across_both_families": 3.096053994527271e-06
+          },
+          "abs_lift": 0.015992495350280182
+        },
+        {
+          "method": "frequentist.two_proportion_ztest",
+          "estimate": 0.00959654807330666,
+          "ci_low": 0.005318788261552895,
+          "ci_high": 0.013874307885060423,
+          "p_value": 0.00037641329196217593,
+          "probability": null,
+          "n": {
+            "psa": 3490,
+            "ad": 77418
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": "psa",
+          "treatment": "ad",
+          "control_value": 0.015759312320916905,
+          "treatment_value": 0.025355860394223564,
+          "rel_lift": 0.608944595924368,
+          "rel_ci_low": 0.18128205505735984,
+          "rel_ci_high": 1.036607136791376,
+          "alpha": 0.05,
+          "sidedness": "two-sided",
+          "significant": true,
+          "correction": "benjamini-hochberg",
+          "p_value_adjusted": 0.0011849081870698582,
+          "segment": "Wednesday",
+          "assumptions": [
+            {
+              "check": "independent units (one row per randomisation unit)",
+              "passed": true,
+              "detail": "validation duplicates check: 588,101 units, one row each"
+            },
+            {
+              "check": "normal approximation: >= 10 successes and failures per group",
+              "passed": true,
+              "detail": "min cell = 55"
+            }
+          ],
+          "notes": [
+            "exploratory: measured during the test",
+            "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+            "Covariate balance WARN: the PSA share in this level is 4.3% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+            "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+          ],
+          "extra": {
+            "z": 3.5560913148190316,
+            "se": 0.002182570621448245,
+            "variant_stats": {
+              "psa": {
+                "mean": 0.015759312320916905,
+                "ci_low": 0.011627366046015742,
+                "ci_high": 0.01989125859581807,
+                "se": 0.002108174592744269,
+                "n": 3490
+              },
+              "ad": {
+                "mean": 0.025355860394223564,
+                "ci_low": 0.02424849912147379,
+                "ci_high": 0.02646322166697334,
+                "se": 0.0005649906230341465,
+                "n": 77418
+              }
+            },
+            "segment_col": "most ads day",
+            "share": 0.1375750083744119,
+            "psa_share": 0.043135413061749145,
+            "p_value_adjusted_across_both_families": 0.0013174465218676159
+          },
+          "abs_lift": 0.00959654807330666
+        },
+        {
+          "method": "segments.interaction_test",
+          "estimate": 157.9613264626283,
+          "ci_low": null,
+          "ci_high": null,
+          "p_value": 1.6000799167755085e-31,
+          "probability": null,
+          "n": {
+            "rows": 588101,
+            "levels": 7
+          },
+          "metric": "converted",
+          "role": "segment",
+          "control": null,
+          "treatment": null,
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.05,
+          "sidedness": null,
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": "total ads bucket",
+          "assumptions": [],
+          "notes": [
+            "exploratory: measured during the test",
+            "Tests heterogeneity of the absolute effect; evidence that the effect differs by segment.",
+            "estimate holds the Wald chi-square statistic, not a lift: do not plot it as an effect.",
+            "Linear probability model with HC1 SEs; a significant result means the absolute lift differs across exposure buckets, which can reflect who ends up seeing many ads, not a dose-response effect."
+          ],
+          "extra": {
+            "df": 6,
+            "interaction_terms": {
+              "_t:C(_s)[T.101-200]": 0.07067593725778036,
+              "_t:C(_s)[T.11-20]": 0.0004934833547852083,
+              "_t:C(_s)[T.201+]": 0.0010255520968184056,
+              "_t:C(_s)[T.21-50]": 0.0076636178035790715,
+              "_t:C(_s)[T.51-100]": 0.058852776460860116,
+              "_t:C(_s)[T.6-10]": -0.0015956055926625004
+            }
+          },
+          "abs_lift": 157.9613264626283
+        },
+        {
+          "method": "segments.simpsons_check",
+          "estimate": 0.007970149279159084,
+          "ci_low": null,
+          "ci_high": null,
+          "p_value": null,
+          "probability": null,
+          "n": {},
+          "metric": "converted",
+          "role": "segment",
+          "control": null,
+          "treatment": null,
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": null,
+          "sidedness": null,
+          "significant": false,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": "total ads bucket",
+          "assumptions": [],
+          "notes": [
+            "exploratory: measured during the test",
+            "Pooled and segment-standardised effects agree in direction.",
+            "Diagnostic only: the bucket is post-treatment, so the standardised difference is not a causal estimate."
+          ],
+          "extra": {
+            "pooled_diff": 0.007692453192201517,
+            "standardised_diff": 0.007970149279159084,
+            "segment_diffs": {
+              "1-5": -0.00028629984429228957,
+              "101-200": 0.07038963741351505,
+              "11-20": 0.000207183510502678,
+              "201+": 0.0007392522524730383,
+              "21-50": 0.007377317959276264,
+              "51-100": 0.058566476616611685,
+              "6-10": -0.001881905436940303
+            },
+            "max_mix_gap": 0.04203824028329958,
+            "flagged": false
+          },
+          "abs_lift": 0.007970149279159084
+        }
+      ],
+      "data": {
+        "exploratory": true,
+        "label": "Exploratory, non-causal: exposure variables are measured during the test",
+        "bucket_definition": {
+          "column": "total ads",
+          "edges": [
+            0,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            null
+          ],
+          "labels": [
+            "1-5",
+            "6-10",
+            "11-20",
+            "21-50",
+            "51-100",
+            "101-200",
+            "201+"
+          ]
+        },
+        "segment_order": {
+          "total ads bucket": [
+            "All",
+            "1-5",
+            "6-10",
+            "11-20",
+            "21-50",
+            "51-100",
+            "101-200",
+            "201+"
+          ],
+          "most ads day": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ]
+        },
+        "segment_forest": {
+          "total ads bucket": [
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.007692453192201517,
+              "ci_low": 0.0059509324316110055,
+              "ci_high": 0.00943397395279203,
+              "p_value": 1.7052807161559727e-13,
+              "probability": null,
+              "n": {
+                "psa": 23524,
+                "ad": 564577
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.01785410644448223,
+              "treatment_value": 0.025546559636683747,
+              "rel_lift": 0.4308506402222583,
+              "rel_ci_low": 0.29329111690574633,
+              "rel_ci_high": 0.5684101635387702,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": true,
+              "correction": "none",
+              "p_value_adjusted": null,
+              "segment": "All",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 420"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test"
+              ],
+              "extra": {
+                "z": 7.3700781265454145,
+                "se": 0.0008885473275669376,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.01785410644448223,
+                    "ci_low": 0.016161914715211324,
+                    "ci_high": 0.019546298173753137,
+                    "se": 0.0008633789919706178,
+                    "n": 23524
+                  },
+                  "ad": {
+                    "mean": 0.025546559636683747,
+                    "ci_low": 0.0251349995427061,
+                    "ci_high": 0.025958119730661394,
+                    "se": 0.00020998349828057106,
+                    "n": 564577
+                  }
+                },
+                "segment_col": null
+              },
+              "abs_lift": 0.007692453192201517
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": -0.00028629984429228957,
+              "ci_low": -0.0014781162438385698,
+              "ci_high": 0.0009055165552539907,
+              "p_value": 0.620956767148844,
+              "probability": null,
+              "n": {
+                "psa": 7861,
+                "ad": 169962
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.0027986261289912225,
+              "treatment_value": 0.002512326284698933,
+              "rel_lift": -0.10230013981734942,
+              "rel_ci_low": -0.486424305436542,
+              "rel_ci_high": 0.2818240258018432,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": false,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.8693394740083815,
+              "segment": "1-5",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 22"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Not significant after correction: inconclusive (relative lift CI [\u221248.6%, +28.2%]), not evidence of no effect.",
+                "Covariate balance WARN: the PSA share in this level is 4.4% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": -0.4944948151779166,
+                "se": 0.0006080807652320022,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.0027986261289912225,
+                    "ci_low": 0.0016308137642165586,
+                    "ci_high": 0.003966438493765887,
+                    "se": 0.0005958335836710362,
+                    "n": 7861
+                  },
+                  "ad": {
+                    "mean": 0.002512326284698933,
+                    "ci_low": 0.0022743334047489933,
+                    "ci_high": 0.0027503191646488724,
+                    "se": 0.00012142717000271273,
+                    "n": 169962
+                  }
+                },
+                "segment_col": "total ads bucket",
+                "share": 0.3023681306442261,
+                "psa_share": 0.04420687987493181,
+                "p_value_adjusted_across_both_families": 0.7244495616736514
+              },
+              "abs_lift": -0.00028629984429228957
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": -0.001881905436940303,
+              "ci_low": -0.004667273828148946,
+              "ci_high": 0.0009034629542683395,
+              "p_value": 0.12419319499798843,
+              "probability": null,
+              "n": {
+                "psa": 3415,
+                "ad": 79537
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.006734992679355783,
+              "treatment_value": 0.00485308724241548,
+              "rel_lift": -0.2794220463978755,
+              "rel_ci_low": -0.5815485661220279,
+              "rel_ci_high": 0.02270447332627684,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": false,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.21733809124647976,
+              "segment": "6-10",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 23"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Not significant after correction: inconclusive (relative lift CI [\u221258.2%, +2.3%]), not evidence of no effect.",
+                "Covariate balance WARN: the PSA share in this level is 4.1% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": -1.5374089543024458,
+                "se": 0.0014211324356872236,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.006734992679355783,
+                    "ci_low": 0.003991815439406235,
+                    "ci_high": 0.009478169919305331,
+                    "se": 0.00139960594255169,
+                    "n": 3415
+                  },
+                  "ad": {
+                    "mean": 0.00485308724241548,
+                    "ci_low": 0.004370121710553214,
+                    "ci_high": 0.005336052774277746,
+                    "se": 0.0002464155135869008,
+                    "n": 79537
+                  }
+                },
+                "segment_col": "total ads bucket",
+                "share": 0.1410506018524029,
+                "psa_share": 0.04116838653679236,
+                "p_value_adjusted_across_both_families": 0.19318941444131532
+              },
+              "abs_lift": -0.001881905436940303
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.000207183510502678,
+              "ci_low": -0.002582254367535153,
+              "ci_high": 0.002996621388540509,
+              "p_value": 0.8855799025922955,
+              "probability": null,
+              "n": {
+                "psa": 4150,
+                "ad": 123334
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.00819277108433735,
+              "treatment_value": 0.008399954594840027,
+              "rel_lift": 0.025288575546650316,
+              "rel_ci_low": -0.3235134153548003,
+              "rel_ci_high": 0.37409056644810096,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": false,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.9744494285648735,
+              "segment": "11-20",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 34"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Not significant after correction: inconclusive (relative lift CI [\u221232.4%, +37.4%]), not evidence of no effect.",
+                "Covariate balance WARN: the PSA share in this level is 3.3% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 0.1438994087319902,
+                "se": 0.0014232087426302529,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.00819277108433735,
+                    "ci_low": 0.005450230345289452,
+                    "ci_high": 0.010935311823385247,
+                    "se": 0.0013992811912263232,
+                    "n": 4150
+                  },
+                  "ad": {
+                    "mean": 0.008399954594840027,
+                    "ci_low": 0.00789060798388163,
+                    "ci_high": 0.008909301205798425,
+                    "se": 0.00025987549514994103,
+                    "n": 123334
+                  }
+                },
+                "segment_col": "total ads bucket",
+                "share": 0.21677228911360463,
+                "psa_share": 0.03255310470333532,
+                "p_value_adjusted_across_both_families": 0.9537014335609335
+              },
+              "abs_lift": 0.000207183510502678
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.007377317959276264,
+              "ci_low": 0.0033155744336776415,
+              "ci_high": 0.011439061484874887,
+              "p_value": 0.0017842612318200968,
+              "probability": null,
+              "n": {
+                "psa": 5235,
+                "ad": 125541
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.02177650429799427,
+              "treatment_value": 0.029153822257270534,
+              "rel_lift": 0.33877420628781785,
+              "rel_ci_low": 0.09198112576951795,
+              "rel_ci_high": 0.5855672868061177,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": true,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.004163276207580226,
+              "segment": "21-50",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 114"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Covariate balance WARN: the PSA share in this level is 4.0% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 3.1239741635057503,
+                "se": 0.002072356205337005,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.02177650429799427,
+                    "ci_low": 0.017822811918914393,
+                    "ci_high": 0.025730196677074147,
+                    "se": 0.0020172270563470034,
+                    "n": 5235
+                  },
+                  "ad": {
+                    "mean": 0.029153822257270534,
+                    "ci_low": 0.02822318965556993,
+                    "ci_high": 0.030084454858971137,
+                    "se": 0.00047482127684044873,
+                    "n": 125541
+                  }
+                },
+                "segment_col": "total ads bucket",
+                "share": 0.22236996706348058,
+                "psa_share": 0.04003028078546522,
+                "p_value_adjusted_across_both_families": 0.004163276207580226
+              },
+              "abs_lift": 0.007377317959276264
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.058566476616611685,
+              "ci_low": 0.047532876396869074,
+              "ci_high": 0.0696000768363543,
+              "p_value": 7.685121801800642e-15,
+              "probability": null,
+              "n": {
+                "psa": 1853,
+                "ad": 44149
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.05774419859686994,
+              "treatment_value": 0.11631067521348162,
+              "rel_lift": 1.0142400109400138,
+              "rel_ci_low": 0.6401686666747328,
+              "rel_ci_high": 1.3883113552052948,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": true,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 5.37958526126045e-14,
+              "segment": "51-100",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 107"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Covariate balance WARN: the PSA share in this level is 4.0% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 7.772665955151516,
+                "se": 0.005629491310439499,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.05774419859686994,
+                    "ci_low": 0.047123600599588554,
+                    "ci_high": 0.06836479659415132,
+                    "se": 0.005418772018799991,
+                    "n": 1853
+                  },
+                  "ad": {
+                    "mean": 0.11631067521348162,
+                    "ci_low": 0.11332015151532324,
+                    "ci_high": 0.11930119891164001,
+                    "se": 0.0015258054340524891,
+                    "n": 44149
+                  }
+                },
+                "segment_col": "total ads bucket",
+                "share": 0.07822125791318157,
+                "psa_share": 0.04028085735402809,
+                "p_value_adjusted_across_both_families": 1.07591705225209e-13
+              },
+              "abs_lift": 0.058566476616611685
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.07038963741351505,
+              "ci_low": 0.04759059793313366,
+              "ci_high": 0.09318867689389643,
+              "p_value": 6.290486575869424e-07,
+              "probability": null,
+              "n": {
+                "psa": 752,
+                "ad": 16360
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.10638297872340426,
+              "treatment_value": 0.1767726161369193,
+              "rel_lift": 0.6616625916870413,
+              "rel_ci_low": 0.31309580122532016,
+              "rel_ci_high": 1.0102293821487625,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": true,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 2.2016703015542985e-06,
+              "segment": "101-200",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 80"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Covariate balance WARN: the PSA share in this level is 4.4% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 4.982078618907174,
+                "se": 0.011632376747847053,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.10638297872340426,
+                    "ci_low": 0.08434605542024605,
+                    "ci_high": 0.12841990202656248,
+                    "se": 0.011243534818487815,
+                    "n": 752
+                  },
+                  "ad": {
+                    "mean": 0.1767726161369193,
+                    "ci_low": 0.17092708685731497,
+                    "ci_high": 0.18261814541652363,
+                    "se": 0.0029824677013012115,
+                    "n": 16360
+                  }
+                },
+                "segment_col": "total ads bucket",
+                "share": 0.02909704285488377,
+                "psa_share": 0.04394576905095839,
+                "p_value_adjusted_across_both_families": 3.096053994527271e-06
+              },
+              "abs_lift": 0.07038963741351505
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.0007392522524730383,
+              "ci_low": -0.044418894240313825,
+              "ci_high": 0.0458973987452599,
+              "p_value": 0.9744494285648735,
+              "probability": null,
+              "n": {
+                "psa": 258,
+                "ad": 5694
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.15503875968992248,
+              "treatment_value": 0.15577801194239552,
+              "rel_lift": 0.004768177028451115,
+              "rel_ci_low": -0.2878304070337595,
+              "rel_ci_high": 0.29736676109066174,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": false,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.9744494285648735,
+              "segment": "201+",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 40"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Not significant after correction: inconclusive (relative lift CI [\u221228.8%, +29.7%]), not evidence of no effect.",
+                "Covariate balance WARN: the PSA share in this level is 4.3% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `total ads bucket` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 0.03202836742398456,
+                "se": 0.023040294030394724,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.15503875968992248,
+                    "ci_low": 0.1108739081859588,
+                    "ci_high": 0.19920361119388616,
+                    "se": 0.02253350156040131,
+                    "n": 258
+                  },
+                  "ad": {
+                    "mean": 0.15577801194239552,
+                    "ci_low": 0.14635866555865762,
+                    "ci_high": 0.16519735832613341,
+                    "se": 0.004805877280417652,
+                    "n": 5694
+                  }
+                },
+                "segment_col": "total ads bucket",
+                "share": 0.010120710558220442,
+                "psa_share": 0.04334677419354839,
+                "p_value_adjusted_across_both_families": 0.9744494285648735
+              },
+              "abs_lift": 0.0007392522524730383
+            }
+          ],
+          "most ads day": [
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.01068265813039988,
+              "ci_low": 0.005616676263825808,
+              "ci_high": 0.01574863999697395,
+              "p_value": 0.0005078177944585106,
+              "probability": null,
+              "n": {
+                "psa": 3502,
+                "ad": 83571
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.022558537978298116,
+              "treatment_value": 0.033241196108697996,
+              "rel_lift": 0.4735527692741819,
+              "rel_ci_low": 0.14781435111468444,
+              "rel_ci_high": 0.7992911874336793,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": true,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.0011849081870698582,
+              "segment": "Monday",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 79"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Covariate balance WARN: the PSA share in this level is 4.0% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 3.476598426616245,
+                "se": 0.0025847321208623685,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.022558537978298116,
+                    "ci_low": 0.017640511375500354,
+                    "ci_high": 0.027476564581095878,
+                    "se": 0.0025092433542608585,
+                    "n": 3502
+                  },
+                  "ad": {
+                    "mean": 0.033241196108697996,
+                    "ci_low": 0.032025800450226724,
+                    "ci_high": 0.03445659176716927,
+                    "se": 0.0006201112204398438,
+                    "n": 83571
+                  }
+                },
+                "segment_col": "most ads day",
+                "share": 0.1480579016189396,
+                "psa_share": 0.040219126480079935,
+                "p_value_adjusted_across_both_families": 0.0014218898244838297
+              },
+              "abs_lift": 0.01068265813039988
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.015992495350280182,
+              "ci_low": 0.011482873585194644,
+              "ci_high": 0.02050211711536572,
+              "p_value": 6.634401416844151e-07,
+              "probability": null,
+              "n": {
+                "psa": 2907,
+                "ad": 74572
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.014447884416924664,
+              "treatment_value": 0.03044037976720485,
+              "rel_lift": 1.1069091424586786,
+              "rel_ci_low": 0.46860741920622917,
+              "rel_ci_high": 1.7452108657111278,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": true,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 4.644080991790906e-06,
+              "segment": "Tuesday",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 42"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Covariate balance WARN: the PSA share in this level is 3.8% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 4.971771085345341,
+                "se": 0.0023008697101869523,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.014447884416924664,
+                    "ci_low": 0.010110104619953424,
+                    "ci_high": 0.018785664213895905,
+                    "se": 0.0022131936255906197,
+                    "n": 2907
+                  },
+                  "ad": {
+                    "mean": 0.03044037976720485,
+                    "ci_low": 0.02920735304522298,
+                    "ci_high": 0.03167340648918672,
+                    "se": 0.000629106826302844,
+                    "n": 74572
+                  }
+                },
+                "segment_col": "most ads day",
+                "share": 0.1317443772413242,
+                "psa_share": 0.037519844086784805,
+                "p_value_adjusted_across_both_families": 3.096053994527271e-06
+              },
+              "abs_lift": 0.015992495350280182
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.00959654807330666,
+              "ci_low": 0.005318788261552895,
+              "ci_high": 0.013874307885060423,
+              "p_value": 0.00037641329196217593,
+              "probability": null,
+              "n": {
+                "psa": 3490,
+                "ad": 77418
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.015759312320916905,
+              "treatment_value": 0.025355860394223564,
+              "rel_lift": 0.608944595924368,
+              "rel_ci_low": 0.18128205505735984,
+              "rel_ci_high": 1.036607136791376,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": true,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.0011849081870698582,
+              "segment": "Wednesday",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 55"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Covariate balance WARN: the PSA share in this level is 4.3% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 3.5560913148190316,
+                "se": 0.002182570621448245,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.015759312320916905,
+                    "ci_low": 0.011627366046015742,
+                    "ci_high": 0.01989125859581807,
+                    "se": 0.002108174592744269,
+                    "n": 3490
+                  },
+                  "ad": {
+                    "mean": 0.025355860394223564,
+                    "ci_low": 0.02424849912147379,
+                    "ci_high": 0.02646322166697334,
+                    "se": 0.0005649906230341465,
+                    "n": 77418
+                  }
+                },
+                "segment_col": "most ads day",
+                "share": 0.1375750083744119,
+                "psa_share": 0.043135413061749145,
+                "p_value_adjusted_across_both_families": 0.0013174465218676159
+              },
+              "abs_lift": 0.00959654807330666
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.0014066647336733323,
+              "ci_low": -0.0031240126439268465,
+              "ci_high": 0.005937342111273511,
+              "p_value": 0.5547505660901227,
+              "probability": null,
+              "n": {
+                "psa": 3905,
+                "ad": 79077
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.020230473751600513,
+              "treatment_value": 0.021637138485273846,
+              "rel_lift": 0.06953197196195404,
+              "rel_ci_low": -0.16923707820539471,
+              "rel_ci_high": 0.30830102212930277,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": false,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.5547505660901227,
+              "segment": "Thursday",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 79"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Not significant after correction: inconclusive (relative lift CI [\u221216.9%, +30.8%]), not evidence of no effect.",
+                "Covariate balance WARN: the PSA share in this level is 4.7% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 0.5906565503551111,
+                "se": 0.002311612567035713,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.020230473751600513,
+                    "ci_low": 0.01581474322682294,
+                    "ci_high": 0.024646204276378085,
+                    "se": 0.0022529651358944806,
+                    "n": 3905
+                  },
+                  "ad": {
+                    "mean": 0.021637138485273846,
+                    "ci_low": 0.020623056914370583,
+                    "ci_high": 0.022651220056177108,
+                    "se": 0.0005173980638941378,
+                    "n": 79077
+                  }
+                },
+                "segment_col": "most ads day",
+                "share": 0.14110161349836167,
+                "psa_share": 0.04705839820684004,
+                "p_value_adjusted_across_both_families": 0.7060461750237926
+              },
+              "abs_lift": 0.0014066647336733323
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.006162032549430728,
+              "ci_low": 0.0020208667547845028,
+              "ci_high": 0.010303198344076954,
+              "p_value": 0.011568879769484048,
+              "probability": null,
+              "n": {
+                "psa": 3803,
+                "ad": 88805
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.01630291874835656,
+              "treatment_value": 0.022464951297787288,
+              "rel_lift": 0.3779711255723397,
+              "rel_ci_low": 0.032566819223540544,
+              "rel_ci_high": 0.7233754319211388,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": true,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.01619643167727767,
+              "segment": "Friday",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 62"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Covariate balance WARN: the PSA share in this level is 4.1% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 2.5250288313267313,
+                "se": 0.002112878515784582,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.01630291874835656,
+                    "ci_low": 0.012278081702194884,
+                    "ci_high": 0.02032775579451824,
+                    "se": 0.002053526022880562,
+                    "n": 3803
+                  },
+                  "ad": {
+                    "mean": 0.022464951297787288,
+                    "ci_low": 0.021490302186264354,
+                    "ci_high": 0.023439600409310223,
+                    "se": 0.0004972790924786596,
+                    "n": 88805
+                  }
+                },
+                "segment_col": "most ads day",
+                "share": 0.15746955029833312,
+                "psa_share": 0.041065566689702834,
+                "p_value_adjusted_across_both_families": 0.020245539596597084
+              },
+              "abs_lift": 0.006162032549430728
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.007310764563580343,
+              "ci_low": 0.0028875191794317853,
+              "ci_high": 0.0117340099477289,
+              "p_value": 0.007483817945982677,
+              "probability": null,
+              "n": {
+                "psa": 2858,
+                "ad": 78802
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.013995801259622114,
+              "treatment_value": 0.021306565823202457,
+              "rel_lift": 0.5223541280678154,
+              "rel_ci_low": 0.04838692712533976,
+              "rel_ci_high": 0.9963213290102911,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": true,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.013096681405469686,
+              "segment": "Saturday",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 40"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Covariate balance WARN: the PSA share in this level is 3.5% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 2.6745116343814472,
+                "se": 0.0022567993182724547,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.013995801259622114,
+                    "ci_low": 0.009688995904486785,
+                    "ci_high": 0.018302606614757445,
+                    "se": 0.0021973900485452082,
+                    "n": 2858
+                  },
+                  "ad": {
+                    "mean": 0.021306565823202457,
+                    "ci_low": 0.020298336007451515,
+                    "ci_high": 0.0223147956389534,
+                    "se": 0.0005144124196687953,
+                    "n": 78802
+                  }
+                },
+                "segment_col": "most ads day",
+                "share": 0.13885370029977845,
+                "psa_share": 0.03499877541023757,
+                "p_value_adjusted_across_both_families": 0.014967635891965354
+              },
+              "abs_lift": 0.007310764563580343
+            },
+            {
+              "method": "frequentist.two_proportion_ztest",
+              "estimate": 0.004024866225054536,
+              "ci_low": -0.00111816027390712,
+              "ci_high": 0.009167892724016191,
+              "p_value": 0.15718612711179608,
+              "probability": null,
+              "n": {
+                "psa": 3059,
+                "ad": 82332
+              },
+              "metric": "converted",
+              "role": "segment",
+              "control": "psa",
+              "treatment": "ad",
+              "control_value": 0.020594965675057208,
+              "treatment_value": 0.024619831900111744,
+              "rel_lift": 0.1954296155943147,
+              "rel_ci_low": -0.10119170295710284,
+              "rel_ci_high": 0.49205093414573225,
+              "alpha": 0.05,
+              "sidedness": "two-sided",
+              "significant": false,
+              "correction": "benjamini-hochberg",
+              "p_value_adjusted": 0.1833838149637621,
+              "segment": "Sunday",
+              "assumptions": [
+                {
+                  "check": "independent units (one row per randomisation unit)",
+                  "passed": true,
+                  "detail": "validation duplicates check: 588,101 units, one row each"
+                },
+                {
+                  "check": "normal approximation: >= 10 successes and failures per group",
+                  "passed": true,
+                  "detail": "min cell = 63"
+                }
+              ],
+              "notes": [
+                "exploratory: measured during the test",
+                "benjamini-hochberg correction across 7 tests (alpha 0.05).",
+                "Not significant after correction: inconclusive (relative lift CI [\u221210.1%, +49.2%]), not evidence of no effect.",
+                "Covariate balance WARN: the PSA share in this level is 3.6% vs 4.0% overall (equal-share test across levels p < 0.001); groups within a level may not be comparable.",
+                "benjamini-hochberg correction within the `most ads day` family; not causal (post-treatment variable)."
+              ],
+              "extra": {
+                "z": 1.414598915003933,
+                "se": 0.0026240413290903267,
+                "variant_stats": {
+                  "psa": {
+                    "mean": 0.020594965675057208,
+                    "ci_low": 0.015562045355298015,
+                    "ci_high": 0.0256278859948164,
+                    "se": 0.0025678636747706726,
+                    "n": 3059
+                  },
+                  "ad": {
+                    "mean": 0.024619831900111744,
+                    "ci_low": 0.023561326055075067,
+                    "ci_high": 0.02567833774514842,
+                    "se": 0.0005400639263711154,
+                    "n": 82332
+                  }
+                },
+                "segment_col": "most ads day",
+                "share": 0.1451978486688511,
+                "psa_share": 0.035823447435912446,
+                "p_value_adjusted_across_both_families": 0.2200605779565145
+              },
+              "abs_lift": 0.004024866225054536
+            }
+          ]
+        },
+        "interaction_test": {
+          "total ads bucket": {
+            "method": "segments.interaction_test",
+            "estimate": 157.9613264626283,
+            "ci_low": null,
+            "ci_high": null,
+            "p_value": 1.6000799167755085e-31,
+            "probability": null,
+            "n": {
+              "rows": 588101,
+              "levels": 7
+            },
+            "metric": "converted",
+            "role": "segment",
+            "control": null,
+            "treatment": null,
+            "control_value": null,
+            "treatment_value": null,
+            "rel_lift": null,
+            "rel_ci_low": null,
+            "rel_ci_high": null,
+            "alpha": 0.05,
+            "sidedness": null,
+            "significant": true,
+            "correction": "none",
+            "p_value_adjusted": null,
+            "segment": "total ads bucket",
+            "assumptions": [],
+            "notes": [
+              "exploratory: measured during the test",
+              "Tests heterogeneity of the absolute effect; evidence that the effect differs by segment.",
+              "estimate holds the Wald chi-square statistic, not a lift: do not plot it as an effect.",
+              "Linear probability model with HC1 SEs; a significant result means the absolute lift differs across exposure buckets, which can reflect who ends up seeing many ads, not a dose-response effect."
+            ],
+            "extra": {
+              "df": 6,
+              "interaction_terms": {
+                "_t:C(_s)[T.101-200]": 0.07067593725778036,
+                "_t:C(_s)[T.11-20]": 0.0004934833547852083,
+                "_t:C(_s)[T.201+]": 0.0010255520968184056,
+                "_t:C(_s)[T.21-50]": 0.0076636178035790715,
+                "_t:C(_s)[T.51-100]": 0.058852776460860116,
+                "_t:C(_s)[T.6-10]": -0.0015956055926625004
+              }
+            },
+            "abs_lift": 157.9613264626283
+          }
+        },
+        "simpsons_check": {
+          "total ads bucket": {
+            "method": "segments.simpsons_check",
+            "estimate": 0.007970149279159084,
+            "ci_low": null,
+            "ci_high": null,
+            "p_value": null,
+            "probability": null,
+            "n": {},
+            "metric": "converted",
+            "role": "segment",
+            "control": null,
+            "treatment": null,
+            "control_value": null,
+            "treatment_value": null,
+            "rel_lift": null,
+            "rel_ci_low": null,
+            "rel_ci_high": null,
+            "alpha": null,
+            "sidedness": null,
+            "significant": false,
+            "correction": "none",
+            "p_value_adjusted": null,
+            "segment": "total ads bucket",
+            "assumptions": [],
+            "notes": [
+              "exploratory: measured during the test",
+              "Pooled and segment-standardised effects agree in direction.",
+              "Diagnostic only: the bucket is post-treatment, so the standardised difference is not a causal estimate."
+            ],
+            "extra": {
+              "pooled_diff": 0.007692453192201517,
+              "standardised_diff": 0.007970149279159084,
+              "segment_diffs": {
+                "1-5": -0.00028629984429228957,
+                "101-200": 0.07038963741351505,
+                "11-20": 0.000207183510502678,
+                "201+": 0.0007392522524730383,
+                "21-50": 0.007377317959276264,
+                "51-100": 0.058566476616611685,
+                "6-10": -0.001881905436940303
+              },
+              "max_mix_gap": 0.04203824028329958,
+              "flagged": false
+            },
+            "abs_lift": 0.007970149279159084
+          }
+        },
+        "psa_share_by_level": {
+          "total ads bucket": {
+            "1-5": 0.04420687987493181,
+            "101-200": 0.04394576905095839,
+            "11-20": 0.03255310470333532,
+            "201+": 0.04334677419354839,
+            "21-50": 0.04003028078546522,
+            "51-100": 0.04028085735402809,
+            "6-10": 0.04116838653679236
+          },
+          "most ads day": {
+            "Friday": 0.041065566689702834,
+            "Monday": 0.040219126480079935,
+            "Saturday": 0.03499877541023757,
+            "Sunday": 0.035823447435912446,
+            "Thursday": 0.04705839820684004,
+            "Tuesday": 0.037519844086784805,
+            "Wednesday": 0.043135413061749145
+          }
+        },
+        "psa_share_overall": 0.039999931984472055,
+        "covariate_balance_p": {
+          "most ads day": 4.849067664297987e-48,
+          "total ads bucket": 4.6800402122652745e-57
+        },
+        "skipped_levels_min_n": [],
+        "correction": {
+          "method": "benjamini-hochberg",
+          "family": "within each breakdown (bucket; day)"
+        }
+      }
+    }
+  },
+  "summary": {
+    "plain_english": "For every 1,000 users, about 7.7 more achieved conversion with the ad campaign than with the PSA. A difference this large is unlikely to be down to chance.",
+    "verdict": "ship",
+    "verdict_label": "Ship",
+    "verdict_color": "positive",
+    "reason": "The primary metric improved significantly and by more than the practical threshold.",
+    "headline": "The ad campaign raises conversion by 43.1% vs the PSA (statistically significant)",
+    "key_numbers": [
+      {
+        "label": "Relative lift in conversion",
+        "value": "+43.1% (95% CI [+29.3%, +56.8%])"
+      },
+      {
+        "label": "Evidence",
+        "value": "p < 0.001"
+      },
+      {
+        "label": "Conversion: the PSA vs the ad campaign",
+        "value": "1.79% vs 2.55%"
+      },
+      {
+        "label": "Units analysed",
+        "value": "psa: 23,524 / ad: 564,577"
+      },
+      {
+        "label": "Incremental conversions per 1,000 users",
+        "value": "7.7 (95% CI 6.0 to 9.4)"
+      },
+      {
+        "label": "P(ads beat PSA)",
+        "value": "> 99.9%"
+      }
+    ],
+    "caveats": [
+      "PSA ids form a separate block (900,000 to 923,523); assignment unconfirmed.",
+      "Split confirmed as 96/4 only after a 95/5 check failed.",
+      "Exposure breakdowns are exploratory, non-causal; 4 of 7 buckets inconclusive.",
+      "No dates: novelty or wear-off cannot be checked.",
+      "No guardrail metrics defined; verdict rests on conversion alone.",
+      "Money impact needs a value per conversion."
+    ],
+    "next_steps": [
+      "Keep ads running: about 7.7 extra conversions per 1,000 users (6.0 to 9.4).",
+      "Data owner: confirm random assignment to ads vs PSA before scaling spend.",
+      "Agree a value per conversion to price the 4,343 extra conversions.",
+      "Test ad frequency in a new randomised test before changing it.",
+      "Keep a small PSA holdout when scaling to track the lift."
+    ],
+    "primary": {
+      "step": "primary_test",
+      "index": 0
+    },
+    "mde_rel": 0.05,
+    "script": "code/20_analysis_summary.py",
+    "recorded_at": "2026-09-30T21:53:10+00:00"
+  },
+  "candidates_for_promotion": [
+    {
+      "name": "incremental_impact",
+      "file": "code/20_analysis_impact.py",
+      "description": "Translate a two-proportion comparison into incremental conversions per N users, total incremental conversions in the treated group and the attributable share of treated conversions, each with a CI (scaled Wald / delta method); validated by simulated CI coverage.",
+      "target_module": "abkit.decision"
+    }
+  ]
+}

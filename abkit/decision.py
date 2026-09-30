@@ -83,6 +83,7 @@ def build_summary(
     run_dir: str | Path, primary_step: str, script: str, guardrail_step: str | None = None, mde_rel: float | None = None,
     direction: str = "increase", caveats: Iterable[str] = (), next_steps: Iterable[str] = (), primary_index: int = 0,
     prob_threshold: float = 0.95, extra_key_numbers: Iterable[dict[str, str]] = (), metric_label: str | None = None,
+    treatment_label: str | None = None, control_label: str | None = None,
 ) -> dict[str, Any]:
     """Write ``summary`` into results.json from stored results and return it."""
     res = R.load_results(run_dir)
@@ -91,7 +92,8 @@ def build_summary(
     rec = recommend(p, gs, mde_rel, direction, prob_threshold)
     level = round((1 - (p.get("alpha") or 0.05)) * 100)
     metric = metric_label or p.get("metric") or "the primary metric"
-    tr, ct = p.get("treatment") or "Treatment", p.get("control") or "control"
+    tr = treatment_label or p.get("treatment") or "Treatment"
+    ct = control_label or p.get("control") or "control"
     rel = p.get("rel_lift")
     verb = "raises" if (rel or 0) > 0 else "lowers"
     if p.get("p_value") is not None:
@@ -116,7 +118,7 @@ def build_summary(
         key.append({"label": f"Guardrail {g.get('metric')}", "value": f"{st} ({R.fmt_pct(g.get('rel_lift'))})"})
     key.extend(extra_key_numbers)
     summary = {
-        "plain_english": plain_english(p, metric, mtype),
+        "plain_english": plain_english({**p, "treatment": tr, "control": ct}, metric, mtype),
         "verdict": rec["verdict"], "verdict_label": rec["label"], "verdict_color": rec["color"], "reason": rec["reason"],
         "headline": headline, "key_numbers": key, "caveats": [*rec["caveats"], *caveats], "next_steps": list(next_steps),
         "primary": {"step": primary_step, "index": primary_index}, "mde_rel": mde_rel,
@@ -131,7 +133,8 @@ def plain_english(p: dict[str, Any], metric: str, metric_type: str | None) -> st
     est = p.get("estimate") or 0.0
     if metric_type == "binary":
         per_k = abs(est) * 1000
-        first = (f"for every 1,000 users, about {per_k:,.0f} {'more' if est > 0 else 'fewer'} achieved {metric} "
+        per_k_txt = f"{per_k:,.1f}" if per_k < 10 else f"{per_k:,.0f}"
+        first = (f"for every 1,000 users, about {per_k_txt} {'more' if est > 0 else 'fewer'} achieved {metric} "
                  f"with {tr} than with {ct}.")
     else:
         first = f"average {metric} was {R.fmt_num(abs(est))} {'higher' if est > 0 else 'lower'} with {tr} than with {ct}."

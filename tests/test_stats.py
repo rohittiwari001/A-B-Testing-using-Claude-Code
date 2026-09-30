@@ -391,3 +391,16 @@ def test_recommend_guardrail_breach():
     g = {"metric": "revenue", "extra": {"status": "breach"}}
     assert decision.recommend(win, [g])["verdict"] == "iterate"
     assert decision.recommend({"rel_lift": 0.0, "p_value": 0.9, "significant": False}, [g])["verdict"] == "dont_ship"
+
+
+def test_blocked_summary_for_srm(tmp_root, demo_csvs):
+    from abkit import results, state
+
+    run = state.new_run("srm", "ctx", demo_csvs / "srm_broken.csv")
+    df = pd.read_csv(run / "data" / "srm_broken.csv")
+    spec = {"unit_col": "user_id", "variant_col": "variant", "control": "control", "date_col": "exposure_date",
+            "expected_split": {"control": 0.5, "treatment": 0.5}, "metrics": {"converted": "binary"}, "segments": ["platform"]}
+    results.set_validation(run, validation.full_profile(df, spec), "code/10_validate_profile.py")
+    s = decision.build_blocked_summary(run, "code/20_analysis_summary.py", next_steps=["Fix logging"])
+    assert s["verdict"] == "blocked" and "treatment has 7.1% fewer units" in s["headline"]
+    assert any("platform=Android" in k["value"] for k in s["key_numbers"])

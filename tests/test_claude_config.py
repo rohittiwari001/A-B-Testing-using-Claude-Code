@@ -53,3 +53,26 @@ def test_abkit_functions_named_in_skills_exist():
         m = importlib.import_module(f"abkit.{mod}")
         for fn in set(re.findall(rf"\b{mod}\.([a-z_]+)\(", text)):
             assert hasattr(m, fn), f"skills reference abkit.{mod}.{fn} which does not exist"
+
+
+AGENTS = {
+    "experiment-planner": {"Read", "Write", "Glob"},
+    "data-validator": {"Read", "Write", "Bash"},
+    "stats-analyst": {"Read", "Write", "Edit", "Bash"},
+    "stats-reviewer": {"Read", "Glob", "Grep", "Bash"},
+    "viz-designer": {"Read", "Write", "Edit", "Bash"},
+    "deck-builder": {"Read", "Write", "Edit", "Bash"},
+    "report-writer": {"Read", "Write", "Edit", "Bash"},
+}
+
+
+@pytest.mark.parametrize("name,tools", sorted(AGENTS.items()))
+def test_agent_files(name, tools):
+    path = ROOT / ".claude" / "agents" / f"{name}.md"
+    fm = frontmatter(path)
+    assert fm["name"] == name and len(fm["description"]) > 80
+    assert {t.strip() for t in fm["tools"].split(",")} == tools
+    for skill in fm.get("skills", []):
+        assert (SKILLS / skill / "SKILL.md").is_file(), f"{name} preloads missing skill {skill}"
+    body = path.read_text(encoding="utf-8")
+    assert "runs/.active" in body and "state.json" in body, f"{name} must read the active run and state first"

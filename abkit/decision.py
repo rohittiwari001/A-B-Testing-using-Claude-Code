@@ -137,3 +137,38 @@ def plain_english(p: dict[str, Any], metric: str, metric_type: str | None) -> st
     else:
         second = f"There is a {R.fmt_prob(p.get('probability'))} chance that {tr} is genuinely better."
     return f"{first[0].upper()}{first[1:]} {second}"
+
+
+def build_blocked_summary(run_dir: str | Path, script: str, next_steps: Iterable[str] = (), caveats: Iterable[str] = ()) -> dict[str, Any]:
+    """Summary for a run stopped at validation (e.g. SRM): verdict 'blocked', numbers from the validation checks."""
+    res = R.load_results(run_dir)
+    val = res.get("validation") or {}
+    blocking = [c for c in val.get("checks", []) if c["verdict"] == "block"]
+    if not blocking:
+        raise ValueError("No blocking validation check in results.json; use build_summary instead")
+    key: list[dict[str, str]] = []
+    headline = f"Results withheld: blocking data issue ({', '.join(c['check'] for c in blocking)})"
+    srm = next((c for c in blocking if c["check"] == "SRM"), None)
+    if srm:
+        d = srm["data"]
+        obs, exp = d["extra"]["observed_share"], d["extra"]["expected_share"]
+        short = min(obs, key=lambda k: obs[k] - exp[k])
+        headline = (f"Results withheld: {short} has {R.fmt_pct(obs[short] / exp[short] - 1, signed=False).lstrip(chr(0x2212))} "
+                    f"fewer units than the intended split ({R.fmt_p_stat(d['p_value'])}, sample ratio mismatch)")
+        key += [{"label": f"Observed share {k}", "value": f"{R.fmt_prob(obs[k])} (expected {R.fmt_prob(exp[k])})"} for k in obs]
+        key.append({"label": "SRM test", "value": f"chi-square {R.fmt_p_stat(d['p_value'])} (threshold {d['extra']['threshold']})"})
+        where = srm["detail"].split("Concentrated in: ")[-1] if "Concentrated in" in srm["detail"] else None
+        if where:
+            key.append({"label": "Concentrated in", "value": where})
+    for c in blocking:
+        if c["check"] != "SRM":
+            key.append({"label": c["check"], "value": str(c["detail"])[:120]})
+    summary = {
+        "verdict": "blocked", "verdict_label": VERDICTS["blocked"]["label"], "verdict_color": VERDICTS["blocked"]["color"],
+        "reason": "The data failed a blocking validation check, so treatment effects cannot be trusted.",
+        "headline": headline, "plain_english": ("The groups being compared are not the ones the experiment created, so any "
+                                                 "difference between them could come from the data problem rather than the change."),
+        "key_numbers": key[:5], "caveats": list(caveats), "next_steps": list(next_steps), "primary": None, "mde_rel": None,
+    }
+    R.set_summary(run_dir, summary, script)
+    return summary

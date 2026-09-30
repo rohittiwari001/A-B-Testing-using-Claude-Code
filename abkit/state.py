@@ -415,3 +415,86 @@ def _log(st: dict[str, Any], event: str) -> None:
 
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+# --------------------------------------------------------------------------- command line
+
+
+def status_text(run: str | Path | None = None) -> str:
+    """Human-readable status of a run (default: active run)."""
+    st = load_state(run)
+    steps = st["plan"]["steps"]
+    done = sum(s.get("status") == "done" for s in steps)
+    lines = [f"Run: {st['run_id']}  (phase: {st['phase']})",
+             "Gates: " + ", ".join(f"{g}={'yes' if st['gates'][g] else 'no'}" for g in GATES),
+             f"Problem type: {', '.join(st['problem_type']) or 'not classified yet'}",
+             f"Plan progress: {done}/{len(steps)} steps done"]
+    for s in steps:
+        lines.append(f"  [{s.get('status', 'pending'):8s}] {s['id']}: {s['method']}")
+    if st.get("overrides"):
+        lines.append("Overrides: " + ", ".join(f"{k}={v['to']}" for k, v in st["overrides"].items()))
+    lines.append(f"Next: {next_step_hint(st)}")
+    return "\n".join(lines)
+
+
+def _cli(argv: list[str] | None = None) -> int:
+    import argparse
+
+    ap = argparse.ArgumentParser(prog="python -m abkit.state", description="Run state helper")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("status", help="show the active run (or --run)").add_argument("--run")
+    sub.add_parser("list", help="list runs")
+    v = sub.add_parser("validate", help="validate state.json against the schema")
+    v.add_argument("--run")
+    n = sub.add_parser("new", help="create a run folder, copy the CSV, activate it")
+    n.add_argument("slug")
+    n.add_argument("--csv")
+    n.add_argument("--context-file", help="file holding the user's description (else a placeholder context.md)")
+    s = sub.add_parser("switch", help="make a run active")
+    s.add_argument("run_id")
+    g = sub.add_parser("gate", help="set a gate: gate <name> true|false")
+    g.add_argument("name", choices=GATES)
+    g.add_argument("value", choices=["true", "false"])
+    g.add_argument("--run")
+    ph = sub.add_parser("phase", help="set the phase")
+    ph.add_argument("phase", choices=PHASES)
+    ph.add_argument("--run")
+    r = sub.add_parser("reset", help="re-open a phase and everything downstream")
+    r.add_argument("phase", choices=PHASES)
+    r.add_argument("--run")
+    a = ap.parse_args(argv)
+    try:
+        if a.cmd == "status":
+            print(status_text(a.run))
+        elif a.cmd == "list":
+            active = active_run_id()
+            for rid in list_runs():
+                print(("* " if rid == active else "  ") + rid)
+        elif a.cmd == "validate":
+            errs = validate_state(load_state(a.run))
+            print("state.json OK" if not errs else "state.json INVALID:\n  - " + "\n  - ".join(errs))
+            return 1 if errs else 0
+        elif a.cmd == "new":
+            text = Path(a.context_file).read_text(encoding="utf-8") if a.context_file else "(to be filled with the user's description)"
+            run = new_run(a.slug, text, a.csv)
+            print(f"Created {run} (active)")
+        elif a.cmd == "switch":
+            set_active(a.run_id)
+            print(status_text())
+        elif a.cmd == "gate":
+            set_gate(a.run, a.name, a.value == "true")
+            print(f"{a.name} = {a.value}")
+        elif a.cmd == "phase":
+            set_phase(a.run, a.phase)
+            print(f"phase = {a.phase}")
+        elif a.cmd == "reset":
+            reset_downstream(a.run, a.phase)
+            print(status_text(a.run))
+    except StateError as exc:
+        print(f"error: {exc}")
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(_cli())

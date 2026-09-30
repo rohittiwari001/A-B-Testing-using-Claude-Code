@@ -96,3 +96,16 @@ def test_formatting():
     assert results.fmt_pp(0.0042) == "+0.4 pp"
     assert results.fmt_num(12345.678) == "12,346"
     assert results.fmt_value(0.3456, "binary") == "34.56%"
+
+
+def test_state_cli(tmp_root, demo_csvs, capsys):
+    assert state._cli(["new", "cli-test", "--csv", str(demo_csvs / "checkout_ab.csv")]) == 0
+    assert state._cli(["status"]) == 0
+    out = capsys.readouterr().out
+    assert "phase: intake" in out and "Next:" in out
+    assert state._cli(["validate"]) == 0
+    assert state._cli(["gate", "plan_approved", "true"]) == 0
+    assert state.load_state()["gates"]["plan_approved"] is True
+    assert state._cli(["phase", "analysis"]) == 0 and state.load_state()["phase"] == "analysis"
+    assert state._cli(["reset", "planning"]) == 0 and state.load_state()["gates"]["plan_approved"] is False
+    assert state._cli(["switch", "missing"]) == 2

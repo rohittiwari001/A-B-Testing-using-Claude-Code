@@ -339,7 +339,9 @@ def describe(r: dict[str, Any]) -> str:
     if r.get("rel_lift") is not None:
         parts.append(f"{fmt_pct(r['rel_lift'])} relative")
         if r.get("rel_ci_low") is not None:
-            level = round((1 - (r.get("alpha") or 0.05)) * 100)
+            a = r.get("alpha") or 0.05
+            one_sided = r.get("sidedness") in ("one-sided", "greater", "less")   # CI shown at 1 - 2*alpha to match the test
+            level = round((1 - (2 * a if one_sided else a)) * 100)
             parts.append(f"({level}% CI {fmt_ci(r['rel_ci_low'], r['rel_ci_high'])})")
     if r.get("p_value_adjusted") is not None:
         parts.append(f"adjusted {fmt_p_stat(r['p_value_adjusted'])}")

@@ -52,6 +52,8 @@ save_chart(fig, RUN, "lift_ci", title, key_message=f"Conversion {R.fmt_pct(p['re
 ```
 
 Every number in a title, subtitle, takeaway or label is formatted from results.json with `abkit.results.fmt_*`.
+Interval levels too: build "95% CI" from the run's alpha (`f"{1 - alpha:.0%} CI"`; non-inferiority `1 - 2*alpha`), never
+type it - a follow-up like "rerun with alpha 0.01" must relabel every chart.
 `save_chart` writes PNG + SVG and upserts `charts/manifest.json` (id, title, subtitle, key_message,
 takeaways, section, source, title_crop).
 

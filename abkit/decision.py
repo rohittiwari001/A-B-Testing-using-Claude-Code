@@ -67,7 +67,9 @@ def recommend(primary: Any, guardrails: Iterable[Any] = (), mde_rel: float | Non
         if mde_rel is not None and abs(rel) < mde_rel:
             v, why = "iterate", f"The effect is statistically significant but smaller than the practical threshold ({R.fmt_pct(mde_rel)})."
         else:
-            v, why = "ship", "The primary metric improved significantly and no guardrail was breached."
+            v, why = "ship", ("The primary metric improved significantly and no guardrail was breached." if gs
+                              else "The primary metric improved significantly and by more than the practical threshold."
+                              if mde_rel is not None else "The primary metric improved significantly.")
     else:
         bound = hi if good > 0 else (-lo if lo is not None else None)
         if mde_rel is not None and bound is not None and bound < mde_rel:
@@ -101,10 +103,12 @@ def build_summary(
     headline = f"{tr} {verb} {metric} by {R.fmt_pct(abs(rel or 0), signed=False)} vs {ct} ({sig_txt})"
     headline = headline[0].upper() + headline[1:]
     mtype = "binary" if any(k in p.get("method", "") for k in ("proportion", "beta_binomial")) else None
+    adjusted = "variance_reduction" in p.get("method", "")
     key = [
         {"label": f"Relative lift in {metric}", "value": f"{R.fmt_pct(rel)} ({level}% CI {R.fmt_ci(p.get('rel_ci_low'), p.get('rel_ci_high'))})"},
         {"label": "Evidence", "value": stat_txt},
-        {"label": f"{metric}: {ct} vs {tr}", "value": f"{R.fmt_value(p.get('control_value'), mtype)} vs {R.fmt_value(p.get('treatment_value'), mtype)}"},
+        {"label": f"{metric.capitalize()}: {ct} vs {tr}" + (" (adjusted)" if adjusted else ""),
+         "value": f"{R.fmt_value(p.get('control_value'), mtype)} vs {R.fmt_value(p.get('treatment_value'), mtype)}"},
         {"label": "Units analysed", "value": " / ".join(f"{k}: {R.fmt_num(v)}" for k, v in (p.get("n") or {}).items())},
     ]
     for g in gs:

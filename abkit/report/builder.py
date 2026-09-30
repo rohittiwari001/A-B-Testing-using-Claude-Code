@@ -329,8 +329,14 @@ def build_standard_report(run_dir: str | Path, out: str | Path | None = None, se
                 rep.para(", ".join(f"{k}: {v['from']} -> {v['to']}" for k, v in st["overrides"].items()), bold_lead="Overrides: ")
             rep.heading("Reviewer findings", 2)
             review = run / "review.md"
-            rep.bullets(_md_to_items(re.sub(r"^#.*$", "", review.read_text(encoding="utf-8"), flags=re.M))[:25]
-                        if review.is_file() else ["No review.md found."])
+            if review.is_file():
+                rounds = re.split(r"^(?=# Review)", review.read_text(encoding="utf-8"), flags=re.M)
+                latest = [r for r in rounds if r.strip()][-1]            # earlier rounds may quote superseded numbers
+                title = latest.splitlines()[0].lstrip("# ").strip()
+                rep.para(f"{title}. Earlier rounds are in review.md.")
+                rep.bullets(_md_to_items(re.sub(r"^#.*$", "", latest, flags=re.M))[:25])
+            else:
+                rep.bullets(["No review.md found."])
             allr = [r for r in R.all_results(res) if r.get("rel_lift") is not None]
             if allr:
                 h, t = results_table(allr, include_segment=any(r.get("segment") for r in allr))

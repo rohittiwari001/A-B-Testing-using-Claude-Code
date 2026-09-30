@@ -11,7 +11,8 @@
       "notes": "",
       "png": "lift_ci.png",
       "svg": "lift_ci.svg",
-      "created_at": "2026-09-30T20:22:09+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:00+00:00"
     },
     {
       "id": "metric_by_variant",
@@ -24,7 +25,8 @@
       "notes": "",
       "png": "metric_by_variant.png",
       "svg": "metric_by_variant.svg",
-      "created_at": "2026-09-30T20:22:09+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:00+00:00"
     },
     {
       "id": "cumulative_daily",
@@ -37,7 +39,8 @@
       "notes": "",
       "png": "cumulative_daily.png",
       "svg": "cumulative_daily.svg",
-      "created_at": "2026-09-30T20:22:10+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:01+00:00"
     },
     {
       "id": "daily_lift",
@@ -50,7 +53,8 @@
       "notes": "",
       "png": "daily_lift.png",
       "svg": "daily_lift.svg",
-      "created_at": "2026-09-30T20:22:12+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:01+00:00"
     },
     {
       "id": "segment_forest",
@@ -63,7 +67,8 @@
       "notes": "",
       "png": "segment_forest.png",
       "svg": "segment_forest.svg",
-      "created_at": "2026-09-30T20:22:12+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:02+00:00"
     },
     {
       "id": "power_curve",
@@ -76,7 +81,8 @@
       "notes": "",
       "png": "power_curve.png",
       "svg": "power_curve.svg",
-      "created_at": "2026-09-30T20:22:13+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:02+00:00"
     },
     {
       "id": "sample_size_vs_mde",
@@ -89,7 +95,8 @@
       "notes": "",
       "png": "sample_size_vs_mde.png",
       "svg": "sample_size_vs_mde.svg",
-      "created_at": "2026-09-30T20:22:13+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:02+00:00"
     },
     {
       "id": "posterior_distributions",
@@ -102,7 +109,8 @@
       "notes": "",
       "png": "posterior_distributions.png",
       "svg": "posterior_distributions.svg",
-      "created_at": "2026-09-30T20:22:14+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:02+00:00"
     },
     {
       "id": "prob_to_beat_control",
@@ -115,7 +123,8 @@
       "notes": "",
       "png": "prob_to_beat_control.png",
       "svg": "prob_to_beat_control.svg",
-      "created_at": "2026-09-30T20:22:14+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:03+00:00"
     },
     {
       "id": "srm_bar",
@@ -128,7 +137,8 @@
       "notes": "",
       "png": "srm_bar.png",
       "svg": "srm_bar.svg",
-      "created_at": "2026-09-30T20:22:15+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:03+00:00"
     },
     {
       "id": "distribution_compare",
@@ -141,7 +151,8 @@
       "notes": "",
       "png": "distribution_compare.png",
       "svg": "distribution_compare.svg",
-      "created_at": "2026-09-30T20:22:15+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:03+00:00"
     },
     {
       "id": "cuped_variance_reduction",
@@ -154,7 +165,8 @@
       "notes": "",
       "png": "cuped_variance_reduction.png",
       "svg": "cuped_variance_reduction.svg",
-      "created_at": "2026-09-30T20:22:16+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:03+00:00"
     },
     {
       "id": "sequential_boundaries",
@@ -167,7 +179,8 @@
       "notes": "",
       "png": "sequential_boundaries.png",
       "svg": "sequential_boundaries.svg",
-      "created_at": "2026-09-30T20:22:16+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:03+00:00"
     },
     {
       "id": "guardrail_scorecard",
@@ -180,7 +193,8 @@
       "notes": "",
       "png": "guardrail_scorecard.png",
       "svg": "guardrail_scorecard.svg",
-      "created_at": "2026-09-30T20:22:17+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:04+00:00"
     },
     {
       "id": "did_trends",
@@ -193,7 +207,8 @@
       "notes": "",
       "png": "did_trends.png",
       "svg": "did_trends.svg",
-      "created_at": "2026-09-30T20:22:17+00:00"
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T21:03:04+00:00"
     }
   ]
 }

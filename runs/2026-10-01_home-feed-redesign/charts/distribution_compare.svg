@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="405pt" viewBox="0 0 720 405" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-01T02:30:21.243502</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 405 
+L 720 405 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 57.6 348.3 
+L 684 348.3 
+L 684 89.1 
+L 57.6 89.1 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="85.643763" y="361.457812" transform="rotate(-0 85.643763 361.457812)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="192.884866" y="361.457812" transform="rotate(-0 192.884866 361.457812)">50</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="300.125968" y="361.457812" transform="rotate(-0 300.125968 361.457812)">100</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="407.367071" y="361.457812" transform="rotate(-0 407.367071 361.457812)">150</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="514.608174" y="361.457812" transform="rotate(-0 514.608174 361.457812)">200</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="621.849277" y="361.457812" transform="rotate(-0 621.849277 361.457812)">250</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #8c8c8c" x="370.8" y="374.603125" transform="rotate(-0 370.8 374.603125)">Minutes per user</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="text_8">
+     <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #8c8c8c" x="51.495312" y="218.7" transform="rotate(-90 51.495312 218.7)">Density</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 86.072727 348.3 
+L 86.072727 269.53902 
+L 100.309091 269.53902 
+L 100.309091 154.606331 
+L 114.545455 154.606331 
+L 114.545455 123.393646 
+L 128.781818 123.393646 
+L 128.781818 128.936086 
+L 143.018182 128.936086 
+L 143.018182 116.976085 
+L 157.254545 116.976085 
+L 157.254545 143.229745 
+L 171.490909 143.229745 
+L 171.490909 134.186818 
+L 185.727273 134.186818 
+L 185.727273 167.441453 
+L 199.963636 167.441453 
+L 199.963636 179.693161 
+L 214.2 179.693161 
+L 214.2 196.612187 
+L 228.436364 196.612187 
+L 228.436364 215.573163 
+L 242.672727 215.573163 
+L 242.672727 236.284384 
+L 256.909091 236.284384 
+L 256.909091 252.911702 
+L 271.145455 252.911702 
+L 271.145455 259.329263 
+L 285.381818 259.329263 
+L 285.381818 275.081459 
+L 299.618182 275.081459 
+L 299.618182 287.916582 
+L 313.854545 287.916582 
+L 313.854545 295.209265 
+L 328.090909 295.209265 
+L 328.090909 297.834631 
+L 342.327273 297.834631 
+L 342.327273 312.128291 
+L 356.563636 312.128291 
+L 356.563636 310.086339 
+L 370.8 310.086339 
+L 370.8 309.502925 
+L 385.036364 309.502925 
+L 385.036364 321.754633 
+L 399.272727 321.754633 
+L 399.272727 323.504877 
+L 413.509091 323.504877 
+L 413.509091 329.922438 
+L 427.745455 329.922438 
+L 427.745455 330.505853 
+L 441.981818 330.505853 
+L 441.981818 332.256097 
+L 456.218182 332.256097 
+L 456.218182 333.714633 
+L 470.454545 333.714633 
+L 470.454545 336.631707 
+L 484.690909 336.631707 
+L 484.690909 333.714633 
+L 498.927273 333.714633 
+L 498.927273 337.798536 
+L 513.163636 337.798536 
+L 513.163636 338.381951 
+L 527.4 338.381951 
+L 527.4 338.381951 
+L 541.636364 338.381951 
+L 541.636364 342.465853 
+L 555.872727 342.465853 
+L 555.872727 343.92439 
+L 570.109091 343.92439 
+L 570.109091 343.340975 
+L 584.345455 343.340975 
+L 584.345455 343.049268 
+L 598.581818 343.049268 
+L 598.581818 343.340975 
+L 612.818182 343.340975 
+L 612.818182 340.715609 
+L 627.054545 340.715609 
+L 627.054545 344.216097 
+L 641.290909 344.216097 
+L 641.290909 319.420974 
+L 655.527273 319.420974 
+L 655.527273 348.3 
+" clip-path="url(#p0b9c72f3ef)" style="fill: none; stroke: #0b2545; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 86.072727 348.3 
+L 86.072727 275.930525 
+L 100.309091 275.930525 
+L 100.309091 190.116918 
+L 114.545455 190.116918 
+L 114.545455 129.475302 
+L 128.781818 129.475302 
+L 128.781818 101.442857 
+L 143.018182 101.442857 
+L 143.018182 131.47762 
+L 157.254545 131.47762 
+L 157.254545 120.321851 
+L 171.490909 120.321851 
+L 171.490909 147.782205 
+L 185.727273 147.782205 
+L 185.727273 165.803062 
+L 199.963636 165.803062 
+L 199.963636 181.535557 
+L 214.2 181.535557 
+L 214.2 200.414551 
+L 228.436364 200.414551 
+L 228.436364 225.586542 
+L 242.672727 225.586542 
+L 242.672727 239.602764 
+L 256.909091 239.602764 
+L 256.909091 249.900397 
+L 271.145455 249.900397 
+L 271.145455 263.630574 
+L 285.381818 263.630574 
+L 285.381818 271.639844 
+L 299.618182 271.639844 
+L 299.618182 279.649114 
+L 313.854545 279.649114 
+L 313.854545 288.230475 
+L 328.090909 288.230475 
+L 328.090909 291.949065 
+L 342.327273 291.949065 
+L 342.327273 305.107151 
+L 356.563636 305.107151 
+L 356.563636 311.686194 
+L 370.8 311.686194 
+L 370.8 315.118739 
+L 385.036364 315.118739 
+L 385.036364 313.688512 
+L 399.272727 313.688512 
+L 399.272727 318.265238 
+L 413.509091 318.265238 
+L 413.509091 324.27219 
+L 427.745455 324.27219 
+L 427.745455 325.988462 
+L 441.981818 325.988462 
+L 441.981818 329.993097 
+L 456.218182 329.993097 
+L 456.218182 331.995415 
+L 470.454545 331.995415 
+L 470.454545 335.141914 
+L 484.690909 335.141914 
+L 484.690909 336.57214 
+L 498.927273 336.57214 
+L 498.927273 338.288413 
+L 513.163636 338.288413 
+L 513.163636 339.432594 
+L 527.4 339.432594 
+L 527.4 342.579093 
+L 541.636364 342.579093 
+L 541.636364 341.720957 
+L 555.872727 341.720957 
+L 555.872727 343.437229 
+L 570.109091 343.437229 
+L 570.109091 342.293048 
+L 584.345455 342.293048 
+L 584.345455 342.865138 
+L 598.581818 342.865138 
+L 598.581818 343.723274 
+L 612.818182 343.723274 
+L 612.818182 346.011637 
+L 627.054545 346.011637 
+L 627.054545 346.011637 
+L 641.290909 346.011637 
+L 641.290909 314.832693 
+L 655.527273 314.832693 
+L 655.527273 348.3 
+" clip-path="url(#p0b9c72f3ef)" style="fill: none; stroke: #2251ff; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 57.6 348.3 
+L 57.6 89.1 
+" style="fill: none; stroke: #8c8c8c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 57.6 348.3 
+L 684 348.3 
+" style="fill: none; stroke: #8c8c8c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #8c8c8c" x="684" y="387.81975" transform="rotate(-0 684 387.81975)">Values above the 99% quantile are shown in the last bin</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_7">
+     <path d="M 609.7625 101.757812 
+L 624.7625 101.757812 
+" style="fill: none; stroke: #0b2545; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1a1a1a" x="632.7625" y="105.257812" transform="rotate(-0 632.7625 105.257812)">control</text>
+    </g>
+    <g id="line2d_8">
+     <path d="M 609.7625 115.903125 
+L 624.7625 115.903125 
+" style="fill: none; stroke: #2251ff; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1a1a1a" x="632.7625" y="119.403125" transform="rotate(-0 632.7625 119.403125)">treatment</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_12">
+   <text style="font-weight: 700; font-size: 14px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1a1a1a" x="28.8" y="28.245938" transform="rotate(-0 28.8 28.245938)">Minutes per user are right-skewed with similar shapes in both variants</text>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 11px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #8c8c8c" x="28.8" y="54.448594" transform="rotate(-0 28.8 54.448594)">Minutes per user during the test, density</text>
+  </g>
+  <g id="text_14">
+   <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #8c8c8c" x="28.8" y="393.19125" transform="rotate(-0 28.8 393.19125)">Source: cuped_engagement.csv, 14-day test; n = 20,000 users; Welch t-test, CUPED with pre_minutes</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p0b9c72f3ef">
+   <rect x="57.6" y="89.1" width="626.4" height="259.2"/>
+  </clipPath>
+ </defs>
+</svg>

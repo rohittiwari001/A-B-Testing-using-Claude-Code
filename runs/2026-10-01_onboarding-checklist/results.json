@@ -1,0 +1,735 @@
+{
+  "schema_version": 1,
+  "run_id": "2026-10-01_onboarding-checklist",
+  "updated_at": "2026-09-30T20:55:19+00:00",
+  "validation": {
+    "verdict": "block",
+    "checks": [
+      {
+        "check": "schema",
+        "verdict": "pass",
+        "detail": "5 columns, 38,911 rows",
+        "data": {
+          "missing": [],
+          "extra": [],
+          "rows": 38911
+        }
+      },
+      {
+        "check": "dtypes",
+        "verdict": "pass",
+        "detail": "All metric columns numeric",
+        "data": {
+          "user_id": "object",
+          "variant": "object",
+          "exposure_date": "datetime64[ns]",
+          "platform": "object",
+          "converted": "int64"
+        }
+      },
+      {
+        "check": "missing values",
+        "verdict": "pass",
+        "detail": "No missing values",
+        "data": {}
+      },
+      {
+        "check": "duplicates",
+        "verdict": "pass",
+        "detail": "38,911 units, one row each",
+        "data": {
+          "duplicate_rows": 0,
+          "units_with_multiple_rows": 0,
+          "units": 38911,
+          "max_rows_per_unit": 1
+        }
+      },
+      {
+        "check": "contamination",
+        "verdict": "pass",
+        "detail": "No unit appears in more than one variant",
+        "data": {
+          "units_in_multiple_variants": 0,
+          "share": 0.0
+        }
+      },
+      {
+        "check": "variants",
+        "verdict": "pass",
+        "detail": "Counts {'control': 20838, 'treatment': 18073}",
+        "data": {
+          "control": 20838,
+          "treatment": 18073
+        }
+      },
+      {
+        "check": "SRM",
+        "verdict": "block",
+        "detail": "Sample ratio mismatch: p = 1.22e-44 < 0.001; observed shares {'control': 0.5355, 'treatment': 0.4645}. Concentrated in: exposure_date 2026-09-05 to 2026-09-14 (10 of 14 levels); platform=Android",
+        "data": {
+          "method": "validation.srm_check",
+          "estimate": 0.0355297987715556,
+          "ci_low": null,
+          "ci_high": null,
+          "p_value": 1.22476986725981e-44,
+          "probability": null,
+          "n": {
+            "control": 20838,
+            "treatment": 18073
+          },
+          "metric": null,
+          "role": null,
+          "control": null,
+          "treatment": null,
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.001,
+          "sidedness": null,
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [],
+          "notes": [
+            "Sample ratio mismatch: do not trust effect estimates until the cause is understood."
+          ],
+          "extra": {
+            "chi2": 196.47978720670247,
+            "observed": {
+              "control": 20838,
+              "treatment": 18073
+            },
+            "expected_share": {
+              "control": 0.5,
+              "treatment": 0.5
+            },
+            "observed_share": {
+              "control": 0.5355297987715556,
+              "treatment": 0.4644702012284444
+            },
+            "expected_count": {
+              "control": 19455.5,
+              "treatment": 19455.5
+            },
+            "threshold": 0.001
+          },
+          "abs_lift": 0.0355297987715556,
+          "by": {
+            "exposure_date": [
+              {
+                "exposure_date": "2026-09-01",
+                "n_control": 1589,
+                "n_treatment": 1692,
+                "share_control": 0.4843035659859799,
+                "share_treatment": 0.5156964340140201,
+                "p_value": 0.07214786703002482,
+                "srm": false
+              },
+              {
+                "exposure_date": "2026-09-02",
+                "n_control": 1635,
+                "n_treatment": 1621,
+                "share_control": 0.5021498771498771,
+                "share_treatment": 0.49785012285012287,
+                "p_value": 0.806185538445556,
+                "srm": false
+              },
+              {
+                "exposure_date": "2026-09-03",
+                "n_control": 1584,
+                "n_treatment": 1649,
+                "share_control": 0.4899474172595113,
+                "share_treatment": 0.5100525827404887,
+                "p_value": 0.25296835902139797,
+                "srm": false
+              },
+              {
+                "exposure_date": "2026-09-04",
+                "n_control": 1606,
+                "n_treatment": 1706,
+                "share_control": 0.48490338164251207,
+                "share_treatment": 0.5150966183574879,
+                "p_value": 0.08227777272211659,
+                "srm": false
+              },
+              {
+                "exposure_date": "2026-09-05",
+                "n_control": 1191,
+                "n_treatment": 921,
+                "share_control": 0.5639204545454546,
+                "share_treatment": 0.43607954545454547,
+                "p_value": 4.225348890133239e-09,
+                "srm": true
+              },
+              {
+                "exposure_date": "2026-09-06",
+                "n_control": 1195,
+                "n_treatment": 915,
+                "share_control": 0.566350710900474,
+                "share_treatment": 0.43364928909952605,
+                "p_value": 1.0902444518815688e-09,
+                "srm": true
+              },
+              {
+                "exposure_date": "2026-09-07",
+                "n_control": 1659,
+                "n_treatment": 1248,
+                "share_control": 0.5706914344685242,
+                "share_treatment": 0.4293085655314757,
+                "p_value": 2.4806996309681105e-14,
+                "srm": true
+              },
+              {
+                "exposure_date": "2026-09-08",
+                "n_control": 1628,
+                "n_treatment": 1300,
+                "share_control": 0.5560109289617486,
+                "share_treatment": 0.44398907103825136,
+                "p_value": 1.3476196544882502e-09,
+                "srm": true
+              },
+              {
+                "exposure_date": "2026-09-09",
+                "n_control": 1546,
+                "n_treatment": 1295,
+                "share_control": 0.5441745864132348,
+                "share_treatment": 0.4558254135867652,
+                "p_value": 2.48810448816053e-06,
+                "srm": true
+              },
+              {
+                "exposure_date": "2026-09-10",
+                "n_control": 1648,
+                "n_treatment": 1281,
+                "share_control": 0.5626493683851144,
+                "share_treatment": 0.43735063161488563,
+                "p_value": 1.191840034440286e-11,
+                "srm": true
+              },
+              {
+                "exposure_date": "2026-09-11",
+                "n_control": 1612,
+                "n_treatment": 1325,
+                "share_control": 0.5488593803200544,
+                "share_treatment": 0.4511406196799455,
+                "p_value": 1.1850954064257314e-07,
+                "srm": true
+              },
+              {
+                "exposure_date": "2026-09-12",
+                "n_control": 1148,
+                "n_treatment": 898,
+                "share_control": 0.5610948191593352,
+                "share_treatment": 0.4389051808406647,
+                "p_value": 3.258065982780752e-08,
+                "srm": true
+              },
+              {
+                "exposure_date": "2026-09-13",
+                "n_control": 1188,
+                "n_treatment": 943,
+                "share_control": 0.5574847489441577,
+                "share_treatment": 0.44251525105584233,
+                "p_value": 1.1125559164296152e-07,
+                "srm": true
+              },
+              {
+                "exposure_date": "2026-09-14",
+                "n_control": 1609,
+                "n_treatment": 1279,
+                "share_control": 0.5571329639889196,
+                "share_treatment": 0.44286703601108035,
+                "p_value": 8.217716385699501e-10,
+                "srm": true
+              }
+            ],
+            "platform": [
+              {
+                "platform": "Android",
+                "n_control": 7295,
+                "n_treatment": 4367,
+                "share_control": 0.6255359286571771,
+                "share_treatment": 0.37446407134282284,
+                "p_value": 6.837413536064629e-162,
+                "srm": true
+              },
+              {
+                "platform": "Web",
+                "n_control": 5305,
+                "n_treatment": 5249,
+                "share_control": 0.5026530225506917,
+                "share_treatment": 0.49734697744930834,
+                "p_value": 0.5856818940869529,
+                "srm": false
+              },
+              {
+                "platform": "iOS",
+                "n_control": 8238,
+                "n_treatment": 8457,
+                "share_control": 0.4934411500449236,
+                "share_treatment": 0.5065588499550764,
+                "p_value": 0.09008934008414185,
+                "srm": false
+              }
+            ]
+          },
+          "likely_causes": [
+            "Assignment or bucketing bug (hash salt, uneven ramp, variant-specific eligibility)",
+            "Logging loss that differs by variant (crashes, slow pages, ad blockers, client-side events)",
+            "Bot or fraud filtering that interacts with the treatment",
+            "Data pipeline joins or filters applied after assignment (e.g. 'users who reached step X')",
+            "Ramp changes or restarts during the test without re-randomisation"
+          ]
+        }
+      },
+      {
+        "check": "dates",
+        "verdict": "pass",
+        "detail": "2026-09-01 to 2026-09-14 (14 days)",
+        "data": {
+          "start": "2026-09-01",
+          "end": "2026-09-14",
+          "days": 14,
+          "days_with_gaps": [],
+          "daily_counts": {
+            "2026-09-01": {
+              "control": 1589,
+              "treatment": 1692
+            },
+            "2026-09-02": {
+              "control": 1635,
+              "treatment": 1621
+            },
+            "2026-09-03": {
+              "control": 1584,
+              "treatment": 1649
+            },
+            "2026-09-04": {
+              "control": 1606,
+              "treatment": 1706
+            },
+            "2026-09-05": {
+              "control": 1191,
+              "treatment": 921
+            },
+            "2026-09-06": {
+              "control": 1195,
+              "treatment": 915
+            },
+            "2026-09-07": {
+              "control": 1659,
+              "treatment": 1248
+            },
+            "2026-09-08": {
+              "control": 1628,
+              "treatment": 1300
+            },
+            "2026-09-09": {
+              "control": 1546,
+              "treatment": 1295
+            },
+            "2026-09-10": {
+              "control": 1648,
+              "treatment": 1281
+            },
+            "2026-09-11": {
+              "control": 1612,
+              "treatment": 1325
+            },
+            "2026-09-12": {
+              "control": 1148,
+              "treatment": 898
+            },
+            "2026-09-13": {
+              "control": 1188,
+              "treatment": 943
+            },
+            "2026-09-14": {
+              "control": 1609,
+              "treatment": 1279
+            }
+          }
+        }
+      },
+      {
+        "check": "outliers",
+        "verdict": "pass",
+        "detail": "No continuous metrics",
+        "data": {}
+      },
+      {
+        "check": "impossible values",
+        "verdict": "pass",
+        "detail": "Metric values within valid ranges",
+        "data": {}
+      },
+      {
+        "check": "pre-period data",
+        "verdict": "pass",
+        "detail": "None described (CUPED not possible)",
+        "data": {
+          "available": false
+        }
+      },
+      {
+        "check": "covariate balance",
+        "verdict": "warn",
+        "detail": "Segment mix differs between variants: platform (p = 5.6e-119) (can indicate an assignment or logging problem, or Simpson's paradox risk)",
+        "data": {
+          "platform": {
+            "p_value": 5.575868569336308e-119,
+            "shares": {
+              "control": {
+                "Android": 0.3501,
+                "Web": 0.2546,
+                "iOS": 0.3953
+              },
+              "treatment": {
+                "Android": 0.2416,
+                "Web": 0.2904,
+                "iOS": 0.4679
+              }
+            }
+          }
+        }
+      }
+    ],
+    "blocking": [
+      "SRM"
+    ],
+    "script": "code/10_validate_profile.py",
+    "recorded_at": "2026-09-30T20:54:33+00:00"
+  },
+  "steps": {
+    "srm": {
+      "step_id": "srm",
+      "method": "validation.srm_check",
+      "script": "code/10_validate_profile.py",
+      "recorded_at": "2026-09-30T20:54:33+00:00",
+      "results": [
+        {
+          "method": "validation.srm_check",
+          "estimate": 0.0355297987715556,
+          "ci_low": null,
+          "ci_high": null,
+          "p_value": 1.22476986725981e-44,
+          "probability": null,
+          "n": {
+            "control": 20838,
+            "treatment": 18073
+          },
+          "metric": null,
+          "role": null,
+          "control": null,
+          "treatment": null,
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.001,
+          "sidedness": null,
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": null,
+          "assumptions": [],
+          "notes": [
+            "Sample ratio mismatch: do not trust effect estimates until the cause is understood."
+          ],
+          "extra": {
+            "chi2": 196.47978720670247,
+            "observed": {
+              "control": 20838,
+              "treatment": 18073
+            },
+            "expected_share": {
+              "control": 0.5,
+              "treatment": 0.5
+            },
+            "observed_share": {
+              "control": 0.5355297987715556,
+              "treatment": 0.4644702012284444
+            },
+            "expected_count": {
+              "control": 19455.5,
+              "treatment": 19455.5
+            },
+            "threshold": 0.001
+          },
+          "abs_lift": 0.0355297987715556
+        }
+      ],
+      "data": {}
+    },
+    "srm_localise": {
+      "step_id": "srm_localise",
+      "method": "validation.srm_by",
+      "script": "code/20_analysis_srm_localise.py",
+      "recorded_at": "2026-09-30T20:55:18+00:00",
+      "results": [
+        {
+          "method": "validation.srm_check",
+          "estimate": 0.12553592865717716,
+          "ci_low": null,
+          "ci_high": null,
+          "p_value": 6.837413536064629e-162,
+          "probability": null,
+          "n": {
+            "control": 7295,
+            "treatment": 4367
+          },
+          "metric": null,
+          "role": null,
+          "control": null,
+          "treatment": null,
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.001,
+          "sidedness": null,
+          "significant": true,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": "Android",
+          "assumptions": [],
+          "notes": [
+            "Sample ratio mismatch: do not trust effect estimates until the cause is understood."
+          ],
+          "extra": {
+            "chi2": 735.1383982164294,
+            "observed": {
+              "control": 7295,
+              "treatment": 4367
+            },
+            "expected_share": {
+              "control": 0.5,
+              "treatment": 0.5
+            },
+            "observed_share": {
+              "control": 0.6255359286571771,
+              "treatment": 0.37446407134282284
+            },
+            "expected_count": {
+              "control": 5831.0,
+              "treatment": 5831.0
+            },
+            "threshold": 0.001
+          },
+          "abs_lift": 0.12553592865717716
+        },
+        {
+          "method": "validation.srm_check",
+          "estimate": 0.0029909354471723826,
+          "ci_low": null,
+          "ci_high": null,
+          "p_value": 0.32342519616713766,
+          "probability": null,
+          "n": {
+            "control": 13543,
+            "treatment": 13706
+          },
+          "metric": null,
+          "role": null,
+          "control": null,
+          "treatment": null,
+          "control_value": null,
+          "treatment_value": null,
+          "rel_lift": null,
+          "rel_ci_low": null,
+          "rel_ci_high": null,
+          "alpha": 0.001,
+          "sidedness": null,
+          "significant": false,
+          "correction": "none",
+          "p_value_adjusted": null,
+          "segment": "iOS + Web",
+          "assumptions": [],
+          "notes": [],
+          "extra": {
+            "chi2": 0.9750449557781937,
+            "observed": {
+              "control": 13543,
+              "treatment": 13706
+            },
+            "expected_share": {
+              "control": 0.5,
+              "treatment": 0.5
+            },
+            "observed_share": {
+              "control": 0.4970090645528276,
+              "treatment": 0.5029909354471723
+            },
+            "expected_count": {
+              "control": 13624.5,
+              "treatment": 13624.5
+            },
+            "threshold": 0.001
+          },
+          "abs_lift": 0.0029909354471723826
+        }
+      ],
+      "data": {
+        "table": [
+          {
+            "level": "Android",
+            "n_control": 7295,
+            "n_treatment": 4367,
+            "share_control": 0.6255359286571771,
+            "share_treatment": 0.37446407134282284,
+            "p_value": 6.837413536064629e-162,
+            "srm": true,
+            "by": "platform"
+          },
+          {
+            "level": "Web",
+            "n_control": 5305,
+            "n_treatment": 5249,
+            "share_control": 0.5026530225506917,
+            "share_treatment": 0.49734697744930834,
+            "p_value": 0.5856818940869529,
+            "srm": false,
+            "by": "platform"
+          },
+          {
+            "level": "iOS",
+            "n_control": 8238,
+            "n_treatment": 8457,
+            "share_control": 0.4934411500449236,
+            "share_treatment": 0.5065588499550764,
+            "p_value": 0.09008934008414185,
+            "srm": false,
+            "by": "platform"
+          },
+          {
+            "level": "before 2026-09-05",
+            "n_control": 6414,
+            "n_treatment": 6668,
+            "share_control": 0.49029200428069103,
+            "share_treatment": 0.509707995719309,
+            "p_value": 0.02636894764938912,
+            "srm": false,
+            "by": "period"
+          },
+          {
+            "level": "from 2026-09-05",
+            "n_control": 14424,
+            "n_treatment": 11405,
+            "share_control": 0.5584420612489837,
+            "share_treatment": 0.4415579387510163,
+            "p_value": 1.0034003365353854e-78,
+            "srm": true,
+            "by": "period"
+          },
+          {
+            "level": "Android / before 2026-09-05",
+            "n_control": 2189,
+            "n_treatment": 2346,
+            "share_control": 0.4826901874310915,
+            "share_treatment": 0.5173098125689085,
+            "p_value": 0.01973391372280068,
+            "srm": false,
+            "by": "cell"
+          },
+          {
+            "level": "Android / from 2026-09-05",
+            "n_control": 5106,
+            "n_treatment": 2021,
+            "share_control": 0.7164304756559562,
+            "share_treatment": 0.28356952434404376,
+            "p_value": 2.320556075015297e-292,
+            "srm": true,
+            "by": "cell"
+          },
+          {
+            "level": "Web / before 2026-09-05",
+            "n_control": 1644,
+            "n_treatment": 1639,
+            "share_control": 0.5007614986293024,
+            "share_treatment": 0.49923850137069753,
+            "p_value": 0.9304617570300802,
+            "srm": false,
+            "by": "cell"
+          },
+          {
+            "level": "Web / from 2026-09-05",
+            "n_control": 3661,
+            "n_treatment": 3610,
+            "share_control": 0.5035070829321964,
+            "share_treatment": 0.49649291706780363,
+            "p_value": 0.5497738522181332,
+            "srm": false,
+            "by": "cell"
+          },
+          {
+            "level": "iOS / before 2026-09-05",
+            "n_control": 2581,
+            "n_treatment": 2683,
+            "share_control": 0.4903115501519757,
+            "share_treatment": 0.5096884498480243,
+            "p_value": 0.15976555013353222,
+            "srm": false,
+            "by": "cell"
+          },
+          {
+            "level": "iOS / from 2026-09-05",
+            "n_control": 5657,
+            "n_treatment": 5774,
+            "share_control": 0.49488233750328053,
+            "share_treatment": 0.5051176624967194,
+            "p_value": 0.27381530532886744,
+            "srm": false,
+            "by": "cell"
+          }
+        ],
+        "android_late_gap_units": 3085
+      }
+    }
+  },
+  "summary": {
+    "verdict": "blocked",
+    "verdict_label": "Blocked: data issue",
+    "verdict_color": "negative",
+    "reason": "The data failed a blocking validation check, so treatment effects cannot be trusted.",
+    "headline": "Results withheld: treatment has 7.1% fewer units than the intended split (p < 0.001, sample ratio mismatch)",
+    "plain_english": "The groups being compared are not the ones the experiment created, so any difference between them could come from the data problem rather than the change.",
+    "key_numbers": [
+      {
+        "label": "Observed share control",
+        "value": "53.6% (expected 50.0%)"
+      },
+      {
+        "label": "Observed share treatment",
+        "value": "46.4% (expected 50.0%)"
+      },
+      {
+        "label": "SRM test",
+        "value": "chi-square p < 0.001 (threshold 0.001)"
+      },
+      {
+        "label": "Concentrated in",
+        "value": "exposure_date 2026-09-05 to 2026-09-14 (10 of 14 levels); platform=Android"
+      }
+    ],
+    "caveats": [
+      "iOS + Web alone show no mismatch (p = 0.323), but an iOS + Web-only readout would answer a different question (it excludes a whole platform); treat it as a sensitivity check only.",
+      "Activation results were not computed: with units missing non-randomly, any difference could be caused by the loss."
+    ],
+    "next_steps": [
+      "Engineering: fix the Android exposure event lost since the 2026-09-05 release (about 3,085 treatment users missing)",
+      "Re-extract exposures from server-side assignment logs and rerun this workflow on the corrected data",
+      "If the logs cannot be repaired, rerun the test for two full weeks after the fix",
+      "Add an automated daily SRM alert (by platform) to the experiment dashboard"
+    ],
+    "primary": null,
+    "mde_rel": null,
+    "script": "code/20_analysis_summary.py",
+    "recorded_at": "2026-09-30T20:55:19+00:00"
+  },
+  "candidates_for_promotion": []
+}

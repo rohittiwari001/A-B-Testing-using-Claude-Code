@@ -70,6 +70,7 @@ def cuped(
         "theta": theta, "covariate": covariate, "correlation": corr, "variance_reduction": var_red,
         "effective_sample_multiplier": float(1 / (1 - var_red)) if var_red < 1 else None,
         "ci_width_unadjusted": float(raw.ci_high - raw.ci_low), "ci_width_adjusted": float(adj.ci_high - adj.ci_low),
+        "ci_width_reduction": float(1 - (adj.ci_high - adj.ci_low) / (raw.ci_high - raw.ci_low)),
         "unadjusted": raw.to_dict(),
     })
     return adj

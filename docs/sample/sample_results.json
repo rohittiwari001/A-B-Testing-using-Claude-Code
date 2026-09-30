@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "2026-10-01_checkout-sample",
-  "updated_at": "2026-09-30T20:30:46+00:00",
+  "updated_at": "2026-09-30T21:03:06+00:00",
   "validation": {
     "verdict": "pass",
     "checks": [
@@ -259,14 +259,14 @@
     ],
     "blocking": [],
     "script": "code/10_validate_sample.py",
-    "recorded_at": "2026-09-30T20:30:44+00:00"
+    "recorded_at": "2026-09-30T21:03:06+00:00"
   },
   "steps": {
     "primary_test": {
       "step_id": "primary_test",
       "method": "frequentist.two_proportion_ztest",
       "script": "code/20_analysis_sample.py",
-      "recorded_at": "2026-09-30T20:30:44+00:00",
+      "recorded_at": "2026-09-30T21:03:06+00:00",
       "results": [
         {
           "method": "frequentist.two_proportion_ztest",
@@ -336,7 +336,7 @@
       "step_id": "guardrails",
       "method": "frequentist.noninferiority_test",
       "script": "code/20_analysis_sample.py",
-      "recorded_at": "2026-09-30T20:30:44+00:00",
+      "recorded_at": "2026-09-30T21:03:06+00:00",
       "results": [
         {
           "method": "frequentist.noninferiority_test",
@@ -390,7 +390,7 @@
       "step_id": "segments",
       "method": "frequentist.two_proportion_ztest",
       "script": "code/20_analysis_sample.py",
-      "recorded_at": "2026-09-30T20:30:45+00:00",
+      "recorded_at": "2026-09-30T21:03:06+00:00",
       "results": [
         {
           "method": "frequentist.two_proportion_ztest",
@@ -695,7 +695,7 @@
       "step_id": "time_trends",
       "method": "time_effects.cumulative_effects",
       "script": "code/20_analysis_sample.py",
-      "recorded_at": "2026-09-30T20:30:46+00:00",
+      "recorded_at": "2026-09-30T21:03:06+00:00",
       "results": [],
       "data": {
         "cumulative": [
@@ -874,7 +874,7 @@
         "value": "p = 0.001"
       },
       {
-        "label": "checkout conversion: control vs treatment",
+        "label": "Checkout conversion: control vs treatment",
         "value": "34.25% vs 35.34%"
       },
       {
@@ -898,7 +898,7 @@
     },
     "mde_rel": 0.02,
     "script": "code/20_analysis_sample.py",
-    "recorded_at": "2026-09-30T20:30:46+00:00"
+    "recorded_at": "2026-09-30T21:03:06+00:00"
   },
   "candidates_for_promotion": []
 }

@@ -29,7 +29,9 @@ You are the deck builder.
 3. Check the output: `python -c "from pptx import Presentation; p=Presentation('runs/<id>/deck.pptx'); print(len(p.slides))"`
    and read `deck_warnings.txt` if it exists; shorten over-long titles / bullets by editing the source text
    (chart takeaways in the viz scripts, next steps / caveats in the summary script) and rebuild.
-4. Size: power analysis ~5-6 slides; blocked (SRM) ~4; standard readout 12-16; deep dive more with appendix.
+4. Run `python -m abkit.tracecheck <run-id>` once the report also exists (or ask the orchestrator to): every printed
+   percentage / p-value must trace to results.json.
+5. Size: power analysis ~5-6 slides; blocked (SRM) ~4; standard readout 12-16; deep dive more with appendix.
 
 ## Report back
 Slide count, the section list, the exec-summary verdict and headline, and any warnings left.

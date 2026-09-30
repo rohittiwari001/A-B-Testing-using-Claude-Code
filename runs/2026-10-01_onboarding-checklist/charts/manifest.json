@@ -1,0 +1,40 @@
+{
+  "charts": [
+    {
+      "id": "srm_bar",
+      "title": "Treatment is missing 7.1% of its expected users: results cannot be trusted until this is fixed",
+      "subtitle": "Share of users by variant",
+      "key_message": "Sample ratio mismatch, p < 0.001",
+      "takeaways": [
+        "Treatment share 46.4% vs 50.0% intended",
+        "Chi-square p < 0.001 (threshold 0.001)",
+        "Effect estimates are withheld"
+      ],
+      "section": "validation",
+      "source": "Source: srm_broken.csv, 2026-09-01 to 2026-09-14; chi-square goodness-of-fit vs intended 50/50",
+      "notes": "This is the whole story: units went missing unevenly, so the comparison is broken.",
+      "png": "srm_bar.png",
+      "svg": "srm_bar.svg",
+      "title_crop": 0.169,
+      "created_at": "2026-09-30T20:55:55+00:00"
+    },
+    {
+      "id": "srm_bar_android",
+      "title": "The loss is on Android: treatment has 37.4% of Android users; iOS and Web are balanced",
+      "subtitle": "Android users by variant",
+      "key_message": "Android-specific loss",
+      "takeaways": [
+        "Android: p < 0.001",
+        "iOS + Web: p = 0.323",
+        "About 3,085 Android treatment users missing since 5 Sep"
+      ],
+      "section": "validation",
+      "source": "Source: srm_broken.csv, 2026-09-01 to 2026-09-14; chi-square goodness-of-fit vs intended 50/50",
+      "notes": "Points engineering at the Android exposure event after the 5 September release.",
+      "png": "srm_bar_android.png",
+      "svg": "srm_bar_android.svg",
+      "title_crop": 0.111,
+      "created_at": "2026-09-30T20:55:55+00:00"
+    }
+  ]
+}

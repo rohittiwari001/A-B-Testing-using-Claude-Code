@@ -112,3 +112,12 @@ def test_missing_summary_raises(sample_run):
     finally:
         res["summary"] = saved
         R.save_results(sample_run, res)
+
+
+def test_tracecheck_passes_on_sample_run(sample_run):
+    from abkit import tracecheck
+
+    build_standard_deck(sample_run)
+    build_standard_report(sample_run)
+    problems = tracecheck.check(sample_run)
+    assert not [p for p in problems if "100%" not in p], problems

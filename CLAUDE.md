@@ -63,10 +63,12 @@ short deck; full multi-metric readout: longer deck plus appendix; blocked run: s
 ## Phase 7: Wrap-up (always)
 1. Confirm every item in `plan.deliverables` exists and every planned chart is in `charts/manifest.json` (the Stop
    hook enforces this in the deliverables phase).
-2. `python -m abkit.state phase done`.
-3. Reply with a short chat summary: the verdict, three to five key numbers (from results.json summary), caveats,
+2. `python -m abkit.tracecheck <run-id>`: every percentage and p-value in deck.pptx and summary.docx must trace to
+   results.json. Fix any untraced number at its source (store derived numbers in results.json), then rebuild.
+3. `python -m abkit.state phase done`.
+4. Reply with a short chat summary: the verdict, three to five key numbers (from results.json summary), caveats,
    and file paths (deck.pptx, summary.docx, charts/).
-4. If `results.json` lists `candidates_for_promotion`, ask whether to promote them into abkit with tests (/promote).
+5. If `results.json` lists `candidates_for_promotion`, ask whether to promote them into abkit with tests (/promote).
 
 ## Follow-ups on the active run
 - "Split by platform", "rerun with alpha 0.01", "add revenue as a guardrail", "use CUPED":

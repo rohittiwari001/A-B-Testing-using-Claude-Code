@@ -4,6 +4,7 @@
     "allow": [
       "Bash(python runs/*)",
       "Bash(python -m abkit.state *)",
+      "Bash(python -m abkit.tracecheck*)",
       "Bash(python -m pytest*)",
       "Bash(python demo_data/generate.py)",
       "Bash(python docs/make_gallery.py)",
@@ -11,6 +12,7 @@
       "Bash(cat runs/.active)",
       "PowerShell(python runs/*)",
       "PowerShell(python -m abkit.state *)",
+      "PowerShell(python -m abkit.tracecheck*)",
       "PowerShell(python -m pytest*)"
     ],
     "deny": [

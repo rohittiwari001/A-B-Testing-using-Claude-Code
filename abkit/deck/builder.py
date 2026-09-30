@@ -413,10 +413,11 @@ def build_standard_deck(run_dir: str | Path, out: str | Path | None = None, sect
                     header, rows = header + ["Status"], [r + [str((x.get("extra") or {}).get("status", "n/a")).upper()] for r, x in zip(rows, g)]
                     deck.table("Guardrail checks", header, rows, "Each guardrail is tested for non-inferiority against its margin.",
                                font_size=11, status_col=len(header) - 1)
-            elif sec == "validation" and not n:
-                deck.table("Data validation checks", ["Check", "Verdict", "Detail"], _validation_rows(res),
-                           "Summarise data quality: anything flagged here limits how far the results can be trusted.",
-                           col_widths=[1.2, 0.8, 5], font_size=10, status_col=1)
+            elif sec == "validation" and res.get("validation"):
+                v = res["validation"]
+                deck.table(f"Data validation: overall verdict {v.get('verdict', 'n/a').upper()}", ["Check", "Verdict", "Detail"],
+                           _validation_rows(res), "Summarise data quality: anything flagged here limits how far the results "
+                           "can be trusted.", col_widths=[1.2, 0.8, 5], font_size=10, status_col=1)
             elif sec == "results" and not n:
                 header, rows = results_table(R.all_results(res, role="primary") or R.all_results(res))
                 deck.table("Results", header, rows, "Primary results.", font_size=11)
@@ -441,7 +442,7 @@ def build_standard_deck(run_dir: str | Path, out: str | Path | None = None, sect
                                             f"SRM threshold {s['srm_threshold']}"]
             deck.bullets("Methodology", methods[:8], "Tests used per analysis step and the scripts that produced each number.",
                          kind="appendix")
-            if res.get("validation"):
+            if res.get("validation") and "validation" not in secs:
                 deck.table("Data validation checks", ["Check", "Verdict", "Detail"], _validation_rows(res),
                            "Full list of validation checks.", col_widths=[1.2, 0.8, 5], font_size=10, status_col=1)
             allr = R.all_results(res)

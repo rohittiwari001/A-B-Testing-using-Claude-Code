@@ -1,0 +1,213 @@
+{
+  "run_id": "2026-10-01_checkout-button",
+  "created_at": "2026-09-30T20:46:09+00:00",
+  "phase": "done",
+  "problem_type": [
+    "post_test_readout",
+    "guardrail_check",
+    "heterogeneous_effects",
+    "novelty_check"
+  ],
+  "settings": {
+    "alpha": 0.01,
+    "sidedness": "two-sided",
+    "power": 0.8,
+    "confidence_level": 0.95,
+    "correction_primary": "none",
+    "correction_secondary": "holm",
+    "correction_segments": "benjamini-hochberg",
+    "srm_test": "chi-square",
+    "srm_threshold": 0.001,
+    "min_days": 7,
+    "prefer_full_weeks": true,
+    "bayes_prior": "weakly_informative",
+    "bayes_decision_threshold": 0.95,
+    "bootstrap_n_resamples": 10000,
+    "bootstrap_seed": 42,
+    "noninferiority_margin_relative": 0.01
+  },
+  "overrides": {
+    "alpha": {
+      "from": 0.05,
+      "to": 0.01,
+      "at": "2026-09-30T21:00:57+00:00"
+    }
+  },
+  "metrics": [
+    {
+      "name": "converted",
+      "role": "primary",
+      "type": "binary",
+      "direction": "increase",
+      "label": "checkout conversion",
+      "practical_threshold_rel": 0.02
+    },
+    {
+      "name": "revenue",
+      "role": "guardrail",
+      "type": "continuous",
+      "direction": "no_decrease",
+      "label": "revenue per user",
+      "ni_margin_rel": 0.01
+    }
+  ],
+  "plan": {
+    "steps": [
+      {
+        "id": "validate",
+        "method": "validation.full_profile",
+        "status": "done"
+      },
+      {
+        "id": "srm",
+        "method": "validation.srm_check",
+        "status": "done"
+      },
+      {
+        "id": "primary_test",
+        "method": "frequentist.two_proportion_ztest",
+        "status": "done"
+      },
+      {
+        "id": "guardrail_revenue",
+        "method": "frequentist.noninferiority_test",
+        "status": "done"
+      },
+      {
+        "id": "revenue_sensitivity",
+        "method": "frequentist.bootstrap_diff",
+        "status": "done"
+      },
+      {
+        "id": "segments_platform",
+        "method": "segments.segment_effects",
+        "status": "done"
+      },
+      {
+        "id": "time_trends",
+        "method": "time_effects.cumulative_effects",
+        "status": "done"
+      },
+      {
+        "id": "summary",
+        "method": "decision.build_summary",
+        "status": "done"
+      }
+    ],
+    "charts": [
+      "srm_bar",
+      "lift_ci",
+      "metric_by_variant",
+      "cumulative_daily",
+      "daily_lift",
+      "guardrail_scorecard",
+      "segment_forest",
+      "distribution_compare"
+    ],
+    "deck_sections": [
+      "exec_summary",
+      "setup",
+      "validation",
+      "results",
+      "guardrails",
+      "segments",
+      "time",
+      "risks",
+      "next_steps",
+      "appendix"
+    ],
+    "report_sections": [
+      "exec_summary",
+      "business_question",
+      "design",
+      "data_validation",
+      "methodology",
+      "results",
+      "guardrails",
+      "segments",
+      "risks",
+      "recommendation",
+      "appendix"
+    ],
+    "deliverables": [
+      "charts/",
+      "charts/manifest.json",
+      "deck.pptx",
+      "summary.docx"
+    ]
+  },
+  "gates": {
+    "plan_approved": true,
+    "validation_passed": true,
+    "review_passed": true
+  },
+  "history": [
+    {
+      "at": "2026-09-30T20:46:09+00:00",
+      "event": "run created"
+    },
+    {
+      "at": "2026-09-30T20:47:22+00:00",
+      "event": "gate plan_approved = True"
+    },
+    {
+      "at": "2026-09-30T20:47:22+00:00",
+      "event": "phase -> validation"
+    },
+    {
+      "at": "2026-09-30T20:47:45+00:00",
+      "event": "gate validation_passed = True"
+    },
+    {
+      "at": "2026-09-30T20:47:45+00:00",
+      "event": "phase -> analysis"
+    },
+    {
+      "at": "2026-09-30T20:49:26+00:00",
+      "event": "phase -> review"
+    },
+    {
+      "at": "2026-09-30T20:49:57+00:00",
+      "event": "gate review_passed = False"
+    },
+    {
+      "at": "2026-09-30T20:50:16+00:00",
+      "event": "gate review_passed = True"
+    },
+    {
+      "at": "2026-09-30T20:50:17+00:00",
+      "event": "phase -> deliverables"
+    },
+    {
+      "at": "2026-09-30T20:53:00+00:00",
+      "event": "phase -> done"
+    },
+    {
+      "at": "2026-09-30T21:00:57+00:00",
+      "event": "setting alpha: 0.05 -> 0.01"
+    },
+    {
+      "at": "2026-09-30T21:00:57+00:00",
+      "event": "reset to analysis"
+    },
+    {
+      "at": "2026-09-30T21:01:28+00:00",
+      "event": "phase -> review"
+    },
+    {
+      "at": "2026-09-30T21:01:44+00:00",
+      "event": "gate review_passed = True"
+    },
+    {
+      "at": "2026-09-30T21:01:44+00:00",
+      "event": "phase -> deliverables"
+    },
+    {
+      "at": "2026-09-30T21:02:03+00:00",
+      "event": "phase -> done"
+    }
+  ],
+  "input_csv": "data/checkout_ab.csv",
+  "source_csv": "D:\\VS-Code\\AB-Testing\\demo_data\\checkout_ab.csv",
+  "title": "Single-button checkout test"
+}

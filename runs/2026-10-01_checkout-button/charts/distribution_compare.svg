@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="405pt" viewBox="0 0 720 405" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-01T02:31:47.205050</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 405 
+L 720 405 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 57.6 348.3 
+L 684 348.3 
+L 684 89.1 
+L 57.6 89.1 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="71.345321" y="361.457812" transform="rotate(-0 71.345321 361.457812)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="202.372065" y="361.457812" transform="rotate(-0 202.372065 361.457812)">50</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="333.398809" y="361.457812" transform="rotate(-0 333.398809 361.457812)">100</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="464.425553" y="361.457812" transform="rotate(-0 464.425553 361.457812)">150</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1a1a1a" x="595.452297" y="361.457812" transform="rotate(-0 595.452297 361.457812)">200</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #8c8c8c" x="370.8" y="374.725" transform="rotate(-0 370.8 374.725)">Revenue per buyer (USD)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="text_7">
+     <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #8c8c8c" x="51.495312" y="218.7" transform="rotate(-90 51.495312 218.7)">Density</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 86.072727 348.3 
+L 86.072727 339.129508 
+L 100.309091 339.129508 
+L 100.309091 288.691801 
+L 114.545455 288.691801 
+L 114.545455 222.205733 
+L 128.781818 222.205733 
+L 128.781818 157.095239 
+L 143.018182 157.095239 
+L 143.018182 136.461631 
+L 157.254545 136.461631 
+L 157.254545 107.345319 
+L 171.490909 107.345319 
+L 171.490909 103.906384 
+L 185.727273 103.906384 
+L 185.727273 108.49163 
+L 199.963636 108.49163 
+L 199.963636 142.651714 
+L 214.2 142.651714 
+L 214.2 143.110238 
+L 228.436364 143.110238 
+L 228.436364 171.768026 
+L 242.672727 171.768026 
+L 242.672727 185.982289 
+L 256.909091 185.982289 
+L 256.909091 202.947699 
+L 271.145455 202.947699 
+L 271.145455 220.371635 
+L 285.381818 220.371635 
+L 285.381818 238.024832 
+L 299.618182 238.024832 
+L 299.618182 258.658439 
+L 313.854545 258.658439 
+L 313.854545 273.789751 
+L 328.090909 273.789751 
+L 328.090909 281.58467 
+L 342.327273 281.58467 
+L 342.327273 290.525899 
+L 356.563636 290.525899 
+L 356.563636 297.633031 
+L 370.8 297.633031 
+L 370.8 303.364588 
+L 385.036364 303.364588 
+L 385.036364 311.618031 
+L 399.272727 311.618031 
+L 399.272727 315.974015 
+L 413.509091 315.974015 
+L 413.509091 314.827704 
+L 427.745455 314.827704 
+L 427.745455 323.310409 
+L 441.981818 323.310409 
+L 441.981818 322.622622 
+L 456.218182 322.622622 
+L 456.218182 332.251639 
+L 470.454545 332.251639 
+L 470.454545 331.793114 
+L 484.690909 331.793114 
+L 484.690909 332.939426 
+L 498.927273 332.939426 
+L 498.927273 334.773524 
+L 513.163636 334.773524 
+L 513.163636 335.232049 
+L 527.4 335.232049 
+L 527.4 339.129508 
+L 541.636364 339.129508 
+L 541.636364 340.963606 
+L 555.872727 340.963606 
+L 555.872727 339.129508 
+L 570.109091 339.129508 
+L 570.109091 343.026967 
+L 584.345455 343.026967 
+L 584.345455 342.33918 
+L 598.581818 342.33918 
+L 598.581818 343.714754 
+L 612.818182 343.714754 
+L 612.818182 342.109918 
+L 627.054545 342.109918 
+L 627.054545 344.861065 
+L 641.290909 344.861065 
+L 641.290909 312.535081 
+L 655.527273 312.535081 
+L 655.527273 348.3 
+" clip-path="url(#pc206a55881)" style="fill: none; stroke: #0b2545; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 86.072727 348.3 
+L 86.072727 336.192565 
+L 100.309091 336.192565 
+L 100.309091 289.55652 
+L 114.545455 289.55652 
+L 114.545455 221.171935 
+L 128.781818 221.171935 
+L 128.781818 158.616855 
+L 143.018182 158.616855 
+L 143.018182 121.173492 
+L 157.254545 121.173492 
+L 157.254545 112.205021 
+L 171.490909 112.205021 
+L 171.490909 101.442857 
+L 185.727273 101.442857 
+L 185.727273 111.308174 
+L 199.963636 111.308174 
+L 199.963636 121.397703 
+L 214.2 121.397703 
+L 214.2 145.388361 
+L 228.436364 145.388361 
+L 228.436364 176.778007 
+L 242.672727 176.778007 
+L 242.672727 186.419112 
+L 256.909091 186.419112 
+L 256.909091 217.136123 
+L 271.145455 217.136123 
+L 271.145455 220.050876 
+L 285.381818 220.050876 
+L 285.381818 243.817322 
+L 299.618182 243.817322 
+L 299.618182 261.305839 
+L 313.854545 261.305839 
+L 313.854545 276.328026 
+L 328.090909 276.328026 
+L 328.090909 281.036473 
+L 342.327273 281.036473 
+L 342.327273 293.592332 
+L 356.563636 293.592332 
+L 356.563636 296.507084 
+L 370.8 296.507084 
+L 370.8 298.973414 
+L 385.036364 298.973414 
+L 385.036364 307.49346 
+L 399.272727 307.49346 
+L 399.272727 317.134566 
+L 413.509091 317.134566 
+L 413.509091 317.582989 
+L 427.745455 317.582989 
+L 427.745455 321.170378 
+L 441.981818 321.170378 
+L 441.981818 325.654613 
+L 456.218182 325.654613 
+L 456.218182 328.345154 
+L 470.454545 328.345154 
+L 470.454545 331.484118 
+L 484.690909 331.484118 
+L 484.690909 333.950448 
+L 498.927273 333.950448 
+L 498.927273 331.70833 
+L 513.163636 331.70833 
+L 513.163636 337.313624 
+L 527.4 337.313624 
+L 527.4 338.883106 
+L 541.636364 338.883106 
+L 541.636364 341.125224 
+L 555.872727 341.125224 
+L 555.872727 343.367341 
+L 570.109091 343.367341 
+L 570.109091 342.694706 
+L 584.345455 342.694706 
+L 584.345455 343.815765 
+L 598.581818 343.815765 
+L 598.581818 342.694706 
+L 612.818182 342.694706 
+L 612.818182 344.039977 
+L 627.054545 344.039977 
+L 627.054545 343.367341 
+L 641.290909 343.367341 
+L 641.290909 314.668237 
+L 655.527273 314.668237 
+L 655.527273 348.3 
+" clip-path="url(#pc206a55881)" style="fill: none; stroke: #2251ff; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 57.6 348.3 
+L 57.6 89.1 
+" style="fill: none; stroke: #8c8c8c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 57.6 348.3 
+L 684 348.3 
+" style="fill: none; stroke: #8c8c8c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #8c8c8c" x="684" y="387.81975" transform="rotate(-0 684 387.81975)">Values above the 99% quantile are shown in the last bin</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_6">
+     <path d="M 609.7625 101.757812 
+L 624.7625 101.757812 
+" style="fill: none; stroke: #0b2545; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1a1a1a" x="632.7625" y="105.257812" transform="rotate(-0 632.7625 105.257812)">control</text>
+    </g>
+    <g id="line2d_7">
+     <path d="M 609.7625 115.903125 
+L 624.7625 115.903125 
+" style="fill: none; stroke: #2251ff; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1a1a1a" x="632.7625" y="119.403125" transform="rotate(-0 632.7625 119.403125)">treatment</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_11">
+   <text style="font-weight: 700; font-size: 14px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1a1a1a" x="28.8" y="28.245938" transform="rotate(-0 28.8 28.245938)">Revenue per buyer has a long right tail in both variants; the shapes are similar</text>
+  </g>
+  <g id="text_12">
+   <text style="font-size: 11px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #8c8c8c" x="28.8" y="54.582656" transform="rotate(-0 28.8 54.582656)">Revenue per buyer (USD), density, buyers only</text>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'Liberation Sans', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #8c8c8c" x="28.8" y="393.285" transform="rotate(-0 28.8 393.285)">Source: checkout_ab.csv, 2026-09-01 to 2026-09-14</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc206a55881">
+   <rect x="57.6" y="89.1" width="626.4" height="259.2"/>
+  </clipPath>
+ </defs>
+</svg>

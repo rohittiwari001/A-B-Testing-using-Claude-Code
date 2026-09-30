@@ -34,6 +34,24 @@ ANN = SIZES["annotation"]
 __all__ = ["apply_style"]  # re-exported so plotting scripts can import everything from here
 
 
+def _x_values(records, x_key):
+    """x values for time charts: ISO date strings become datetimes (whatever the column is called)."""
+    import pandas as pd
+
+    raw = [r[x_key] for r in records]
+    if raw and isinstance(raw[0], str):
+        parsed = pd.to_datetime(raw, errors="coerce")
+        if parsed.notna().all():
+            return parsed, True
+    return np.array(raw), False
+
+
+def _date_axis(ax) -> None:
+    import matplotlib.dates as mdates
+
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
+
+
 def _pct_axis(axis, decimals: int = 0) -> None:
     axis.set_major_formatter(PercentFormatter(1.0, decimals=decimals))
 
@@ -132,10 +150,8 @@ def metric_by_variant(variant_stats: Mapping[str, Mapping[str, float]], title: s
 def cumulative_daily(records: Sequence[Mapping[str, Any]], title: str, subtitle: str = "", source: str = "",
                      control: str = "control", treatment: str = "treatment", metric_type: str | None = None, x_key: str = "date"):
     """Cumulative metric per variant over time (records from time_effects.cumulative_effects)."""
-    import pandas as pd
-
     fig, ax = new_figure(right=0.84)
-    x = pd.to_datetime([r[x_key] for r in records]) if x_key == "date" else [r[x_key] for r in records]
+    x, is_date = _x_values(records, x_key)
     colors = variant_colors([control, treatment], control)
     for key, name in (("control_mean", control), ("treatment_mean", treatment)):
         y = [r[key] for r in records]
@@ -145,10 +161,8 @@ def cumulative_daily(records: Sequence[Mapping[str, Any]], title: str, subtitle:
         _pct_axis(ax.yaxis, 1)
     else:
         _num_axis(ax.yaxis)
-    if x_key == "date":
-        import matplotlib.dates as mdates
-
-        ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
+    if is_date:
+        _date_axis(ax)
     ax.set_ylabel("Cumulative value")
     finalize(fig, title, subtitle, source)
     return fig
@@ -160,10 +174,8 @@ def cumulative_daily(records: Sequence[Mapping[str, Any]], title: str, subtitle:
 def daily_lift(records: Sequence[Mapping[str, Any]], title: str, subtitle: str = "", source: str = "",
                x_key: str = "date", overall: float | None = None, xlabel: str = ""):
     """Per-period relative lift with a CI band - the novelty / primacy check."""
-    import pandas as pd
-
     fig, ax = new_figure()
-    x = pd.to_datetime([r[x_key] for r in records]) if x_key == "date" else np.array([r[x_key] for r in records])
+    x, is_date = _x_values(records, x_key)
     y = np.array([r["rel_lift"] for r in records], dtype=float)
     lo = np.array([r["rel_ci_low"] for r in records], dtype=float)
     hi = np.array([r["rel_ci_high"] for r in records], dtype=float)
@@ -175,10 +187,8 @@ def daily_lift(records: Sequence[Mapping[str, Any]], title: str, subtitle: str =
         ax.annotate(f"Overall {fmt_pct(overall)}", (x[-1], overall), xytext=(0, 5), textcoords="offset points",
                     ha="right", fontsize=ANN, color=P["grey_mid"])
     _pct_axis(ax.yaxis)
-    if x_key == "date":
-        import matplotlib.dates as mdates
-
-        ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
+    if is_date:
+        _date_axis(ax)
     else:
         ax.xaxis.set_major_locator(MaxNLocator(integer=True))
     ax.set_ylabel("Relative lift (CI band)")

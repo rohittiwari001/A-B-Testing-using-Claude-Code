@@ -24,3 +24,19 @@ viz, deck, report   deliverable builders
 """
 
 __version__ = "0.1.0"
+
+
+def _utf8_console() -> None:
+    """Numbers use the typographic minus (U+2212); make printing them safe on Windows consoles (cp1252)."""
+    import sys
+
+    for stream in (sys.stdout, sys.stderr):
+        enc = (getattr(stream, "encoding", "") or "").lower().replace("-", "")
+        if stream is not None and enc != "utf8" and hasattr(stream, "reconfigure"):
+            try:
+                stream.reconfigure(encoding="utf-8", errors="replace")
+            except (ValueError, OSError):
+                pass
+
+
+_utf8_console()

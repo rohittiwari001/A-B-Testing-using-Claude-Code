@@ -91,6 +91,8 @@ def srm_by(
     rows = []
     for level, g in df.groupby(by_col):
         r = srm_check(g, variant_col, expected, threshold, unit_col)
+        if isinstance(level, pd.Timestamp):
+            level = level.date().isoformat()
         rows.append({by_col: level, **{f"n_{k}": v for k, v in r.n.items()},
                      **{f"share_{k}": v for k, v in r.extra["observed_share"].items()},
                      "p_value": r.p_value, "srm": r.significant})
@@ -342,7 +344,10 @@ def _worst_levels(localise: dict[str, list[dict]]) -> str:
     for col, rows in localise.items():
         bad = [str(r[col]) for r in rows if r.get("srm")]
         if bad and len(bad) < len(rows):
-            hits.append(f"{col}={', '.join(bad[:6])}")
+            if len(bad) > 4:
+                hits.append(f"{col} {bad[0]} to {bad[-1]} ({len(bad)} of {len(rows)} levels)")
+            else:
+                hits.append(f"{col}={', '.join(bad)}")
     return "; ".join(hits)
 
 

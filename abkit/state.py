@@ -437,6 +437,17 @@ def status_text(run: str | Path | None = None) -> str:
     return "\n".join(lines)
 
 
+def list_candidates(root: str | Path | None = None) -> list[dict[str, Any]]:
+    """Promotion candidates recorded in every run's results.json."""
+    out = []
+    for rid in list_runs(root):
+        f = runs_dir(root) / rid / "results.json"
+        if f.is_file():
+            for c in json.loads(f.read_text(encoding="utf-8")).get("candidates_for_promotion", []):
+                out.append({**c, "run_id": rid})
+    return out
+
+
 def _cli(argv: list[str] | None = None) -> int:
     import argparse
 
@@ -446,6 +457,7 @@ def _cli(argv: list[str] | None = None) -> int:
     sub.add_parser("list", help="list runs")
     v = sub.add_parser("validate", help="validate state.json against the schema")
     v.add_argument("--run")
+    sub.add_parser("candidates", help="list functions flagged for promotion into abkit, across all runs")
     n = sub.add_parser("new", help="create a run folder, copy the CSV, activate it")
     n.add_argument("slug")
     n.add_argument("--csv")
@@ -474,6 +486,12 @@ def _cli(argv: list[str] | None = None) -> int:
             errs = validate_state(load_state(a.run))
             print("state.json OK" if not errs else "state.json INVALID:\n  - " + "\n  - ".join(errs))
             return 1 if errs else 0
+        elif a.cmd == "candidates":
+            rows = list_candidates()
+            if not rows:
+                print("No promotion candidates.")
+            for c in rows:
+                print(f"{c['run_id']}: {c['name']} ({c['file']}) -> {c.get('target_module') or '?'}: {c['description']}")
         elif a.cmd == "new":
             text = Path(a.context_file).read_text(encoding="utf-8") if a.context_file else "(to be filled with the user's description)"
             run = new_run(a.slug, text, a.csv)

@@ -76,3 +76,24 @@ def test_agent_files(name, tools):
         assert (SKILLS / skill / "SKILL.md").is_file(), f"{name} preloads missing skill {skill}"
     body = path.read_text(encoding="utf-8")
     assert "runs/.active" in body and "state.json" in body, f"{name} must read the active run and state first"
+
+
+@pytest.mark.parametrize("name", ["new-experiment", "status", "switch-run", "rerun", "promote"])
+def test_commands(name):
+    fm = frontmatter(ROOT / ".claude" / "commands" / f"{name}.md")
+    assert fm["description"]
+
+
+def test_claude_md_covers_phases_and_rules():
+    text = (ROOT / "CLAUDE.md").read_text(encoding="utf-8")
+    for phrase in ["Phase 1: Intake", "Phase 2: Planning", "Phase 3: Data validation", "Phase 4: Analysis",
+                   "Phase 5: Review", "Phase 6: Deliverables", "Phase 7: Wrap-up", "Follow-ups", "General questions",
+                   "Never invent data", "Never modify the original CSV", "candidates"]:
+        assert phrase in text
+    for agent in AGENTS:
+        assert agent in text
+
+
+def test_readme_is_short():
+    words = len((ROOT / "README.md").read_text(encoding="utf-8").split())
+    assert words < 550

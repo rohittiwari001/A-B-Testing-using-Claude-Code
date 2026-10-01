@@ -4,6 +4,8 @@ Open this folder in Claude Code, give it a CSV and a plain-English description, 
 experiment analysis: clarifying questions, a plan you approve, data validation, the planned statistics,
 an independent review, then consulting-style charts, a PowerPoint deck and a Word summary.
 
+For the full guide (the flow, what you decide, outputs, internals, extending), see **[HOW_IT_WORKS.md](HOW_IT_WORKS.md)**.
+
 **Setup (once):** `pip install -r requirements.txt && pip install -e .` and `python demo_data/generate.py`.
 Check with `python -m pytest -q`.
 

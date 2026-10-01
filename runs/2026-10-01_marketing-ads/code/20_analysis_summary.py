@@ -64,14 +64,26 @@ if prim["rel_ci_low"] < MDE:  # only relevant if the CI reaches below the practi
     caveats.append(f"The lift range ({R.fmt_ci(prim['rel_ci_low'], prim['rel_ci_high'])}) includes values below "
                    f"the {R.fmt_pct(MDE)} threshold.")
 
-next_steps = [
-    f"Keep ads running: about {R.fmt_num(per_k['estimate'], 1)} extra conversions per 1,000 users "
-    f"({rng(per_k)}).",
-    "Data owner: confirm random assignment to ads vs PSA before scaling spend.",
-    f"Agree a value per conversion to price the {R.fmt_num(total['estimate'])} extra conversions.",
-    "Test ad frequency in a new randomised test before changing it.",
-    "Keep a small PSA holdout when scaling to track the lift.",
+next_steps = [  # "Owner: action (timing)" feeds the deck's Action / Owner / Timing table
+    f"Marketing: keep the ad campaign running; it adds about {R.fmt_num(per_k['estimate'], 1)} conversions per 1,000 users (now)",
+    "Data owner: confirm users were randomly assigned to ads vs PSA (within 1 week)",
+    f"Finance: agree a value per conversion to price the {R.fmt_num(total['estimate'])} extra conversions (within 2 weeks)",
+    "Analytics: test ad frequency in a new randomised test before changing it (next quarter)",
+    "Marketing: keep a small PSA holdout when scaling to keep measuring the lift (ongoing)",
 ]
+
+impact_tiles = [
+    {"value": R.fmt_pct(prim["rel_lift"]), "label": "Higher conversion with ads",
+     "note": f"95% CI {R.fmt_ci(prim['rel_ci_low'], prim['rel_ci_high'])}"},
+    {"value": R.fmt_num(per_k["estimate"], 1), "label": "Extra conversions per 1,000 users", "note": f"95% CI {rng(per_k)}"},
+    {"value": R.fmt_num(total["estimate"]), "label": "Extra conversions caused by the ads", "note": f"95% CI {rng(total, 0)}"},
+    {"value": R.fmt_pct(share["estimate"], 0, signed=False), "label": "Of ad-group conversions are due to the ads",
+     "note": f"95% CI {R.fmt_pct(share['ci_low'], 0, signed=False)} to {R.fmt_pct(share['ci_high'], 0, signed=False)}"},
+]
+impact_headline = (f"The ads produced about {R.fmt_num(total['estimate'])} extra conversions, roughly "
+                   f"{R.fmt_pct(share['estimate'], 0, signed=False)} of all conversions in the ad group")
+so_what = (f"Campaign value = {R.fmt_num(total['estimate'])} extra conversions × your value per conversion; "
+           "compare it with the ad spend to judge return on investment.")
 
 extra = [
     {"label": "Incremental conversions per 1,000 users", "value": f"{R.fmt_num(per_k['estimate'], 1)} (95% CI {rng(per_k)})"},
@@ -82,6 +94,7 @@ summary = decision.build_summary(
     RUN, "primary_test", __file__, mde_rel=MDE, direction=m["direction"], metric_label=LABEL,
     caveats=caveats, next_steps=next_steps, extra_key_numbers=extra, prob_threshold=s["bayes_decision_threshold"],
     treatment_label="the ad campaign", control_label="the PSA",   # display names for stakeholders
+    impact=impact_tiles, impact_headline=impact_headline, so_what=so_what,
 )
 state.set_step_status(RUN, "summary", "done")
 

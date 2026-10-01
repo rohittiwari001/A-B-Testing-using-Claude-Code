@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "2026-10-01_marketing-ads",
-  "updated_at": "2026-09-30T21:53:10+00:00",
+  "updated_at": "2026-10-01T10:48:10+00:00",
   "validation": {
     "verdict": "warn",
     "checks": [
@@ -4864,19 +4864,43 @@
       "Money impact needs a value per conversion."
     ],
     "next_steps": [
-      "Keep ads running: about 7.7 extra conversions per 1,000 users (6.0 to 9.4).",
-      "Data owner: confirm random assignment to ads vs PSA before scaling spend.",
-      "Agree a value per conversion to price the 4,343 extra conversions.",
-      "Test ad frequency in a new randomised test before changing it.",
-      "Keep a small PSA holdout when scaling to track the lift."
+      "Marketing: keep the ad campaign running; it adds about 7.7 conversions per 1,000 users (now)",
+      "Data owner: confirm users were randomly assigned to ads vs PSA (within 1 week)",
+      "Finance: agree a value per conversion to price the 4,343 extra conversions (within 2 weeks)",
+      "Analytics: test ad frequency in a new randomised test before changing it (next quarter)",
+      "Marketing: keep a small PSA holdout when scaling to keep measuring the lift (ongoing)"
     ],
     "primary": {
       "step": "primary_test",
       "index": 0
     },
     "mde_rel": 0.05,
+    "impact": [
+      {
+        "value": "+43.1%",
+        "label": "Higher conversion with ads",
+        "note": "95% CI [+29.3%, +56.8%]"
+      },
+      {
+        "value": "7.7",
+        "label": "Extra conversions per 1,000 users",
+        "note": "95% CI 6.0 to 9.4"
+      },
+      {
+        "value": "4,343",
+        "label": "Extra conversions caused by the ads",
+        "note": "95% CI 3,360 to 5,326"
+      },
+      {
+        "value": "30%",
+        "label": "Of ad-group conversions are due to the ads",
+        "note": "95% CI 23% to 37%"
+      }
+    ],
+    "impact_headline": "The ads produced about 4,343 extra conversions, roughly 30% of all conversions in the ad group",
+    "so_what": "Campaign value = 4,343 extra conversions \u00d7 your value per conversion; compare it with the ad spend to judge return on investment.",
     "script": "code/20_analysis_summary.py",
-    "recorded_at": "2026-09-30T21:53:10+00:00"
+    "recorded_at": "2026-10-01T10:48:10+00:00"
   },
   "candidates_for_promotion": [
     {

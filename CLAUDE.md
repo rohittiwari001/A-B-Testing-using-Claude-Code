@@ -57,8 +57,10 @@ method as inappropriate, bring its proposed alternative to the user (a method ch
 4. When the review passes the reviewer sets `review_passed` and phase `deliverables`.
 
 ## Phase 6: Deliverables (always)
-Call **viz-designer**, then **deck-builder** and **report-writer**. Length scales with the problem (power analysis:
-short deck; full multi-metric readout: longer deck plus appendix; blocked run: short deck on the data issue).
+Call **viz-designer**, then **deck-builder** and **report-writer**. Every deck follows the same consulting storyline
+(deck-style skill): executive summary with the answer first -> the ask -> approach -> findings -> business impact ->
+risks and recommendation with owners -> appendix. Only the findings chapter changes with the problem, so its length
+scales (power analysis: short; full multi-metric readout: longer; blocked run: the data issue is the finding).
 
 ## Phase 7: Wrap-up (always)
 1. Confirm every item in `plan.deliverables` exists and every planned chart is in `charts/manifest.json` (the Stop

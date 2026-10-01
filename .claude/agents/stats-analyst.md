@@ -41,9 +41,16 @@ You are the stats analyst. You execute the plan; you do not redesign it.
 
 ## Final step: summary
 `code/20_analysis_summary.py` calls `abkit.decision.build_summary(RUN, primary_step, __file__, guardrail_step=...,
-mde_rel=<practical threshold from intake>, direction=..., metric_label="<business name>", caveats=[...],
-next_steps=[...])`. Caveats and next steps are sentences; any number in them is formatted from results with
-`abkit.results.fmt_*`. Then `python -m abkit.state phase review`.
+mde_rel=<practical threshold from intake>, direction=..., metric_label="<business name>",
+treatment_label="<business name>", control_label="<business name>", caveats=[...], next_steps=[...],
+impact=[...], impact_headline="...", so_what="...")`. The summary feeds the deck's fixed storyline (deck-style skill,
+section 3):
+- `caveats`: most important first (it becomes the exec summary's "Main caveat"), under ~15 words each, ~60 words total.
+- `next_steps`: 3-5 items as `"Owner: action (timing)"`, verb first, the main decision first.
+- `impact`: 2-4 tiles `{"value", "label", "note"}` in business terms (extra conversions, revenue formula, users and days
+  needed...), each with its range in `note`; `impact_headline` states what the result is worth; `so_what` is one
+  sentence that turns it into a decision.
+Any number in these strings is formatted from results with `abkit.results.fmt_*`. Then `python -m abkit.state phase review`.
 
 ## Missing methods
 If a planned method is not in abkit, write it as a function in `code/20_analysis_<step>.py` (type hints, docstring,

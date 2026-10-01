@@ -111,12 +111,15 @@ def finalize(fig, title: str, subtitle: str | None = None, source: str | None = 
 def save_chart(
     fig, run_dir: str | Path, chart_id: str, title: str, key_message: str, subtitle: str = "", source: str = "",
     section: str = "results", takeaways: list[str] | None = None, notes: str = "", out_dir: str | Path | None = None,
+    tag: str | None = None,
 ) -> dict[str, Any]:
     """Save PNG (300 dpi) + SVG and upsert the chart in ``charts/manifest.json``. Returns the manifest entry.
 
     ``section`` places the chart in the deck/report: setup, validation, results, secondary,
     guardrails, segments, time, power, appendix. ``takeaways`` are up to three short bullets
-    for the chart slide (build them with f-strings from results.json values).
+    for the chart slide (build them with f-strings from results.json values). ``tag`` puts a sticker on the
+    slide (e.g. "Exploratory", "Preliminary"). Charts appear in the deck in the order they are saved, so save
+    the headline chart of each section first.
     """
     import matplotlib.pyplot as plt
 
@@ -128,7 +131,7 @@ def save_chart(
     plt.close(fig)
     entry = {"id": chart_id, "title": title, "subtitle": subtitle, "key_message": key_message, "takeaways": (takeaways or [])[:3],
              "section": section, "source": source, "notes": notes, "png": png.name, "svg": svg.name,
-             "title_crop": getattr(fig, "_abkit_title_crop", 0.0),
+             "title_crop": getattr(fig, "_abkit_title_crop", 0.0), "tag": tag,
              "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
     manifest = load_manifest(charts.parent if not out_dir else charts, charts_dir=charts)
     manifest["charts"] = [c for c in manifest["charts"] if c["id"] != chart_id] + [entry]

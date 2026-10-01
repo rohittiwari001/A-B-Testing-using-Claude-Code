@@ -84,8 +84,19 @@ def build_summary(
     direction: str = "increase", caveats: Iterable[str] = (), next_steps: Iterable[str] = (), primary_index: int = 0,
     prob_threshold: float = 0.95, extra_key_numbers: Iterable[dict[str, str]] = (), metric_label: str | None = None,
     treatment_label: str | None = None, control_label: str | None = None,
+    impact: Iterable[dict[str, str]] = (), impact_headline: str | None = None, so_what: str | None = None,
 ) -> dict[str, Any]:
-    """Write ``summary`` into results.json from stored results and return it."""
+    """Write ``summary`` into results.json from stored results and return it.
+
+    Deck storyline inputs (all optional; the deck derives sensible defaults when they are missing):
+
+    - ``impact``: up to four big-number tiles for the Impact slide, each ``{"value", "label", "note"}``,
+      e.g. ``{"value": "4,343", "label": "Extra conversions in the ad group", "note": "95% CI 3,360 to 5,326"}``.
+    - ``impact_headline``: the Impact slide's action title (what the result is worth in business terms).
+    - ``so_what``: one sentence on what the business should take from the impact numbers.
+    - ``next_steps``: strings like ``"Data owner: confirm random assignment (within 1 week)"`` or dicts
+      ``{"action", "owner", "timing"}``; owner and timing feed the Recommendation slide's table.
+    """
     res = R.load_results(run_dir)
     p = R.get_step(res, primary_step)["results"][primary_index]
     gs = R.get_step(res, guardrail_step)["results"] if guardrail_step else []
@@ -122,6 +133,7 @@ def build_summary(
         "verdict": rec["verdict"], "verdict_label": rec["label"], "verdict_color": rec["color"], "reason": rec["reason"],
         "headline": headline, "key_numbers": key, "caveats": [*rec["caveats"], *caveats], "next_steps": list(next_steps),
         "primary": {"step": primary_step, "index": primary_index}, "mde_rel": mde_rel,
+        "impact": [dict(t) for t in impact], "impact_headline": impact_headline, "so_what": so_what,
     }
     R.set_summary(run_dir, summary, script)
     return summary

@@ -24,7 +24,10 @@ You are the visualisation designer. Charts must look like they came from the sam
    - saves with `save_chart(fig, RUN, chart_id, title, key_message, subtitle, source, section=..., takeaways=[...],
      notes="speaker note: the one point this chart makes")`.
 2. Sections: results, secondary, guardrails, segments, time, power, validation, appendix, setup. They decide
-   where the chart appears in the deck and report.
+   where the chart appears in the deck's Findings chapter (or the appendix) and in the report. Charts appear in the
+   order they are saved, so save the headline chart of each section first. Pass `tag="Exploratory"` (or
+   "Preliminary", "Directional") for evidence that is not confirmatory; the deck shows it as a sticker. Titles must
+   pass the ghost-deck test: read in sequence, they tell the story (deck-style skill).
 3. Run the scripts from the project root. Open at least the primary chart PNG with Read and check for overlapping
    labels, clipped text and wrong emphasis; fix and rerun.
 4. A chart outside the catalogue: build it with `new_figure()` / `finalize()` in the script and add it as a

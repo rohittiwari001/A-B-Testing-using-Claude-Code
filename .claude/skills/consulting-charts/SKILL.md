@@ -95,8 +95,10 @@ test used, n.
 | did_trends | treated vs control with launch line | `quasi.group_trends` records | results |
 
 Sections used by the deck and report: setup, validation, results, secondary, guardrails, segments, time,
-power, appendix. A chart not in the catalogue: build it with `new_figure()` + `finalize()` + palette tokens
-and flag it as a promotion candidate.
+power, appendix. In the deck, charts fill the Findings chapter of the fixed storyline (deck-style skill) in the
+order they are saved: save the headline chart of each section first. Pass `tag="Exploratory"` (or "Preliminary",
+"Directional") to `save_chart` for non-confirmatory evidence; the slide shows it as an amber sticker. A chart not in
+the catalogue: build it with `new_figure()` + `finalize()` + palette tokens and flag it as a promotion candidate.
 
 ## Pre-save checklist
 - [ ] `apply_style()` called (the style_guard hook enforces it) and colours only from `PALETTE`.

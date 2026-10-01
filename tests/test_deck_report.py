@@ -37,9 +37,9 @@ def test_deck_structure_and_numbers(sample_run):
     path = build_standard_deck(sample_run)
     prs = Presentation(str(path))
     assert prs.slide_width / prs.slide_height == pytest.approx(16 / 9, rel=0.01)
-    # title + exec + setup + 3 results charts + guardrail chart + guardrail table + segments chart + risks + next steps
-    # + appendix divider + methodology + validation + full results (1 page)
-    assert len(prs.slides) == 15
+    # title, exec summary, agenda, ask, approach | findings: 3 results charts, guardrail chart + table, segment chart |
+    # impact, risks, recommendation | appendix: divider, methodology, validation table, full results
+    assert len(prs.slides) == 18
     res = json.loads((sample_run / "results.json").read_text())
     text = deck_text(prs)
     assert res["summary"]["headline"] in text
@@ -47,9 +47,40 @@ def test_deck_structure_and_numbers(sample_run):
         assert k["value"] in text
     p = res["steps"]["primary_test"]["results"][0]
     assert R.fmt_pct(p["rel_lift"]) in text and R.fmt_ci(p["rel_ci_low"], p["rel_ci_high"]) in text
-    content = [s for s in list(prs.slides)[1:] if not all(sh.shape_type == 1 or not sh.has_text_frame or sh.text_frame.text in ("Appendix", "Methodology, validation and full results") for sh in s.shapes)]
-    for s in content:
+    for s in list(prs.slides)[1:]:
+        texts = [sh.text_frame.text for sh in s.shapes if sh.has_text_frame]
+        if "Appendix" in texts:          # section divider
+            continue
         assert s.has_notes_slide and s.notes_slide.notes_text_frame.text.strip()
+
+
+def test_storyline_is_fixed_and_answer_first(sample_run):
+    from abkit.deck.builder import CHAPTERS
+
+    build_standard_deck(sample_run)
+    story = (sample_run / "deck_storyline.md").read_text(encoding="utf-8")
+    rows = [r.split(" | ") for r in story.splitlines() if r.startswith("| ") and not r.startswith("| #")]
+    chapters = [r[1].strip() for r in rows]
+    titles = [r[2].rstrip(" |") for r in rows]
+    res = R.load_results(sample_run)
+    assert titles[1] == res["summary"]["headline"]            # executive summary (answer first) is slide 2
+    assert titles[2] == "Agenda"
+    seen = [c for i, c in enumerate(chapters) if c in CHAPTERS and (i == 0 or chapters[i - 1] != c)]
+    assert seen == CHAPTERS                                     # the five chapters, in order, each once
+    assert titles[3].startswith("The ask")
+    assert not (sample_run / "deck_warnings.txt").exists()
+
+
+def test_next_step_parsing_and_impact_fallback(sample_run):
+    from abkit.deck.builder import _impact_content, _parse_step, run_context
+
+    assert _parse_step("Data owner: confirm random assignment (within 1 week)") == (
+        "Confirm random assignment", "Data owner", "within 1 week")
+    assert _parse_step("Roll out to everyone") == ("Roll out to everyone", "To agree", "To agree")
+    assert _parse_step({"action": "ship it", "owner": "PM"}) == ("Ship it", "PM", "To agree")
+    title, tiles, so_what, foot = _impact_content(run_context(sample_run))
+    assert len(tiles) == 3 and tiles[0][0] == R.fmt_pct(R.get_result(sample_run, "primary_test")["rel_lift"])
+    assert so_what
 
 
 def test_deck_numbers_all_trace_to_results(sample_run):

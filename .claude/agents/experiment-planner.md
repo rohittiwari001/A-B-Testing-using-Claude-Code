@@ -42,8 +42,11 @@ not exist in abkit, name it `custom.<name>` and say the analyst must write it in
 - `plan.charts`: chart ids from the catalogue only (lift_ci, metric_by_variant, cumulative_daily, daily_lift,
   segment_forest, power_curve, sample_size_vs_mde, posterior_distributions, prob_to_beat_control, srm_bar,
   distribution_compare, cuped_variance_reduction, sequential_boundaries, guardrail_scorecard, did_trends).
-- `plan.deck_sections` and `plan.report_sections`: sized to the problem (deck-style skill). Power analysis ->
-  short; full readout -> default order plus appendix.
+- `plan.deck_sections`: the deck always follows the fixed storyline (executive summary, the ask, approach, findings,
+  impact, recommendation - deck-style skill). You only choose the **findings modules** in the order they should
+  appear (`results`, `secondary`, `guardrails`, `segments`, `time`, `power`) and whether to add `appendix`.
+  Headline evidence first; exploratory breakdowns last.
+- `plan.report_sections`: sized to the problem (report-style skill).
 - `plan.deliverables`: always `["charts/", "charts/manifest.json", "deck.pptx", "summary.docx"]`.
 
 ## Write outputs

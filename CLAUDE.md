@@ -10,7 +10,7 @@ Python only. The toolkit is `abkit` (installed with `pip install -e .`). Run com
 ## Key facts
 
 - Active run id: `runs/.active`. Run folder: `runs/<YYYY-MM-DD>_<slug>/` with context.md, intake.md, plan.md,
-  state.json, data/, data_profile.md, code/, results.json, review.md, charts/, deck.pptx, summary.docx, run_log.jsonl.
+  state.json, data/, data_profile.md, code/, results.json, review.md, charts/, deck.pptx, summary.docx, technical_report.docx, run_log.jsonl.
 - State helper: `python -m abkit.state status | list | validate | new | switch | gate | phase | reset | candidates`.
 - Script naming in `code/` (hooks rely on it): `10_validate_*`, `20_analysis_*`, `30_charts_*`, `40_deck_*`,
   `50_report_*`, `90_adhoc_*`.
@@ -57,7 +57,7 @@ method as inappropriate, bring its proposed alternative to the user (a method ch
 4. When the review passes the reviewer sets `review_passed` and phase `deliverables`.
 
 ## Phase 6: Deliverables (always)
-Call **viz-designer**, then **deck-builder** and **report-writer**. Every deck follows the same consulting storyline
+Call **viz-designer**, then **deck-builder** and **report-writer** (the report-writer builds both summary.docx for stakeholders and technical_report.docx for data scientists). Every deck follows the same consulting storyline
 (deck-style skill): executive summary with the answer first -> the ask -> approach -> findings -> business impact ->
 risks and recommendation with owners -> appendix. Only the findings chapter changes with the problem, so its length
 scales (power analysis: short; full multi-metric readout: longer; blocked run: the data issue is the finding).
@@ -65,11 +65,11 @@ scales (power analysis: short; full multi-metric readout: longer; blocked run: t
 ## Phase 7: Wrap-up (always)
 1. Confirm every item in `plan.deliverables` exists and every planned chart is in `charts/manifest.json` (the Stop
    hook enforces this in the deliverables phase).
-2. `python -m abkit.tracecheck <run-id>`: every percentage and p-value in deck.pptx and summary.docx must trace to
+2. `python -m abkit.tracecheck <run-id>`: every percentage and p-value in deck.pptx, summary.docx and technical_report.docx must trace to
    results.json. Fix any untraced number at its source (store derived numbers in results.json), then rebuild.
 3. `python -m abkit.state phase done`.
 4. Reply with a short chat summary: the verdict, three to five key numbers (from results.json summary), caveats,
-   and file paths (deck.pptx, summary.docx, charts/).
+   and file paths (deck.pptx, summary.docx, technical_report.docx, charts/).
 5. If `results.json` lists `candidates_for_promotion`, ask whether to promote them into abkit with tests (/promote).
 
 ## Follow-ups on the active run

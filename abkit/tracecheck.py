@@ -50,7 +50,15 @@ def printed_tokens(run: Path) -> dict[str, set[str]]:
     parts += [c.text for s in deck.slides for sh in s.shapes if sh.has_table for row in sh.table.rows for c in row.cells]
     doc = Document(str(run / "summary.docx"))
     rparts = [p.text for p in doc.paragraphs] + [c.text for t in doc.tables for row in t.rows for c in row.cells]
-    return {"deck": set(TOKEN.findall("\n".join(parts))), "report": set(TOKEN.findall("\n".join(rparts)))}
+    out = {"deck": set(TOKEN.findall("\n".join(parts))), "report": set(TOKEN.findall("\n".join(rparts)))}
+    tech = run / "technical_report.docx"
+    if tech.is_file():
+        # "Quote"-style paragraphs are verbatim records (intake answers, review findings) that may cite superseded values
+        tdoc = Document(str(tech))
+        tparts = [p.text for p in tdoc.paragraphs if p.style.name != "Quote"]
+        tparts += [c.text for t in tdoc.tables for row in t.rows for c in row.cells]
+        out["technical"] = set(TOKEN.findall("\n".join(tparts)))
+    return out
 
 
 def check(run: Path) -> list[str]:
@@ -79,7 +87,8 @@ def main(argv: list[str]) -> int:
         run = ROOT / "runs" / rid
         probs = check(run)
         toks = printed_tokens(run)
-        print(f"{rid}: {len(toks['deck'])} distinct numbers in deck, {len(toks['report'])} in report -> "
+        print(f"{rid}: {len(toks['deck'])} distinct numbers in deck, {len(toks['report'])} in report"
+              + (f", {len(toks['technical'])} in technical report" if "technical" in toks else "") + " -> "
               + ("all traced to results.json" if not probs else f"{len(probs)} untraced: {probs}"))
         bad += bool(probs)
     return 1 if bad else 0

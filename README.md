@@ -13,7 +13,8 @@ revenue. We tested a one-click checkout; should we ship it?"* (or `/new-experime
 Claude creates `runs/<date>_<slug>/`, asks only the questions your description leaves open (plus keep-or-change
 for the statistical defaults), proposes a plan and **waits for your approval**. It then validates the data,
 stops and explains if something blocks the analysis (e.g. a sample ratio mismatch), runs and reviews the analysis,
-and delivers `charts/`, `deck.pptx` and `summary.docx` with a short chat summary.
+and delivers `charts/`, `deck.pptx`, `summary.docx` (stakeholders) and `technical_report.docx` (methods, formulas,
+decision log and reproducibility for data scientists) with a short chat summary.
 
 ## Resume a run
 Just reopen the folder: the session-start hook prints the active run, its phase and the next step.

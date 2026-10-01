@@ -152,3 +152,26 @@ def test_tracecheck_passes_on_sample_run(sample_run):
     build_standard_report(sample_run)
     problems = tracecheck.check(sample_run)
     assert not [p for p in problems if "100%" not in p], problems
+
+
+def test_technical_report_structure_and_traceability(sample_run):
+    from abkit import tracecheck
+    from abkit.report import build_technical_report
+    from abkit.report.technical import METHOD_DOCS, method_doc
+
+    build_standard_deck(sample_run)
+    build_standard_report(sample_run)
+    doc = Document(str(build_technical_report(sample_run)))
+    h1 = [p.text for p in doc.paragraphs if p.style.name == "Heading 1"]
+    assert h1 == ["1. Technical summary", "2. Problem framing and design", "3. Data and validation", "4. Methods, step by step",
+                  "5. Results", "6. Robustness and sensitivity", "7. Decision log", "8. Reproducibility"]
+    st = json.loads((sample_run / "state.json").read_text())
+    h2 = [p.text for p in doc.paragraphs if p.style.name == "Heading 2"]
+    for step in st["plan"]["steps"]:
+        assert any(h.startswith(f"{step['id']}:") for h in h2), step["id"]
+    body = "\n".join(p.text for p in doc.paragraphs)
+    assert "H0: p_T = p_C" in body and "SHA-256" in "\n".join(c.text for t in doc.tables for row in t.rows for c in row.cells)
+    assert "python -m abkit.tracecheck" in body
+    assert any(p.style.name == "Quote" for p in doc.paragraphs)           # review round recorded verbatim
+    assert method_doc("frequentist.bootstrap_mean_diff") is METHOD_DOCS["bootstrap"] and method_doc("custom.x") is None
+    assert not [p for p in tracecheck.check(sample_run) if "100%" not in p]

@@ -47,7 +47,7 @@ not exist in abkit, name it `custom.<name>` and say the analyst must write it in
   appear (`results`, `secondary`, `guardrails`, `segments`, `time`, `power`) and whether to add `appendix`.
   Headline evidence first; exploratory breakdowns last.
 - `plan.report_sections`: sized to the problem (report-style skill).
-- `plan.deliverables`: always `["charts/", "charts/manifest.json", "deck.pptx", "summary.docx"]`.
+- `plan.deliverables`: always `["charts/", "charts/manifest.json", "deck.pptx", "summary.docx", "technical_report.docx"]`.
 
 ## Write outputs
 1. `plan.md`: title, problem types, one-paragraph approach, numbered steps (method + one-line justification),

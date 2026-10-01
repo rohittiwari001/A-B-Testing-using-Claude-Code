@@ -99,7 +99,8 @@
       "charts/",
       "charts/manifest.json",
       "deck.pptx",
-      "summary.docx"
+      "summary.docx",
+      "technical_report.docx"
     ]
   },
   "gates": {
